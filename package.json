@@ -1,0 +1,30 @@
+{
+  "name": "vibe-kit",
+  "version": "1.0.0",
+  "description": "Get the right vibe for your code - Complete AI development toolkit",
+  "main": "install.sh",
+  "scripts": {
+    "install": "bash install.sh",
+    "update": "bash scripts/update.sh"
+  },
+  "keywords": [
+    "ai",
+    "development",
+    "toolkit",
+    "standards",
+    "typescript",
+    "testing",
+    "quality",
+    "workflow"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/vibe-kit.git"
+  },
+  "homepage": "https://github.com/yourusername/vibe-kit#readme",
+  "bugs": {
+    "url": "https://github.com/yourusername/vibe-kit/issues"
+  }
+}

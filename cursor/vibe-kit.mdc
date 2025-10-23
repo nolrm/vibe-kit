@@ -1,0 +1,45 @@
+---
+description: "Vibe Kit - Complete AI development toolkit with standards, type safety, and quality checks"
+globs: ["**/*.{ts,tsx,js,jsx,py,rs,go}"]
+alwaysApply: true
+---
+
+# Vibe Kit
+
+## Purpose
+
+Complete AI development toolkit including standards, type safety, quality checks, and automated hooks.
+
+## Standards Reference
+
+- @.vibe-kit/standards/README.md - Complete development standards
+- @.vibe-kit/standards/code-style.md - Code style guide
+- @.vibe-kit/standards/testing.md - Testing patterns
+- @.vibe-kit/standards/architecture.md - Architecture patterns
+- @.vibe-kit/standards/ai-guidelines.md - AI development guidelines
+
+## Type Safety
+
+- @.vibe-kit/types/strict.tsconfig.json - Strict TypeScript configuration
+- @.vibe-kit/types/global.d.ts - Global type definitions
+
+## Quality Checks
+
+- @.vibe-kit/hooks/pre-commit.sh - Pre-commit quality checks
+- @.vibe-kit/hooks/pre-push.sh - Pre-push validation
+
+## Quick Commands
+
+- "Create component" - Create new component following standards
+- "Add tests" - Add comprehensive test coverage
+- "Fix styling" - Apply project styling patterns
+- "Add documentation" - Add proper documentation
+
+## Workflow
+
+1. Check standards first (@.vibe-kit/standards/)
+2. Follow project patterns
+3. Include proper testing
+4. Ensure type safety
+5. Run quality checks
+6. Add documentation
