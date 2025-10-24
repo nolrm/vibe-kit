@@ -12,11 +12,13 @@ Vibe Kit is a comprehensive development toolkit that provides AI guidance, type 
 - 📚 **Standards** - Comprehensive development standards and patterns
 - 🎯 **Templates** - Ready-to-use code templates
 - 🔧 **Automation** - Automated setup and quality checks
+- 🛡️ **Safe Installation** - Backs up existing files with automatic rollback
+- 📦 **Multi-Package Manager** - Supports npm, yarn, and pnpm
 
 ## Quick Start
 
 ```bash
-# Install Vibe Kit
+# Install Vibe Kit (safe installation with backup & rollback)
 curl -sSL https://raw.githubusercontent.com/yourusername/vibe-kit/main/install.sh | bash
 
 # Or download and run locally
@@ -24,6 +26,12 @@ wget https://raw.githubusercontent.com/yourusername/vibe-kit/main/install.sh
 chmod +x install.sh
 ./install.sh
 ```
+
+**✨ Enhanced Installation:**
+- 🛡️ Safely backs up existing files
+- 🔄 Automatic rollback on failure
+- 📦 Auto-detects package manager (npm/yarn/pnpm)
+- 🎯 Smart project type detection
 
 ## Usage
 

@@ -1,7 +1,5 @@
 #!/bin/bash
-# install.sh - Vibe Kit Installation Script
-
-set -e
+# install.sh - Vibe Kit Installation Script (Enhanced)
 
 # Colors for output
 RED='\033[0;31m'
@@ -14,160 +12,377 @@ NC='\033[0m' # No Color
 # Configuration
 VIBE_KIT_VERSION="1.0.0"
 REPO_URL="https://raw.githubusercontent.com/yourusername/vibe-kit/main"
+BACKUP_DIR=".vibe-kit-backup-$(date +%Y%m%d-%H%M%S)"
+INSTALL_LOG=".vibe-kit-install.log"
 
-echo -e "${PURPLE}🎵 Installing Vibe Kit v${VIBE_KIT_VERSION}...${NC}"
+# Global variables for rollback
+INSTALLED_FILES=()
+BACKED_UP_FILES=()
+CREATED_DIRS=()
 
-# Detect project type
-detect_project_type() {
-    if [ -f "package.json" ]; then
-        if grep -q "react" package.json; then
-            echo "react"
-        elif grep -q "vue" package.json; then
-            echo "vue"
-        elif grep -q "angular" package.json; then
-            echo "angular"
-        else
-            echo "node"
+# Error handling
+set -euo pipefail
+
+# Logging function
+log() {
+    echo "$(date '+%Y-%m-%d %H:%M:%S') - $1" >> "$INSTALL_LOG"
+    echo -e "$1"
+}
+
+# Error handler with rollback
+error_handler() {
+    local exit_code=$?
+    log "${RED}❌ Installation failed with exit code $exit_code${NC}"
+    
+    if [ ${#BACKED_UP_FILES[@]} -gt 0 ]; then
+        log "${YELLOW}🔄 Attempting rollback...${NC}"
+        rollback_changes
+    fi
+    
+    log "${RED}💥 Installation failed. Check $INSTALL_LOG for details.${NC}"
+    exit $exit_code
+}
+
+# Rollback function
+rollback_changes() {
+    log "${YELLOW}🔄 Rolling back changes...${NC}"
+    
+    # Restore backed up files
+    for file in "${BACKED_UP_FILES[@]}"; do
+        if [ -f "$file.backup" ]; then
+            mv "$file.backup" "$file"
+            log "Restored: $file"
         fi
-    elif [ -f "requirements.txt" ]; then
-        echo "python"
-    elif [ -f "Cargo.toml" ]; then
-        echo "rust"
-    elif [ -f "go.mod" ]; then
-        echo "go"
-    else
-        echo "generic"
+    done
+    
+    # Remove installed files
+    for file in "${INSTALLED_FILES[@]}"; do
+        if [ -f "$file" ]; then
+            rm -f "$file"
+            log "Removed: $file"
+        fi
+    done
+    
+    # Remove created directories (in reverse order)
+    for ((i=${#CREATED_DIRS[@]}-1; i>=0; i--)); do
+        local dir="${CREATED_DIRS[i]}"
+        if [ -d "$dir" ] && [ -z "$(ls -A "$dir" 2>/dev/null)" ]; then
+            rmdir "$dir" 2>/dev/null || true
+            log "Removed empty directory: $dir"
+        fi
+    done
+    
+    # Remove backup directory if empty
+    if [ -d "$BACKUP_DIR" ] && [ -z "$(ls -A "$BACKUP_DIR" 2>/dev/null)" ]; then
+        rmdir "$BACKUP_DIR" 2>/dev/null || true
+    fi
+    
+    log "${GREEN}✅ Rollback completed${NC}"
+}
+
+# Set up error handling
+trap error_handler ERR
+
+# Initialize installation log
+echo "Vibe Kit Installation Log - $(date)" > "$INSTALL_LOG"
+log "${PURPLE}🎵 Starting Vibe Kit v${VIBE_KIT_VERSION} installation...${NC}"
+
+# Utility functions
+backup_file() {
+    local file="$1"
+    if [ -f "$file" ]; then
+        mkdir -p "$BACKUP_DIR/$(dirname "$file")"
+        cp "$file" "$BACKUP_DIR/$file"
+        BACKED_UP_FILES+=("$file")
+        log "${YELLOW}📦 Backed up existing file: $file${NC}"
     fi
 }
 
-# Create directory structure
-create_structure() {
-    echo -e "${YELLOW}📁 Creating directory structure...${NC}"
+safe_download() {
+    local url="$1"
+    local output="$2"
+    local description="$3"
     
-    mkdir -p .vibe-kit/{standards,hooks,types,commands,templates,scripts}
-    mkdir -p .cursor/rules
+    log "${YELLOW}📥 Downloading $description...${NC}"
     
-    echo -e "${GREEN}✅ Directory structure created${NC}"
+    # Create directory if it doesn't exist
+    local dir=$(dirname "$output")
+    if [ ! -d "$dir" ]; then
+        mkdir -p "$dir"
+        CREATED_DIRS+=("$dir")
+    fi
+    
+    # Backup existing file
+    backup_file "$output"
+    
+    # Download with retry logic
+    local retry_count=0
+    local max_retries=3
+    
+    while [ $retry_count -lt $max_retries ]; do
+        if curl -s -f -L -o "$output" "$url"; then
+            INSTALLED_FILES+=("$output")
+            log "${GREEN}✅ Downloaded: $description${NC}"
+            return 0
+        else
+            retry_count=$((retry_count + 1))
+            log "${YELLOW}⚠️  Download failed, retry $retry_count/$max_retries${NC}"
+            sleep 2
+        fi
+    done
+    
+    log "${RED}❌ Failed to download $description after $max_retries attempts${NC}"
+    return 1
 }
 
-# Download and install standards
+detect_package_manager() {
+    if [ -f "package.json" ]; then
+        if [ -f "yarn.lock" ]; then
+            echo "yarn"
+        elif [ -f "pnpm-lock.yaml" ]; then
+            echo "pnpm"
+        elif [ -f "package-lock.json" ]; then
+            echo "npm"
+        else
+            echo "npm"  # Default to npm
+        fi
+    else
+        echo "none"
+    fi
+}
+
+check_command_exists() {
+    local cmd="$1"
+    if command -v "$cmd" >/dev/null 2>&1; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+# Enhanced project type detection
+detect_project_type() {
+    local project_type="generic"
+    local framework=""
+    local version=""
+    
+    if [ -f "package.json" ]; then
+        # Detect framework
+        if grep -q '"react"' package.json || grep -q '"@types/react"' package.json; then
+            framework="react"
+        elif grep -q '"vue"' package.json || grep -q '"@vue"' package.json; then
+            framework="vue"
+        elif grep -q '"@angular"' package.json; then
+            framework="angular"
+        elif grep -q '"next"' package.json; then
+            framework="nextjs"
+        elif grep -q '"nuxt"' package.json; then
+            framework="nuxt"
+        elif grep -q '"svelte"' package.json; then
+            framework="svelte"
+        else
+            framework="node"
+        fi
+        
+        # Detect build tools
+        if grep -q '"vite"' package.json; then
+            project_type="${framework}-vite"
+        elif grep -q '"webpack"' package.json; then
+            project_type="${framework}-webpack"
+        elif grep -q '"rollup"' package.json; then
+            project_type="${framework}-rollup"
+        else
+            project_type="$framework"
+        fi
+        
+    elif [ -f "requirements.txt" ] || [ -f "pyproject.toml" ]; then
+        project_type="python"
+    elif [ -f "Cargo.toml" ]; then
+        project_type="rust"
+    elif [ -f "go.mod" ]; then
+        project_type="go"
+    elif [ -f "composer.json" ]; then
+        project_type="php"
+    elif [ -f "Gemfile" ]; then
+        project_type="ruby"
+    elif [ -f "pom.xml" ] || [ -f "build.gradle" ]; then
+        project_type="java"
+    fi
+    
+    log "${BLUE}🔍 Detected project type: $project_type${NC}"
+    echo "$project_type"
+}
+
+# Create directory structure safely
+create_structure() {
+    log "${YELLOW}📁 Creating directory structure...${NC}"
+    
+    # Create .vibe-kit directories
+    local vibe_dirs=(
+        ".vibe-kit/standards"
+        ".vibe-kit/hooks"
+        ".vibe-kit/types"
+        ".vibe-kit/commands"
+        ".vibe-kit/templates"
+        ".vibe-kit/scripts"
+    )
+    
+    for dir in "${vibe_dirs[@]}"; do
+        if [ ! -d "$dir" ]; then
+            mkdir -p "$dir"
+            CREATED_DIRS+=("$dir")
+            log "Created directory: $dir"
+        else
+            log "Directory already exists: $dir"
+        fi
+    done
+    
+    # Create .cursor/rules directory (safe for existing .cursor folders)
+    if [ ! -d ".cursor/rules" ]; then
+        mkdir -p ".cursor/rules"
+        CREATED_DIRS+=(".cursor/rules")
+        log "Created directory: .cursor/rules"
+    else
+        log "Directory already exists: .cursor/rules"
+    fi
+    
+    log "${GREEN}✅ Directory structure created${NC}"
+}
+
+# Download and install standards safely
 install_standards() {
     local project_type=$1
     
-    echo -e "${YELLOW}📚 Installing standards for ${project_type} project...${NC}"
+    log "${YELLOW}📚 Installing standards for ${project_type} project...${NC}"
     
     # Download base standards
-    curl -s -o .vibe-kit/standards/README.md "${REPO_URL}/standards/README.md"
-    curl -s -o .vibe-kit/standards/code-style.md "${REPO_URL}/standards/code-style.md"
-    curl -s -o .vibe-kit/standards/testing.md "${REPO_URL}/standards/testing.md"
-    curl -s -o .vibe-kit/standards/architecture.md "${REPO_URL}/standards/architecture.md"
-    curl -s -o .vibe-kit/standards/workflows.md "${REPO_URL}/standards/workflows.md"
-    curl -s -o .vibe-kit/standards/ai-guidelines.md "${REPO_URL}/standards/ai-guidelines.md"
+    safe_download "${REPO_URL}/standards/README.md" ".vibe-kit/standards/README.md" "Standards README"
+    safe_download "${REPO_URL}/standards/code-style.md" ".vibe-kit/standards/code-style.md" "Code Style Guide"
+    safe_download "${REPO_URL}/standards/testing.md" ".vibe-kit/standards/testing.md" "Testing Standards"
+    safe_download "${REPO_URL}/standards/architecture.md" ".vibe-kit/standards/architecture.md" "Architecture Guide"
+    safe_download "${REPO_URL}/standards/workflows.md" ".vibe-kit/standards/workflows.md" "Workflow Standards"
+    safe_download "${REPO_URL}/standards/ai-guidelines.md" ".vibe-kit/standards/ai-guidelines.md" "AI Guidelines"
     
     # Download project-specific standards if available
-    if curl -s -f "${REPO_URL}/standards/${project_type}-specific.md" > /dev/null; then
-        curl -s -o .vibe-kit/standards/${project_type}-specific.md "${REPO_URL}/standards/${project_type}-specific.md"
-        echo -e "${GREEN}✅ Installed ${project_type}-specific standards${NC}"
+    local project_specific_url="${REPO_URL}/standards/${project_type}-specific.md"
+    if curl -s -f "$project_specific_url" > /dev/null 2>&1; then
+        safe_download "$project_specific_url" ".vibe-kit/standards/${project_type}-specific.md" "${project_type} Specific Standards"
+        log "${GREEN}✅ Installed ${project_type}-specific standards${NC}"
+    else
+        log "${YELLOW}ℹ️  No ${project_type}-specific standards available${NC}"
     fi
     
-    echo -e "${GREEN}✅ Standards installed${NC}"
+    log "${GREEN}✅ Standards installed${NC}"
 }
 
-# Install commands
+# Install commands safely
 install_commands() {
-    echo -e "${YELLOW}⚡ Installing AI commands...${NC}"
+    log "${YELLOW}⚡ Installing AI commands...${NC}"
     
-    curl -s -o .vibe-kit/commands/create-feature.md "${REPO_URL}/commands/create-feature.md"
-    curl -s -o .vibe-kit/commands/create-component.md "${REPO_URL}/commands/create-component.md"
-    curl -s -o .vibe-kit/commands/run-tests.md "${REPO_URL}/commands/run-tests.md"
-    curl -s -o .vibe-kit/commands/add-documentation.md "${REPO_URL}/commands/add-documentation.md"
-    curl -s -o .vibe-kit/commands/quality-check.md "${REPO_URL}/commands/quality-check.md"
+    safe_download "${REPO_URL}/commands/create-feature.md" ".vibe-kit/commands/create-feature.md" "Create Feature Command"
+    safe_download "${REPO_URL}/commands/create-component.md" ".vibe-kit/commands/create-component.md" "Create Component Command"
+    safe_download "${REPO_URL}/commands/run-tests.md" ".vibe-kit/commands/run-tests.md" "Run Tests Command"
+    safe_download "${REPO_URL}/commands/add-documentation.md" ".vibe-kit/commands/add-documentation.md" "Add Documentation Command"
+    safe_download "${REPO_URL}/commands/quality-check.md" ".vibe-kit/commands/quality-check.md" "Quality Check Command"
     
-    echo -e "${GREEN}✅ Commands installed${NC}"
+    log "${GREEN}✅ Commands installed${NC}"
 }
 
-# Install hooks
+# Install hooks safely
 install_hooks() {
-    echo -e "${YELLOW}🪝 Installing Git hooks...${NC}"
+    log "${YELLOW}🪝 Installing Git hooks...${NC}"
     
-    curl -s -o .vibe-kit/hooks/pre-commit.sh "${REPO_URL}/hooks/pre-commit.sh"
-    curl -s -o .vibe-kit/hooks/pre-push.sh "${REPO_URL}/hooks/pre-push.sh"
-    curl -s -o .vibe-kit/hooks/commit-msg.sh "${REPO_URL}/hooks/commit-msg.sh"
-    curl -s -o .vibe-kit/hooks/setup-hooks.sh "${REPO_URL}/hooks/setup-hooks.sh"
+    safe_download "${REPO_URL}/hooks/pre-commit.sh" ".vibe-kit/hooks/pre-commit.sh" "Pre-commit Hook"
+    safe_download "${REPO_URL}/hooks/pre-push.sh" ".vibe-kit/hooks/pre-push.sh" "Pre-push Hook"
+    safe_download "${REPO_URL}/hooks/commit-msg.sh" ".vibe-kit/hooks/commit-msg.sh" "Commit Message Hook"
+    safe_download "${REPO_URL}/hooks/setup-hooks.sh" ".vibe-kit/hooks/setup-hooks.sh" "Setup Hooks Script"
     
+    # Make hooks executable
     chmod +x .vibe-kit/hooks/*.sh
     
-    echo -e "${GREEN}✅ Hooks installed${NC}"
+    log "${GREEN}✅ Hooks installed${NC}"
 }
 
-# Install type safety
+# Install type safety safely
 install_types() {
     local project_type=$1
     
-    echo -e "${YELLOW}🔒 Installing type safety...${NC}"
+    log "${YELLOW}🔒 Installing type safety...${NC}"
     
-    curl -s -o .vibe-kit/types/strict.tsconfig.json "${REPO_URL}/types/strict.tsconfig.json"
-    curl -s -o .vibe-kit/types/global.d.ts "${REPO_URL}/types/global.d.ts"
-    curl -s -o .vibe-kit/types/type-check.sh "${REPO_URL}/types/type-check.sh"
-    curl -s -o .vibe-kit/types/typescript-strict.json "${REPO_URL}/types/typescript-strict.json"
+    safe_download "${REPO_URL}/types/strict.tsconfig.json" ".vibe-kit/types/strict.tsconfig.json" "Strict TypeScript Config"
+    safe_download "${REPO_URL}/types/global.d.ts" ".vibe-kit/types/global.d.ts" "Global Type Definitions"
+    safe_download "${REPO_URL}/types/type-check.sh" ".vibe-kit/types/type-check.sh" "Type Check Script"
+    safe_download "${REPO_URL}/types/typescript-strict.json" ".vibe-kit/types/typescript-strict.json" "TypeScript Strict Config"
     
+    # Make type check script executable
     chmod +x .vibe-kit/types/type-check.sh
     
-    echo -e "${GREEN}✅ Type safety installed${NC}"
+    log "${GREEN}✅ Type safety installed${NC}"
 }
 
-# Install templates
+# Install templates safely
 install_templates() {
     local project_type=$1
     
-    echo -e "${YELLOW}📝 Installing code templates...${NC}"
+    log "${YELLOW}📝 Installing code templates...${NC}"
     
     # Download base templates
-    curl -s -o .vibe-kit/templates/component.tsx "${REPO_URL}/templates/component.tsx"
-    curl -s -o .vibe-kit/templates/test.tsx "${REPO_URL}/templates/test.tsx"
-    curl -s -o .vibe-kit/templates/story.tsx "${REPO_URL}/templates/story.tsx"
-    curl -s -o .vibe-kit/templates/hook.ts "${REPO_URL}/templates/hook.ts"
-    curl -s -o .vibe-kit/templates/api.ts "${REPO_URL}/templates/api.ts"
+    safe_download "${REPO_URL}/templates/component.tsx" ".vibe-kit/templates/component.tsx" "Component Template"
+    safe_download "${REPO_URL}/templates/test.tsx" ".vibe-kit/templates/test.tsx" "Test Template"
+    safe_download "${REPO_URL}/templates/story.tsx" ".vibe-kit/templates/story.tsx" "Storybook Template"
+    safe_download "${REPO_URL}/templates/hook.ts" ".vibe-kit/templates/hook.ts" "Hook Template"
+    safe_download "${REPO_URL}/templates/api.ts" ".vibe-kit/templates/api.ts" "API Template"
     
-    # Download project-specific templates
-    if curl -s -f "${REPO_URL}/templates/${project_type}/" > /dev/null; then
-        mkdir -p .vibe-kit/templates/${project_type}
-        curl -s -o .vibe-kit/templates/${project_type}/component.tsx "${REPO_URL}/templates/${project_type}/component.tsx"
-        curl -s -o .vibe-kit/templates/${project_type}/test.tsx "${REPO_URL}/templates/${project_type}/test.tsx"
+    # Download project-specific templates if available
+    local project_templates_url="${REPO_URL}/templates/${project_type}/"
+    if curl -s -f "$project_templates_url" > /dev/null 2>&1; then
+        mkdir -p ".vibe-kit/templates/${project_type}"
+        CREATED_DIRS+=(".vibe-kit/templates/${project_type}")
+        
+        safe_download "${REPO_URL}/templates/${project_type}/component.tsx" ".vibe-kit/templates/${project_type}/component.tsx" "${project_type} Component Template"
+        safe_download "${REPO_URL}/templates/${project_type}/test.tsx" ".vibe-kit/templates/${project_type}/test.tsx" "${project_type} Test Template"
+        
+        log "${GREEN}✅ Installed ${project_type}-specific templates${NC}"
+    else
+        log "${YELLOW}ℹ️  No ${project_type}-specific templates available${NC}"
     fi
     
-    echo -e "${GREEN}✅ Templates installed${NC}"
+    log "${GREEN}✅ Templates installed${NC}"
 }
 
-# Install Cursor integration
+# Install Cursor integration safely
 install_cursor_integration() {
-    echo -e "${YELLOW}🎯 Installing Cursor integration...${NC}"
+    log "${YELLOW}🎯 Installing Cursor integration...${NC}"
     
-    curl -s -o .cursor/rules/vibe-kit.mdc "${REPO_URL}/cursor/vibe-kit.mdc"
+    safe_download "${REPO_URL}/cursor/vibe-kit.mdc" ".cursor/rules/vibe-kit.mdc" "Cursor Rules"
     
-    echo -e "${GREEN}✅ Cursor integration installed${NC}"
+    log "${GREEN}✅ Cursor integration installed${NC}"
 }
 
-# Install scripts
+# Install scripts safely
 install_scripts() {
-    echo -e "${YELLOW}🔧 Installing automation scripts...${NC}"
+    log "${YELLOW}🔧 Installing automation scripts...${NC}"
     
-    curl -s -o .vibe-kit/scripts/setup.sh "${REPO_URL}/scripts/setup.sh"
-    curl -s -o .vibe-kit/scripts/type-check.sh "${REPO_URL}/scripts/type-check.sh"
-    curl -s -o .vibe-kit/scripts/quality-check.sh "${REPO_URL}/scripts/quality-check.sh"
-    curl -s -o .vibe-kit/scripts/update.sh "${REPO_URL}/scripts/update.sh"
+    safe_download "${REPO_URL}/scripts/setup.sh" ".vibe-kit/scripts/setup.sh" "Setup Script"
+    safe_download "${REPO_URL}/scripts/type-check.sh" ".vibe-kit/scripts/type-check.sh" "Type Check Script"
+    safe_download "${REPO_URL}/scripts/quality-check.sh" ".vibe-kit/scripts/quality-check.sh" "Quality Check Script"
+    safe_download "${REPO_URL}/scripts/update.sh" ".vibe-kit/scripts/update.sh" "Update Script"
     
+    # Make scripts executable
     chmod +x .vibe-kit/scripts/*.sh
     
-    echo -e "${GREEN}✅ Scripts installed${NC}"
+    log "${GREEN}✅ Scripts installed${NC}"
 }
 
-# Create configuration
+# Create configuration safely
 create_config() {
     local project_type=$1
     local project_name=$(basename "$(pwd)")
     
-    echo -e "${YELLOW}⚙️  Creating configuration...${NC}"
+    log "${YELLOW}⚙️  Creating configuration...${NC}"
+    
+    # Backup existing config if it exists
+    backup_file ".vibe-kit/config.yml"
     
     cat > .vibe-kit/config.yml << EOF
 # Vibe Kit Configuration
@@ -200,39 +415,122 @@ commands:
   quality_check: "@.vibe-kit/commands/quality-check.md"
 EOF
 
-    echo -e "${GREEN}✅ Configuration created${NC}"
+    INSTALLED_FILES+=(".vibe-kit/config.yml")
+    log "${GREEN}✅ Configuration created${NC}"
 }
 
-# Setup Husky
+# Setup Husky with package manager support
 setup_husky() {
     if [ -f "package.json" ]; then
-        echo -e "${YELLOW}🪝 Setting up Husky...${NC}"
+        local package_manager=$(detect_package_manager)
+        log "${YELLOW}🪝 Setting up Husky with $package_manager...${NC}"
         
-        # Install Husky if not already installed
-        if ! npm list husky > /dev/null 2>&1; then
-            npm install --save-dev husky
+        # Check if Node.js is available
+        if ! check_command_exists "node"; then
+            log "${YELLOW}⚠️  Node.js not found, skipping Husky setup${NC}"
+            return 0
         fi
         
+        # Install Husky based on package manager
+        case "$package_manager" in
+            "yarn")
+                if ! yarn list husky > /dev/null 2>&1; then
+                    log "Installing Husky with yarn..."
+                    yarn add --dev husky
+                fi
+                ;;
+            "pnpm")
+                if ! pnpm list husky > /dev/null 2>&1; then
+                    log "Installing Husky with pnpm..."
+                    pnpm add --save-dev husky
+                fi
+                ;;
+            "npm"|*)
+                if ! npm list husky > /dev/null 2>&1; then
+                    log "Installing Husky with npm..."
+                    npm install --save-dev husky
+                fi
+                ;;
+        esac
+        
         # Initialize Husky
-        npx husky install
+        case "$package_manager" in
+            "yarn")
+                yarn husky install
+                ;;
+            "pnpm")
+                pnpm exec husky install
+                ;;
+            "npm"|*)
+                npx husky install
+                ;;
+        esac
         
-        # Add hooks
-        npx husky add .husky/pre-commit ".vibe-kit/hooks/pre-commit.sh"
-        npx husky add .husky/pre-push ".vibe-kit/hooks/pre-push.sh"
-        npx husky add .husky/commit-msg ".vibe-kit/hooks/commit-msg.sh"
+        # Backup existing hooks before adding new ones
+        backup_file ".husky/pre-commit"
+        backup_file ".husky/pre-push"
+        backup_file ".husky/commit-msg"
         
-        echo -e "${GREEN}✅ Husky setup complete${NC}"
+        # Add hooks safely
+        case "$package_manager" in
+            "yarn")
+                yarn husky add .husky/pre-commit ".vibe-kit/hooks/pre-commit.sh"
+                yarn husky add .husky/pre-push ".vibe-kit/hooks/pre-push.sh"
+                yarn husky add .husky/commit-msg ".vibe-kit/hooks/commit-msg.sh"
+                ;;
+            "pnpm")
+                pnpm exec husky add .husky/pre-commit ".vibe-kit/hooks/pre-commit.sh"
+                pnpm exec husky add .husky/pre-push ".vibe-kit/hooks/pre-push.sh"
+                pnpm exec husky add .husky/commit-msg ".vibe-kit/hooks/commit-msg.sh"
+                ;;
+            "npm"|*)
+                npx husky add .husky/pre-commit ".vibe-kit/hooks/pre-commit.sh"
+                npx husky add .husky/pre-push ".vibe-kit/hooks/pre-push.sh"
+                npx husky add .husky/commit-msg ".vibe-kit/hooks/commit-msg.sh"
+                ;;
+        esac
+        
+        log "${GREEN}✅ Husky setup complete${NC}"
     else
-        echo -e "${YELLOW}⚠️  Skipping Husky setup (no package.json found)${NC}"
+        log "${YELLOW}⚠️  Skipping Husky setup (no package.json found)${NC}"
     fi
 }
 
-# Main installation
+# Cleanup function
+cleanup() {
+    log "${YELLOW}🧹 Cleaning up installation artifacts...${NC}"
+    
+    # Remove installation log if installation was successful
+    if [ -f "$INSTALL_LOG" ]; then
+        rm -f "$INSTALL_LOG"
+    fi
+    
+    # Remove backup directory if no files were backed up
+    if [ -d "$BACKUP_DIR" ] && [ ${#BACKED_UP_FILES[@]} -eq 0 ]; then
+        rmdir "$BACKUP_DIR" 2>/dev/null || true
+    fi
+    
+    log "${GREEN}✅ Cleanup completed${NC}"
+}
+
+# Main installation function
 main() {
     local project_type=$(detect_project_type)
+    local package_manager=$(detect_package_manager)
     
-    echo -e "${BLUE}🔍 Detected project type: ${project_type}${NC}"
+    log "${BLUE}🔍 Detected project type: $project_type${NC}"
+    log "${BLUE}📦 Detected package manager: $package_manager${NC}"
     
+    # Check prerequisites
+    if [ ! -d ".git" ]; then
+        log "${YELLOW}⚠️  Warning: Not in a git repository. Some features may not work properly.${NC}"
+    fi
+    
+    # Create backup directory
+    mkdir -p "$BACKUP_DIR"
+    CREATED_DIRS+=("$BACKUP_DIR")
+    
+    # Run installation steps
     create_structure
     install_standards "$project_type"
     install_commands
@@ -244,18 +542,22 @@ main() {
     create_config "$project_type"
     setup_husky
     
-    echo ""
-    echo -e "${GREEN}🎉 Vibe Kit v${VIBE_KIT_VERSION} successfully installed!${NC}"
-    echo ""
-    echo -e "${BLUE}📖 Next steps:${NC}"
-    echo "1. Read .vibe-kit/standards/README.md to understand the standards"
-    echo "2. Customize .vibe-kit/config.yml for your project"
-    echo "3. Start using AI commands with @.vibe-kit/ references"
-    echo ""
-    echo -e "${YELLOW}💡 Try: 'Create a Button component following vibe-kit standards'${NC}"
-    echo ""
-    echo -e "${BLUE}🔗 Documentation: https://github.com/yourusername/vibe-kit${NC}"
-    echo -e "${PURPLE}🎵 Get the right vibe for your code!${NC}"
+    # Installation completed successfully
+    log ""
+    log "${GREEN}🎉 Vibe Kit v${VIBE_KIT_VERSION} successfully installed!${NC}"
+    log ""
+    log "${BLUE}📖 Next steps:${NC}"
+    log "1. Read .vibe-kit/standards/README.md to understand the standards"
+    log "2. Customize .vibe-kit/config.yml for your project"
+    log "3. Start using AI commands with @.vibe-kit/ references"
+    log ""
+    log "${YELLOW}💡 Try: 'Create a Button component following vibe-kit standards'${NC}"
+    log ""
+    log "${BLUE}🔗 Documentation: https://github.com/yourusername/vibe-kit${NC}"
+    log "${PURPLE}🎵 Get the right vibe for your code!${NC}"
+    
+    # Cleanup
+    cleanup
 }
 
 # Run installation
