@@ -32,6 +32,13 @@ chmod +x install.sh
 - 🔄 Automatic rollback on failure
 - 📦 Auto-detects package manager (npm/yarn/pnpm)
 - 🎯 Smart project type detection
+- 🪝 Optional Git hooks (interactive prompt)
+
+**For CI/CD environments:**
+```bash
+# Non-interactive installation (skips Git hooks)
+NON_INTERACTIVE=true ./install.sh
+```
 
 ## Usage
 

@@ -378,6 +378,7 @@ install_scripts() {
 create_config() {
     local project_type=$1
     local project_name=$(basename "$(pwd)")
+    local git_hooks_enabled=${2:-false}
     
     log "${YELLOW}⚙️  Creating configuration...${NC}"
     
@@ -397,7 +398,7 @@ features:
   code_review: true
   linting: true
   type_safety: true
-  git_hooks: true
+  git_hooks: ${git_hooks_enabled}
 
 # Paths (customize for your project)
 paths:
@@ -417,6 +418,45 @@ EOF
 
     INSTALLED_FILES+=(".vibe-kit/config.yml")
     log "${GREEN}✅ Configuration created${NC}"
+}
+
+# Interactive prompt for Husky setup
+prompt_husky_setup() {
+    if [ -f "package.json" ]; then
+        # Check for non-interactive mode (CI/CD environments)
+        if [ "${CI:-}" = "true" ] || [ "${NON_INTERACTIVE:-}" = "true" ]; then
+            log "${YELLOW}🤖 Non-interactive mode detected, skipping Git hooks${NC}"
+            return 1
+        fi
+        
+        echo ""
+        log "${BLUE}🪝 Git Hooks Setup${NC}"
+        log "${YELLOW}Vibe Kit can install pre-commit and pre-push hooks to automatically run quality checks.${NC}"
+        log "${YELLOW}These hooks will run tests, linting, and type checking before commits.${NC}"
+        echo ""
+        
+        while true; do
+            read -p "Do you want to install Git hooks? (y/n): " -n 1 -r
+            echo
+            case $REPLY in
+                [Yy]* ) 
+                    log "${GREEN}✅ Git hooks will be installed${NC}"
+                    return 0
+                    ;;
+                [Nn]* ) 
+                    log "${YELLOW}⏭️  Skipping Git hooks installation${NC}"
+                    log "${BLUE}💡 You can install them later by running: .vibe-kit/hooks/setup-hooks.sh${NC}"
+                    return 1
+                    ;;
+                * ) 
+                    log "${RED}Please answer yes (y) or no (n)${NC}"
+                    ;;
+            esac
+        done
+    else
+        log "${YELLOW}⚠️  Skipping Git hooks setup (no package.json found)${NC}"
+        return 1
+    fi
 }
 
 # Setup Husky with package manager support
@@ -539,8 +579,16 @@ main() {
     install_templates "$project_type"
     install_cursor_integration
     install_scripts
-    create_config "$project_type"
-    setup_husky
+    
+    # Ask user about Git hooks setup
+    local git_hooks_enabled=false
+    if prompt_husky_setup; then
+        setup_husky
+        git_hooks_enabled=true
+    fi
+    
+    # Create configuration with Git hooks status
+    create_config "$project_type" "$git_hooks_enabled"
     
     # Installation completed successfully
     log ""
@@ -550,6 +598,13 @@ main() {
     log "1. Read .vibe-kit/standards/README.md to understand the standards"
     log "2. Customize .vibe-kit/config.yml for your project"
     log "3. Start using AI commands with @.vibe-kit/ references"
+    
+    if [ "$git_hooks_enabled" = "true" ]; then
+        log "4. Git hooks are active - quality checks will run automatically"
+    else
+        log "4. To install Git hooks later: .vibe-kit/hooks/setup-hooks.sh"
+    fi
+    
     log ""
     log "${YELLOW}💡 Try: 'Create a Button component following vibe-kit standards'${NC}"
     log ""
