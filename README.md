@@ -17,31 +17,45 @@ Vibe Kit is a comprehensive development toolkit that provides AI guidance, type 
 
 ## Quick Start
 
+### **Recommended: npm Package**
 ```bash
-# Install Vibe Kit (safe installation with backup & rollback)
-curl -sSL https://raw.githubusercontent.com/yourusername/vibe-kit/main/install.sh | bash
+# Install globally
+npm install -g @nolrm/vibe-kit
 
-# Or download and run locally
-wget https://raw.githubusercontent.com/yourusername/vibe-kit/main/install.sh
-chmod +x install.sh
-./install.sh
+# Install in current project
+vibe-kit install
 ```
 
-**✨ Enhanced Installation:**
-- 🛡️ Safely backs up existing files
-- 🔄 Automatic rollback on failure
+### **Alternative: Direct Installation**
+```bash
+# For users without Node.js
+curl -sSL https://raw.githubusercontent.com/nolrm/vibe-kit/main/install-fallback.sh | bash
+```
+
+**✨ Features:**
+- 🛡️ Safe installation with backup & rollback
 - 📦 Auto-detects package manager (npm/yarn/pnpm)
 - 🎯 Smart project type detection
 - 🪝 Optional Git hooks (interactive prompt)
+- 🔄 Easy updates with `vibe-kit update`
 
 **For CI/CD environments:**
 ```bash
-# Non-interactive installation (skips Git hooks)
-NON_INTERACTIVE=true ./install.sh
+# Non-interactive installation
+NON_INTERACTIVE=true vibe-kit install
 ```
 
 ## Usage
 
+### **CLI Commands**
+```bash
+vibe-kit install    # Install in current project
+vibe-kit status     # Check installation status
+vibe-kit update     # Update to latest version
+vibe-kit --version  # Show version
+```
+
+### **Project Structure**
 After installation, Vibe Kit provides:
 
 - `.vibe-kit/standards/` - Development standards

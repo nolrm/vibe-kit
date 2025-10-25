@@ -1,11 +1,13 @@
 {
-  "name": "vibe-kit",
+  "name": "@nolrm/vibe-kit",
   "version": "1.0.0",
   "description": "Get the right vibe for your code - Complete AI development toolkit",
-  "main": "install.sh",
+  "main": "lib/index.js",
+  "bin": {
+    "vibe-kit": "./bin/vibe-kit.js"
+  },
   "scripts": {
-    "install": "bash install.sh",
-    "update": "bash scripts/update.sh"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "ai",
@@ -15,16 +17,42 @@
     "typescript",
     "testing",
     "quality",
-    "workflow"
+    "workflow",
+    "cli",
+    "code-quality",
+    "ai-guidelines"
   ],
-  "author": "Your Name",
+  "author": {
+    "name": "Marlon Maniti",
+    "email": "marlon@example.com",
+    "url": "https://github.com/nolrm"
+  },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/vibe-kit.git"
+    "url": "https://github.com/nolrm/vibe-kit.git"
   },
-  "homepage": "https://github.com/yourusername/vibe-kit#readme",
+  "homepage": "https://github.com/nolrm/vibe-kit#readme",
   "bugs": {
-    "url": "https://github.com/yourusername/vibe-kit/issues"
-  }
+    "url": "https://github.com/nolrm/vibe-kit/issues"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "dependencies": {
+    "commander": "^11.0.0",
+    "chalk": "^4.1.2",
+    "ora": "^5.4.1",
+    "inquirer": "^8.2.6",
+    "fs-extra": "^11.1.1",
+    "axios": "^1.6.0"
+  },
+  "files": [
+    "bin/",
+    "lib/",
+    "README.md",
+    "LICENSE",
+    "install-fallback.sh"
+  ],
+  "preferGlobal": true
 }
