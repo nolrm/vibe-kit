@@ -64,6 +64,20 @@ After installation, Vibe Kit provides:
 - `.vibe-kit/types/` - Type safety
 - `.vibe-kit/templates/` - Code templates
 
+## Pre-Push Hook
+
+Vibe Kit includes a pre-push hook that automatically runs tests before pushing:
+
+```bash
+# Skip hook (not recommended)
+git push --no-verify
+```
+
+**Features:**
+- 🧪 **Test Runner** - Runs all tests before push
+- 🚫 **Push Protection** - Blocks broken code from reaching repository
+- ⚡ **Fast Execution** - Quick feedback loop
+
 ## Commands
 
 - `@.vibe-kit/commands/create-component.md` - Create new component

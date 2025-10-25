@@ -6,6 +6,15 @@ const axios = require('axios');
 jest.mock('fs-extra');
 jest.mock('axios');
 
+// Mock chalk to return strings without color codes
+jest.mock('chalk', () => ({
+  red: (str) => str,
+  green: (str) => str,
+  yellow: (str) => str,
+  blue: (str) => str,
+  magenta: (str) => str
+}));
+
 describe('Status Command', () => {
   beforeEach(() => {
     jest.clearAllMocks();

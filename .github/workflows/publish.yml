@@ -15,7 +15,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Get full history for version comparison
+          fetch-depth: 0
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -29,41 +29,28 @@ jobs:
       - name: Run tests
         run: npm test
 
-      - name: Check if version changed
-        id: version-check
+      - name: Check version and publish
         run: |
-          # Get current version from package.json
           CURRENT_VERSION=$(node -p "require('./package.json').version")
-          echo "Current version: $CURRENT_VERSION"
+          echo "🔍 Checking version: $CURRENT_VERSION"
           
-          # Check if this version exists on npm
+          # Check if version exists on npm
           if npm view @nolrm/vibe-kit@$CURRENT_VERSION version > /dev/null 2>&1; then
-            echo "exists=true" >> $GITHUB_OUTPUT
-            echo "Version $CURRENT_VERSION already exists on npm"
+            echo "⏭️  Version $CURRENT_VERSION already exists - skipping publish"
+            echo "✅ No action needed"
           else
-            echo "exists=false" >> $GITHUB_OUTPUT
-            echo "Version $CURRENT_VERSION is new - will publish"
+            echo "🚀 Publishing new version $CURRENT_VERSION..."
+            npm publish --access public
+            echo "✅ Successfully published @nolrm/vibe-kit@$CURRENT_VERSION"
+            echo "📦 Package: https://www.npmjs.com/package/@nolrm/vibe-kit"
+            echo "🎵 Vibe Kit is now available for installation!"
+            
+            # Create git tag
+            git config --local user.email "action@github.com"
+            git config --local user.name "GitHub Action"
+            git tag "v$CURRENT_VERSION"
+            git push origin "v$CURRENT_VERSION"
+            echo "🏷️  Created git tag v$CURRENT_VERSION"
           fi
-
-      - name: Publish to npm
-        if: steps.version-check.outputs.exists == 'false'
-        run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Create Git Tag
-        if: steps.version-check.outputs.exists == 'false'
-        run: |
-          VERSION=$(node -p "require('./package.json').version")
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git tag "v$VERSION"
-          git push origin "v$VERSION"
-
-      - name: Publish success
-        if: steps.version-check.outputs.exists == 'false'
-        run: |
-          VERSION=$(node -p "require('./package.json').version")
-          echo "✅ Successfully published @nolrm/vibe-kit@$VERSION to npm!"
-          echo "📦 Package: https://www.npmjs.com/package/@nolrm/vibe-kit"
-          echo "🎵 Vibe Kit is now available for installation!"
