@@ -5,13 +5,13 @@
 ### Quick Install
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/yourusername/vibe-kit/main/install.sh | bash
+curl -sSL https://raw.githubusercontent.com/nolrm/vibe-kit/main/install-fallback.sh | bash
 ```
 
 ### Manual Install
 
 ```bash
-git clone https://github.com/yourusername/vibe-kit.git
+git clone https://github.com/nolrm/vibe-kit.git
 cd vibe-kit
 bash install.sh
 ```

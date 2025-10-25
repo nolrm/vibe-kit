@@ -47,7 +47,7 @@ Do you want to install Git hooks? (y/n): y
 4. Git hooks are active - quality checks will run automatically
 
 💡 Try: 'Create a Button component following vibe-kit standards'
-🔗 Documentation: https://github.com/yourusername/vibe-kit
+🔗 Documentation: https://github.com/nolrm/vibe-kit
 🎵 Get the right vibe for your code!
 ```
 

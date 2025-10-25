@@ -103,5 +103,5 @@ Contributions are welcome! Please see our [Contributing Guide](CONTRIBUTING.md) 
 ## Support
 
 - 📖 [Documentation](docs/)
-- 🐛 [Issues](https://github.com/yourusername/vibe-kit/issues)
-- 💬 [Discussions](https://github.com/yourusername/vibe-kit/discussions)
+- 🐛 [Issues](https://github.com/nolrm/vibe-kit/issues)
+- 💬 [Discussions](https://github.com/nolrm/vibe-kit/discussions)

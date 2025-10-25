@@ -11,7 +11,7 @@ NC='\033[0m' # No Color
 
 # Configuration
 VIBE_KIT_VERSION="1.0.0"
-REPO_URL="https://raw.githubusercontent.com/yourusername/vibe-kit/main"
+REPO_URL="https://raw.githubusercontent.com/nolrm/vibe-kit/main"
 BACKUP_DIR=".vibe-kit-backup-$(date +%Y%m%d-%H%M%S)"
 INSTALL_LOG=".vibe-kit-install.log"
 
@@ -608,7 +608,7 @@ main() {
     log ""
     log "${YELLOW}💡 Try: 'Create a Button component following vibe-kit standards'${NC}"
     log ""
-    log "${BLUE}🔗 Documentation: https://github.com/yourusername/vibe-kit${NC}"
+    log "${BLUE}🔗 Documentation: https://github.com/nolrm/vibe-kit${NC}"
     log "${PURPLE}🎵 Get the right vibe for your code!${NC}"
     
     # Cleanup
