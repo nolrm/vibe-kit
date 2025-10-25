@@ -1,5 +1,6 @@
 const { execSync } = require('child_process');
 const path = require('path');
+const packageJson = require('../../package.json');
 
 describe('CLI Integration Tests', () => {
   const cliPath = path.join(__dirname, '../../bin/vibe-kit.js');
@@ -7,12 +8,12 @@ describe('CLI Integration Tests', () => {
   describe('version command', () => {
     test('should show version', () => {
       const result = execSync(`node "${cliPath}" --version`, { encoding: 'utf8' });
-      expect(result.trim()).toBe('0.1.0');
+      expect(result.trim()).toBe(packageJson.version);
     });
 
     test('should show version with -v flag', () => {
       const result = execSync(`node "${cliPath}" -v`, { encoding: 'utf8' });
-      expect(result.trim()).toBe('0.1.0');
+      expect(result.trim()).toBe(packageJson.version);
     });
   });
 
