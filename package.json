@@ -1,13 +1,15 @@
 {
   "name": "@nolrm/vibe-kit",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Get the right vibe for your code - Complete AI development toolkit",
   "main": "lib/index.js",
   "bin": {
     "vibe-kit": "./bin/vibe-kit.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "keywords": [
     "ai",
@@ -40,12 +42,12 @@
     "node": ">=14.0.0"
   },
   "dependencies": {
-    "commander": "^11.0.0",
+    "axios": "^1.6.0",
     "chalk": "^4.1.2",
-    "ora": "^5.4.1",
-    "inquirer": "^8.2.6",
+    "commander": "^11.0.0",
     "fs-extra": "^11.1.1",
-    "axios": "^1.6.0"
+    "inquirer": "^8.2.6",
+    "ora": "^5.4.1"
   },
   "files": [
     "bin/",
@@ -54,5 +56,9 @@
     "LICENSE",
     "install-fallback.sh"
   ],
-  "preferGlobal": true
+  "preferGlobal": true,
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "jest": "^30.2.0"
+  }
 }
