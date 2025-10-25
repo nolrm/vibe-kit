@@ -21,9 +21,10 @@ bash install.sh
 ### Project Setup
 
 1. Run the installation script
-2. Customize `.vibe-kit/config.yml`
-3. Review standards in `.vibe-kit/standards/`
-4. Start using AI commands
+2. **Run project analysis** (recommended): `@.vibe-kit/commands/analyze.md`
+3. Customize `.vibe-kit/config.yml`
+4. Review standards in `.vibe-kit/standards/`
+5. Start using AI commands
 
 ### Customization
 
@@ -36,23 +37,38 @@ bash install.sh
 
 ### AI Commands
 
-- `@.vibe-kit/commands/create-component.md`
-- `@.vibe-kit/commands/create-feature.md`
-- `@.vibe-kit/commands/run-tests.md`
+- `@.vibe-kit/commands/analyze.md` - **Analyze and customize standards for your project**
+- `@.vibe-kit/commands/create-component.md` - Create new component
+- `@.vibe-kit/commands/create-feature.md` - Create new feature
+- `@.vibe-kit/commands/run-tests.md` - Run test suite
+- `@.vibe-kit/commands/quality-check.md` - Quality check
+- `@.vibe-kit/commands/add-documentation.md` - Add documentation
 
 ### Standards Reference
 
-- `@.vibe-kit/standards/README.md`
-- `@.vibe-kit/standards/code-style.md`
-- `@.vibe-kit/standards/testing.md`
+- `@.vibe-kit/standards/README.md` - Complete development standards
+- `@.vibe-kit/standards/code-style.md` - Code style guide
+- `@.vibe-kit/standards/testing.md` - Testing patterns
+- `@.vibe-kit/standards/architecture.md` - Architecture patterns
+- `@.vibe-kit/standards/ai-guidelines.md` - AI development guidelines
 
 ### Templates
 
-- `.vibe-kit/templates/component.tsx`
-- `.vibe-kit/templates/test.tsx`
-- `.vibe-kit/templates/story.tsx`
+- `.vibe-kit/templates/component.tsx` - React component template
+- `.vibe-kit/templates/test.tsx` - Test file template
+- `.vibe-kit/templates/story.tsx` - Storybook story template
+- `.vibe-kit/templates/hook.ts` - Custom hook template
+- `.vibe-kit/templates/api.ts` - API service template
 
 ## Examples
+
+### Project Analysis (First Time Setup)
+
+```
+@.vibe-kit/commands/analyze.md
+```
+
+This will analyze your project and customize standards to match your tech stack.
 
 ### Creating a Component
 

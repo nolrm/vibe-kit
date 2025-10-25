@@ -7,6 +7,7 @@ Vibe Kit is a comprehensive development toolkit that provides AI guidance, type 
 ## Features
 
 - 🤖 **AI Guidance** - Prevent AI hallucinations with structured standards
+- 🔍 **Smart Analysis** - AI-powered project analysis and customization
 - 🔒 **Type Safety** - Strict TypeScript configuration and type checking
 - ✅ **Quality Checks** - Automated pre-commit and pre-push hooks
 - 📚 **Standards** - Comprehensive development standards and patterns
@@ -17,14 +18,32 @@ Vibe Kit is a comprehensive development toolkit that provides AI guidance, type 
 
 ## Quick Start
 
-### **Recommended: npm Package**
+### **Step 1: Install Globally**
 ```bash
-# Install globally
+# Install Vibe Kit globally
 npm install -g @nolrm/vibe-kit
+```
 
-# Install in current project
+### **Step 2: Install in Your Project**
+```bash
+# Navigate to your project directory
+cd your-project
+
+# Install Vibe Kit in current project
 vibe-kit install
 ```
+
+### **Step 3: Customize Standards (Recommended)**
+```bash
+# In Cursor AI chat, run:
+@.vibe-kit/commands/analyze.md
+```
+
+**🎯 The analyze command will:**
+- **Scan your project** structure and dependencies
+- **Detect existing patterns** and configurations
+- **Customize standards** to match your tech stack
+- **Update guidelines** based on your project type
 
 ### **Alternative: Direct Installation**
 ```bash
@@ -38,6 +57,7 @@ curl -sSL https://raw.githubusercontent.com/nolrm/vibe-kit/main/install-fallback
 - 🎯 Smart project type detection
 - 🪝 Optional Git hooks (interactive prompt)
 - 🔄 Easy updates with `vibe-kit update`
+- 🤖 **AI-powered analysis** for project-specific customization
 
 **For CI/CD environments:**
 ```bash
@@ -54,6 +74,21 @@ vibe-kit status     # Check installation status
 vibe-kit update     # Update to latest version
 vibe-kit --version  # Show version
 ```
+
+### **🤖 AI-Powered Analysis Workflow**
+```bash
+# 1. Check if analysis is needed
+vibe-kit status
+
+# 2. Run analysis in Cursor AI chat
+@.vibe-kit/commands/analyze.md
+```
+
+**The analyze command provides:**
+- **Project-specific standards** tailored to your tech stack
+- **Intelligent recommendations** based on existing patterns
+- **Interactive customization** - choose what to update
+- **Automatic file updates** - standards files customized for your project
 
 ### **Project Structure**
 After installation, Vibe Kit provides:
@@ -80,10 +115,13 @@ git push --no-verify
 
 ## Commands
 
+### **🤖 AI Commands (Use in Cursor Chat)**
+- `@.vibe-kit/commands/analyze.md` - **Analyze and customize standards for your project**
 - `@.vibe-kit/commands/create-component.md` - Create new component
 - `@.vibe-kit/commands/create-feature.md` - Create new feature
 - `@.vibe-kit/commands/run-tests.md` - Run test suite
 - `@.vibe-kit/commands/quality-check.md` - Quality check
+- `@.vibe-kit/commands/add-documentation.md` - Add documentation
 
 ## Standards
 

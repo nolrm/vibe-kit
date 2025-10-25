@@ -34,16 +34,20 @@
 
 ## Commands
 
+- `@.vibe-kit/commands/analyze.md` - **Analyze and customize standards for your project**
 - `@.vibe-kit/commands/create-component.md` - Create new component
 - `@.vibe-kit/commands/create-feature.md` - Create new feature
 - `@.vibe-kit/commands/run-tests.md` - Run test suite
 - `@.vibe-kit/commands/quality-check.md` - Quality check
+- `@.vibe-kit/commands/add-documentation.md` - Add documentation
 
 ## Templates
 
 - `.vibe-kit/templates/component.tsx` - Component template
 - `.vibe-kit/templates/test.tsx` - Test template
 - `.vibe-kit/templates/story.tsx` - Storybook template
+- `.vibe-kit/templates/hook.ts` - Custom hook template
+- `.vibe-kit/templates/api.ts` - API service template
 
 ## AI Guidelines
 

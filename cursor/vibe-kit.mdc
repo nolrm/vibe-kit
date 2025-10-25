@@ -28,6 +28,15 @@ Complete AI development toolkit including standards, type safety, quality checks
 - @.vibe-kit/hooks/pre-commit.sh - Pre-commit quality checks
 - @.vibe-kit/hooks/pre-push.sh - Pre-push validation
 
+## AI Commands
+
+- @.vibe-kit/commands/analyze.md - **Analyze and customize standards for your project**
+- @.vibe-kit/commands/create-component.md - Create new component following standards
+- @.vibe-kit/commands/create-feature.md - Create new feature with full structure
+- @.vibe-kit/commands/run-tests.md - Run comprehensive test suite
+- @.vibe-kit/commands/quality-check.md - Perform quality checks and fixes
+- @.vibe-kit/commands/add-documentation.md - Add proper documentation
+
 ## Quick Commands
 
 - "Create component" - Create new component following standards
@@ -37,9 +46,10 @@ Complete AI development toolkit including standards, type safety, quality checks
 
 ## Workflow
 
-1. Check standards first (@.vibe-kit/standards/)
-2. Follow project patterns
-3. Include proper testing
-4. Ensure type safety
-5. Run quality checks
-6. Add documentation
+1. **First-time setup**: Run @.vibe-kit/commands/analyze.md to customize standards
+2. Check standards first (@.vibe-kit/standards/)
+3. Follow project patterns
+4. Include proper testing
+5. Ensure type safety
+6. Run quality checks
+7. Add documentation
