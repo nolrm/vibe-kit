@@ -161,3 +161,6 @@ build/
 # Vibe Kit specific
 .vibe-kit-install.log
 .vibe-kit-backup-*
+
+.cursor/
+.vibe-kit/
