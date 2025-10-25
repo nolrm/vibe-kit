@@ -3,12 +3,13 @@
 const { program } = require('commander');
 const chalk = require('chalk');
 const { install, update, status } = require('../lib');
+const packageJson = require('../package.json');
 
 // Set up the CLI
 program
   .name('vibe-kit')
   .description('Get the right vibe for your code - Complete AI development toolkit')
-  .version('0.1.3', '-v, --version', 'Show version number');
+  .version(packageJson.version, '-v, --version', 'Show version number');
 
 // Install command
 program
