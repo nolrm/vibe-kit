@@ -67,15 +67,15 @@ git_hooks: true`;
 
       await status();
       
-      expect(consoleSpy).toHaveBeenCalledWith('✅ Vibe Kit is installed in this project');
-      expect(consoleSpy).toHaveBeenCalledWith('📋 Installation Details:');
-      expect(consoleSpy).toHaveBeenCalledWith('   Version: 0.1.0');
-      expect(consoleSpy).toHaveBeenCalledWith('   Project: test-project');
-      // The project type detection might return different values, let's check what it actually returns
-      const typeCall = consoleSpy.mock.calls.find(call => call[0].includes('Type:'));
-      expect(typeCall).toBeDefined();
-      expect(typeCall[0]).toMatch(/Type: (react|node|generic)/);
-      expect(consoleSpy).toHaveBeenCalledWith('   Package Manager: npm');
+      expect(consoleSpy).toHaveBeenCalledWith('🎵 Vibe Kit Status');
+      expect(consoleSpy).toHaveBeenCalledWith('');
+      expect(consoleSpy).toHaveBeenCalledWith('📦 Installation:');
+      // Check that version is displayed (dynamic from package.json)
+      const versionCall = consoleSpy.mock.calls.find(call => call[0].includes('Version:'));
+      expect(versionCall).toBeDefined();
+      expect(consoleSpy).toHaveBeenCalledWith('🔍 Analysis:');
+      expect(consoleSpy).toHaveBeenCalledWith('   Status: Not analyzed');
+      expect(consoleSpy).toHaveBeenCalledWith('   Recommendation: Run @.vibe-kit/commands/analyze.md to customize standards');
       
       consoleSpy.mockRestore();
     });
@@ -89,13 +89,10 @@ git_hooks: true`;
 
       await status();
       
-      expect(consoleSpy).toHaveBeenCalledWith('🔧 Features:');
-      expect(consoleSpy).toHaveBeenCalledWith('   Testing: ✅');
-      expect(consoleSpy).toHaveBeenCalledWith('   Documentation: ✅');
-      expect(consoleSpy).toHaveBeenCalledWith('   Code Review: ✅');
-      expect(consoleSpy).toHaveBeenCalledWith('   Linting: ✅');
-      expect(consoleSpy).toHaveBeenCalledWith('   Type Safety: ✅');
-      expect(consoleSpy).toHaveBeenCalledWith('   Git Hooks: ✅');
+      expect(consoleSpy).toHaveBeenCalledWith('✅ Features:');
+      expect(consoleSpy).toHaveBeenCalledWith('   Git Hooks: ❌');
+      expect(consoleSpy).toHaveBeenCalledWith('   Standards: ✅');
+      expect(consoleSpy).toHaveBeenCalledWith('   Templates: ✅');
       
       consoleSpy.mockRestore();
     });
@@ -124,7 +121,9 @@ git_hooks: true`;
       await status();
       
       expect(consoleSpy).toHaveBeenCalledWith('🔄 Update Available!');
-      expect(consoleSpy).toHaveBeenCalledWith('   Current: 0.1.0');
+      // Check that current version is displayed (dynamic from package.json)
+      const currentVersionCall = consoleSpy.mock.calls.find(call => call[0].includes('Current:'));
+      expect(currentVersionCall).toBeDefined();
       expect(consoleSpy).toHaveBeenCalledWith('   Latest: 0.2.0');
       expect(consoleSpy).toHaveBeenCalledWith('💡 Run: vibe-kit update');
       
@@ -186,10 +185,10 @@ git_hooks: true`;
 
       await status();
       
-      // Check that the type is detected correctly
-      const typeCall = consoleSpy.mock.calls.find(call => call[0].includes('Type:'));
-      expect(typeCall).toBeDefined();
-      expect(typeCall[0]).toMatch(/Type: (react|node|generic)/);
+      // Check that the analysis section shows the recommendation
+      expect(consoleSpy).toHaveBeenCalledWith('🔍 Analysis:');
+      expect(consoleSpy).toHaveBeenCalledWith('   Status: Not analyzed');
+      expect(consoleSpy).toHaveBeenCalledWith('   Recommendation: Run @.vibe-kit/commands/analyze.md to customize standards');
       
       require = originalRequire;
       consoleSpy.mockRestore();
@@ -214,7 +213,10 @@ git_hooks: true`;
 
       await status();
       
-      expect(consoleSpy).toHaveBeenCalledWith('   Package Manager: yarn');
+      // Check that the analysis section shows the recommendation
+      expect(consoleSpy).toHaveBeenCalledWith('🔍 Analysis:');
+      expect(consoleSpy).toHaveBeenCalledWith('   Status: Not analyzed');
+      expect(consoleSpy).toHaveBeenCalledWith('   Recommendation: Run @.vibe-kit/commands/analyze.md to customize standards');
       
       consoleSpy.mockRestore();
     });
