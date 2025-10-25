@@ -44,13 +44,10 @@ jobs:
             echo "✅ Successfully published @nolrm/vibe-kit@$CURRENT_VERSION"
             echo "📦 Package: https://www.npmjs.com/package/@nolrm/vibe-kit"
             echo "🎵 Vibe Kit is now available for installation!"
-            
-            # Create git tag
-            git config --local user.email "action@github.com"
-            git config --local user.name "GitHub Action"
-            git tag "v$CURRENT_VERSION"
-            git push origin "v$CURRENT_VERSION"
-            echo "🏷️  Created git tag v$CURRENT_VERSION"
+            echo ""
+            echo "💡 To create a git tag manually:"
+            echo "   git tag v$CURRENT_VERSION"
+            echo "   git push origin v$CURRENT_VERSION"
           fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

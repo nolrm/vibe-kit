@@ -1,10 +1,10 @@
 {
   "name": "@nolrm/vibe-kit",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Get the right vibe for your code - Complete AI development toolkit",
   "main": "lib/index.js",
   "bin": {
-    "vibe-kit": "./bin/vibe-kit.js"
+    "vibe-kit": "bin/vibe-kit.js"
   },
   "scripts": {
     "test": "jest",
@@ -32,7 +32,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nolrm/vibe-kit.git"
+    "url": "git+https://github.com/nolrm/vibe-kit.git"
   },
   "homepage": "https://github.com/nolrm/vibe-kit#readme",
   "bugs": {
