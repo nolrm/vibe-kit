@@ -1,5 +1,45 @@
 # Getting Started
 
+## What is Vibe Kit?
+
+Vibe Kit is **Context Engineering for AI Development** - it provides structured MD files that AI assistants read as context to prevent hallucinations and generate code matching your exact patterns.
+
+## How It Works
+
+### 1. **Installation Creates Context Files**
+
+```
+.vibe-kit/
+├── standards/
+│   ├── glossary.md      ← Project shortcuts (@btn, customer, etc.)
+│   ├── code-style.md     ← Your coding conventions
+│   ├── testing.md        ← Your test patterns
+│   └── ai-guidelines.md  ← AI behavior rules
+└── ...
+```
+
+### 2. **AI Reads Files as Context**
+
+In Cursor IDE, `.cursor/rules/vibe-kit.mdc` tells AI to read these files:
+
+```markdown
+- @.vibe-kit/standards/glossary.md       ← Project shortcuts
+- @.vibe-kit/standards/code-style.md    ← Coding style
+- @.vibe-kit/standards/testing.md       ← Test patterns
+```
+
+### 3. **You Use Shortcuts in Prompts**
+
+```
+Prompt: "Create @btn for customer login"
+        ↓
+AI reads glossary.md → "@btn" = Button component
+AI reads glossary.md → "customer" = customer app
+AI reads code-style.md → TypeScript strict mode
+        ↓
+Generated code matches YOUR patterns!
+```
+
 ## Installation
 
 ### Quick Install

@@ -32,6 +32,14 @@
 - Keep README files updated
 - Document architectural decisions
 
+## Standards
+
+- `@.vibe-kit/standards/code-style.md` - Code style guide
+- `@.vibe-kit/standards/testing.md` - Testing patterns
+- `@.vibe-kit/standards/architecture.md` - Architecture patterns
+- `@.vibe-kit/standards/ai-guidelines.md` - AI development guidelines
+- `@.vibe-kit/standards/glossary.md` - **Business and technical glossary**
+
 ## Commands
 
 - `@.vibe-kit/commands/analyze.md` - **Analyze and customize standards for your project**

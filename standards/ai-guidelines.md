@@ -36,6 +36,13 @@ Prevent AI hallucinations by providing structured development standards and patt
 - Include usage examples
 - Update README files
 
+### 6. Use Project Glossary
+
+- Reference @.vibe-kit/standards/glossary.md for project-specific shortcuts
+- Use business term shortcuts for domain concepts
+- Use technical term shortcuts for implementation patterns
+- Understand your monorepo app structure through shortcuts
+
 ## AI Command Usage
 
 ### Component Creation

@@ -17,6 +17,7 @@ Context Engineering toolkit that provides structured markdown files to enrich AI
 - @.vibe-kit/standards/testing.md - Testing patterns
 - @.vibe-kit/standards/architecture.md - Architecture patterns
 - @.vibe-kit/standards/ai-guidelines.md - AI development guidelines
+- @.vibe-kit/standards/glossary.md - **Business and technical glossary**
 
 ## Type Safety
 
@@ -48,8 +49,9 @@ Context Engineering toolkit that provides structured markdown files to enrich AI
 
 1. **First-time setup**: Run @.vibe-kit/commands/analyze.md to customize standards
 2. Check standards first (@.vibe-kit/standards/)
-3. Follow project patterns
-4. Include proper testing
-5. Ensure type safety
-6. Run quality checks
-7. Add documentation
+3. Reference glossary (@.vibe-kit/standards/glossary.md) for project shortcuts
+4. Follow project patterns
+5. Include proper testing
+6. Ensure type safety
+7. Run quality checks
+8. Add documentation

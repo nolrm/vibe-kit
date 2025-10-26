@@ -13,6 +13,105 @@ Vibe Kit is a **Context Engineering toolkit** that enriches AI assistants with s
 - **Project-Specific Guidance** - Tailored to your tech stack
 - **Living Documentation** - Standards evolve with your project
 
+## How It Works
+
+Vibe Kit works by creating structured MD files that AI assistants read as context. Here's the complete flow:
+
+### 📁 What Gets Installed
+
+When you run `vibe-kit install`, it creates:
+
+```
+your-project/
+├── .vibe-kit/
+│   ├── standards/
+│   │   ├── glossary.md          ← Project shortcuts & terminology
+│   │   ├── code-style.md        ← Coding conventions
+│   │   ├── testing.md           ← Test patterns
+│   │   ├── architecture.md      ← Architecture decisions
+│   │   └── ai-guidelines.md     ← AI behavior rules
+│   ├── commands/
+│   │   └── analyze.md           ← Analysis workflow
+│   └── templates/
+│       └── component.tsx         ← Component template
+│
+└── .cursor/rules/
+    └── vibe-kit.mdc             ← Makes AI read the .md files
+```
+
+### 🤖 How AI Uses the Files
+
+**1. Automatic Context Loading** (in Cursor IDE)
+
+When you work on a file, Cursor reads `.cursor/rules/vibe-kit.mdc` which references all standards:
+
+```markdown
+- @.vibe-kit/standards/glossary.md       ← Project-specific shortcuts
+- @.vibe-kit/standards/code-style.md    ← Your coding style
+- @.vibe-kit/standards/testing.md       ← Your test patterns
+```
+
+**2. Context-Aware Code Generation**
+
+Your prompt:
+```bash
+"Create a customer login button with TypeScript"
+```
+
+AI automatically:
+```
+✓ Checks glossary.md → "customer" = customer app
+✓ Checks glossary.md → "button" = Button component pattern  
+✓ Checks code-style.md → TypeScript strict mode
+✓ Checks testing.md → Include numbered test cases
+✓ Generates code matching YOUR patterns
+```
+
+**3. Example: Real-World Usage**
+
+```bash
+# Prompt with your project shortcuts
+"Add @btn to customer for order checkout"
+
+# AI understands:
+# - @btn = Button component pattern
+# - customer = customer app directory
+# - Follows YOUR code style, testing patterns, etc.
+```
+
+### 🎯 The Context Engineering Flow
+
+```
+Your Prompt
+    ↓
+AI Reads .md Context Files
+    ↓
+┌────────────────────────────────────┐
+│  📄 glossary.md                    │
+│  → "customer" = apps/customer-app  │
+│  → "@btn" = Button component        │
+│                                     │
+│  📄 code-style.md                  │
+│  → TypeScript strict               │
+│  → Functional components           │
+│                                     │
+│  📄 testing.md                     │
+│  → Numbered test cases (1., 2., 3.)│
+│                                     │
+│  📄 ai-guidelines.md               │
+│  → Use templates, error handling   │
+└────────────────────────────────────┘
+    ↓
+Context-Aware Code Generated
+```
+
+### 💡 Key Benefits
+
+- **No hallucinations**: AI sees your actual standards
+- **Consistent**: Every suggestion follows your patterns  
+- **Fast**: Quick shortcuts instead of long prompts
+- **Evolving**: Update `.md` files as project grows
+
 ## Features
 
 - 🧠 **Context Engineering** - Structured MD files for AI context
@@ -100,13 +199,30 @@ vibe-kit status
 - **Automatic file updates** - standards files customized for your project
 
 ### **Project Structure**
-After installation, Vibe Kit provides:
 
-- `.vibe-kit/standards/` - Development standards
-- `.vibe-kit/commands/` - AI commands
-- `.vibe-kit/hooks/` - Git hooks
-- `.vibe-kit/types/` - Type safety
-- `.vibe-kit/templates/` - Code templates
+After installation, Vibe Kit creates:
+
+```
+.vibe-kit/
+├── standards/           ← Standards that AI reads as context
+│   ├── glossary.md      ← YOUR project shortcuts & terms
+│   ├── code-style.md     ← YOUR coding conventions
+│   ├── testing.md        ← YOUR test patterns
+│   ├── architecture.md   ← YOUR architecture decisions
+│   └── ai-guidelines.md  ← AI behavior rules
+├── commands/             ← AI workflow commands
+├── hooks/                ← Git hooks (optional)
+├── types/                ← Type safety configs
+└── templates/            ← Code templates
+
+.cursor/rules/
+└── vibe-kit.mdc          ← Makes Cursor read the .md files
+```
+
+**How it works:**
+- AI automatically reads the MD files as context
+- You reference them using `@.vibe-kit/standards/...`
+- Each file provides specific guidance to AI
 
 ## Pre-Push Hook
 
@@ -134,10 +250,14 @@ git push --no-verify
 
 ## Standards
 
+These MD files provide context to AI:
+
 - `@.vibe-kit/standards/README.md` - Complete development standards
 - `@.vibe-kit/standards/code-style.md` - Code style guide
 - `@.vibe-kit/standards/testing.md` - Testing patterns
 - `@.vibe-kit/standards/architecture.md` - Architecture patterns
+- `@.vibe-kit/standards/glossary.md` - **Project shortcuts & terminology**
+- `@.vibe-kit/standards/ai-guidelines.md` - AI development guidelines
 
 ## License
 
