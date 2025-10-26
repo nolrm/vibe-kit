@@ -3,9 +3,9 @@
 ## **What We've Built**
 
 ### **✅ Global CLI Tool**
-- **Package Name**: `@nolrm/vibe-kit`
+- **Package Name**: `vibe-kit`
 - **CLI Command**: `vibe-kit`
-- **Installation**: `npm install -g @nolrm/vibe-kit`
+- **Installation**: `npm install -g vibe-kit`
 
 ### **✅ CLI Commands**
 ```bash
@@ -34,7 +34,7 @@ vibe-kit --help     # Show help
 ## **File Structure**
 
 ```
-@nolrm/vibe-kit/
+vibe-kit/
 ├── bin/
 │   └── vibe-kit.js          # CLI entry point
 ├── lib/
@@ -57,7 +57,7 @@ vibe-kit --help     # Show help
 ### **For Node.js Users (Primary)**
 ```bash
 # 1. Global installation
-npm install -g @nolrm/vibe-kit
+npm install -g vibe-kit
 
 # 2. Project installation
 cd my-project
@@ -98,7 +98,7 @@ curl -sSL https://raw.githubusercontent.com/nolrm/vibe-kit/main/install-fallback
 - **Easy Updates** - `vibe-kit update`
 - **Version Checking** - `vibe-kit status` shows updates
 - **Global Access** - Works from any directory
-- **Uninstall** - `npm uninstall -g @nolrm/vibe-kit`
+- **Uninstall** - `npm uninstall -g vibe-kit`
 
 ## **Next Steps**
 
@@ -119,7 +119,7 @@ npm publish --access public
 ### **3. Test Installation**
 ```bash
 # Test global installation
-npm install -g @nolrm/vibe-kit
+npm install -g vibe-kit
 
 # Test in a new project
 mkdir test-project && cd test-project
@@ -130,7 +130,7 @@ vibe-kit install
 
 | Feature | npm Package | Shell Script |
 |---------|-------------|--------------|
-| **Installation** | `npm install -g @nolrm/vibe-kit` | `curl -sSL .../install.sh \| bash` |
+| **Installation** | `npm install -g vibe-kit` | `curl -sSL .../install.sh \| bash` |
 | **Updates** | `vibe-kit update` | Manual re-run |
 | **Version** | `vibe-kit --version` | No version command |
 | **Status** | `vibe-kit status` | No status command |

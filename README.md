@@ -21,7 +21,7 @@ Vibe Kit is a comprehensive development toolkit that provides AI guidance, type 
 ### **Step 1: Install Globally**
 ```bash
 # Install Vibe Kit globally
-npm install -g @nolrm/vibe-kit
+npm install -g vibe-kit
 ```
 
 ### **Step 2: Install in Your Project**

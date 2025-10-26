@@ -5,7 +5,7 @@
 ### **1. Global Installation**
 ```bash
 # Install globally
-npm install -g @nolrm/vibe-kit
+npm install -g vibe-kit
 
 # Verify installation
 vibe-kit --version
@@ -174,7 +174,7 @@ commands:
 
 ## **Benefits of npm Package**
 
-✅ **Familiar Installation** - `npm install -g @nolrm/vibe-kit`  
+✅ **Familiar Installation** - `npm install -g vibe-kit`  
 ✅ **Easy Updates** - `vibe-kit update`  
 ✅ **Version Management** - Built-in versioning  
 ✅ **Cross-Platform** - Works on Windows, Mac, Linux  
