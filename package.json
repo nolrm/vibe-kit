@@ -1,7 +1,7 @@
 {
-  "name": "vibe-kit",
+  "name": "@nolrm/vibe-kit",
   "version": "0.2.0",
-  "description": "Get the right vibe for your code - Complete AI development toolkit",
+  "description": "Context Engineering for AI Development - Provide rich context to AI through structured MD files with standards, code guides, and documentation",
   "main": "lib/index.js",
   "bin": {
     "vibe-kit": "bin/vibe-kit.js"
@@ -12,6 +12,9 @@
     "test:coverage": "jest --coverage"
   },
   "keywords": [
+    "context-engineering",
+    "ai-context",
+    "ai-development",
     "ai",
     "development",
     "toolkit",

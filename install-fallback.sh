@@ -20,7 +20,7 @@ if command -v node >/dev/null 2>&1; then
     echo ""
     
     # Install via npm
-    npm install -g vibe-kit
+    npm install -g @nolrm/vibe-kit
     
     echo ""
     echo -e "${GREEN}🎉 Vibe Kit installed successfully!${NC}"
@@ -52,7 +52,7 @@ else
     echo -e "${YELLOW}💡 Try: 'Create a Button component following vibe-kit standards'${NC}"
     echo ""
     echo -e "${BLUE}💡 For CLI commands, install Node.js and run:${NC}"
-    echo "  npm install -g vibe-kit"
+    echo "  npm install -g @nolrm/vibe-kit"
 fi
 
 echo ""

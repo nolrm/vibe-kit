@@ -1,18 +1,27 @@
 # Vibe Kit
 
-> Get the right vibe for your code
+> Context Engineering for AI Development
 
-Vibe Kit is a comprehensive development toolkit that provides AI guidance, type safety, quality checks, and automated workflows for modern development teams.
+Vibe Kit is a **Context Engineering toolkit** that enriches AI assistants with structured markdown files containing your project's standards, code guides, and documentation. By providing comprehensive context through `.md` files, you prevent AI hallucinations and get code that matches your exact patterns, style, and architecture.
+
+## What is Context Engineering?
+
+**Context Engineering** is the practice of providing structured context to AI assistants through markdown files. Vibe Kit creates a rich knowledge base that your AI can reference, ensuring:
+
+- **No AI Hallucinations** - AI has access to your actual standards
+- **Consistent Code** - Every suggestion follows your patterns
+- **Project-Specific Guidance** - Tailored to your tech stack
+- **Living Documentation** - Standards evolve with your project
 
 ## Features
 
-- 🤖 **AI Guidance** - Prevent AI hallucinations with structured standards
+- 🧠 **Context Engineering** - Structured MD files for AI context
+- 🤖 **AI Guidance** - Prevent AI hallucinations with your standards
 - 🔍 **Smart Analysis** - AI-powered project analysis and customization
-- 🔒 **Type Safety** - Strict TypeScript configuration and type checking
+- 📚 **Standards Library** - Comprehensive development standards in MD format
+- 🎯 **Code Templates** - Ready-to-use templates matching your patterns
+- 🔒 **Type Safety** - Strict TypeScript configuration
 - ✅ **Quality Checks** - Automated pre-commit and pre-push hooks
-- 📚 **Standards** - Comprehensive development standards and patterns
-- 🎯 **Templates** - Ready-to-use code templates
-- 🔧 **Automation** - Automated setup and quality checks
 - 🛡️ **Safe Installation** - Backs up existing files with automatic rollback
 - 📦 **Multi-Package Manager** - Supports npm, yarn, and pnpm
 
@@ -21,7 +30,7 @@ Vibe Kit is a comprehensive development toolkit that provides AI guidance, type 
 ### **Step 1: Install Globally**
 ```bash
 # Install Vibe Kit globally
-npm install -g vibe-kit
+npm install -g @nolrm/vibe-kit
 ```
 
 ### **Step 2: Install in Your Project**

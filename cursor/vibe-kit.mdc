@@ -1,14 +1,14 @@
 ---
-description: "Vibe Kit - Complete AI development toolkit with standards, type safety, and quality checks"
+description: "Vibe Kit - Context Engineering for AI Development with structured MD files"
 globs: ["**/*.{ts,tsx,js,jsx,py,rs,go}"]
 alwaysApply: true
 ---
 
-# Vibe Kit
+# Vibe Kit - Context Engineering
 
 ## Purpose
 
-Complete AI development toolkit including standards, type safety, quality checks, and automated hooks.
+Context Engineering toolkit that provides structured markdown files to enrich AI assistants with project standards, patterns, and guidelines.
 
 ## Standards Reference
 
