@@ -115,7 +115,7 @@ git_hooks: true`;
       const consoleSpy = jest.spyOn(console, 'log').mockImplementation();
       
       axios.get.mockResolvedValue({
-        data: { tag_name: 'v0.2.0' }
+        data: { tag_name: 'v0.3.0' }
       });
 
       await status();
@@ -124,7 +124,7 @@ git_hooks: true`;
       // Check that current version is displayed (dynamic from package.json)
       const currentVersionCall = consoleSpy.mock.calls.find(call => call[0].includes('Current:'));
       expect(currentVersionCall).toBeDefined();
-      expect(consoleSpy).toHaveBeenCalledWith('   Latest: 0.2.0');
+      expect(consoleSpy).toHaveBeenCalledWith('   Latest: 0.3.0');
       expect(consoleSpy).toHaveBeenCalledWith('💡 Run: vibe-kit update');
       
       consoleSpy.mockRestore();
