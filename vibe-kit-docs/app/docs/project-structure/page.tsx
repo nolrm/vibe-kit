@@ -25,6 +25,8 @@ export default function ProjectStructurePage() {
 │   │   ├── testing.md           ← Test patterns
 │   │   ├── architecture.md      ← Architecture decisions
 │   │   └── ai-guidelines.md     ← AI behavior rules
+│   │   ├── README.md             ← Overview (real file)
+│   │   └── workflows.md           ← Skeleton (run vk analyze)
 │   ├── commands/
 │   │   └── analyze.md            ← Analysis workflow
 │   ├── templates/
@@ -42,6 +44,12 @@ export default function ProjectStructurePage() {
 └── .vscode/
     └── settings.json             ← VS Code integration`}
           </pre>
+          <div className="mt-3 rounded-lg border border-blue-500/20 bg-blue-500/5 p-3">
+            <p className="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">ℹ️ Skeleton Files</p>
+            <p className="text-xs text-muted-foreground">
+              Files marked "Skeleton" start as blank templates. Run <code className="rounded bg-muted px-1 font-mono">vk analyze</code> to generate content from your codebase.
+            </p>
+          </div>
         </div>
       </div>
 
@@ -79,25 +87,6 @@ export default function ProjectStructurePage() {
             </ul>
           </div>
 
-          <div className="rounded-lg border bg-card p-4">
-            <h3 className="font-semibold text-lg mb-2">commands/</h3>
-            <p className="text-sm text-muted-foreground">AI workflow commands for common development tasks</p>
-          </div>
-
-          <div className="rounded-lg border bg-card p-4">
-            <h3 className="font-semibold text-lg mb-2">hooks/</h3>
-            <p className="text-sm text-muted-foreground">Git hooks (optional) for automated quality checks</p>
-          </div>
-
-          <div className="rounded-lg border bg-card p-4">
-            <h3 className="font-semibold text-lg mb-2">types/</h3>
-            <p className="text-sm text-muted-foreground">Type safety configs for TypeScript projects</p>
-          </div>
-
-          <div className="rounded-lg border bg-card p-4">
-            <h3 className="font-semibold text-lg mb-2">templates/</h3>
-            <p className="text-sm text-muted-foreground">Code templates for consistent component generation</p>
-          </div>
         </div>
       </div>
 
@@ -146,8 +135,7 @@ export default function ProjectStructurePage() {
       <div className="space-y-4 pt-4">
         <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight">Customization</h2>
         <p className="text-muted-foreground leading-relaxed">
-          All files in the .vibe-kit directory are meant to be customized for your project. Start with the defaults and
-          modify them to match your team's specific needs:
+          All files in the .vibe-kit directory are meant to be customized for your project. After running <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">vk analyze</code>, modify them to match your team's specific needs:
         </p>
         <ul className="list-disc list-inside space-y-2 text-muted-foreground ml-4 mt-3">
           <li>Add project-specific terminology to glossary.md</li>
@@ -155,6 +143,7 @@ export default function ProjectStructurePage() {
           <li>Document your testing approach in testing.md</li>
           <li>Capture architectural decisions in architecture.md</li>
           <li>Set AI behavior expectations in ai-guidelines.md</li>
+          <li>Document workflows in workflows.md</li>
         </ul>
       </div>
 
