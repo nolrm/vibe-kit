@@ -201,15 +201,46 @@ vk ai "create a button component"
 ```
 
 ### **🤖 AI-Powered Analysis Workflow**
+
+**Step 1: Check if analysis is needed**
 ```bash
-# 1. Check if analysis is needed
-vibe-kit status
+vk status
+```
 
-# 2. Run analysis (works with any AI tool)
-vibe-kit analyze
+**Step 2: Run analysis** (choose your platform)
 
-# Or in Cursor AI chat
+**Cursor:**
+```bash
+# In Cursor AI chat
 @.vibe-kit/commands/analyze.md
+```
+
+**Continue.dev:**
+```bash
+# In Continue chat (auto-loads .continue/config.json)
+Read .vibe-kit/commands/analyze.md and execute the analysis
+```
+
+**Aider:**
+```bash
+# Aider auto-reads .aider/rules.md
+aider "read .vibe-kit/commands/analyze.md and execute"
+```
+
+**VS Code + Copilot:**
+```bash
+# In Copilot Chat
+Use: @.vibe-kit/commands/analyze.md to analyze this project
+```
+
+**CLI Tools (Aider, Claude, Gemini):**
+```bash
+# Using vibe-kit wrapper (easiest)
+vk analyze
+
+# Or directly with your CLI tool
+claude "read .vibe-kit/commands/analyze.md and execute"
+gemini "read .vibe-kit/commands/analyze.md and execute"
 ```
 
 **The analyze command provides:**
