@@ -30,18 +30,23 @@ export default function DocsPage() {
           Vibe Kit works by providing structured context to AI assistants through markdown files. Here's how the flow
           works:
         </p>
-        <div className="rounded-lg border bg-card p-6 my-6">
-          <img
-            src="/images/context-flow.png"
-            alt="Context Engineering Flow showing how AI reads markdown context files to generate context-aware code"
-            className="w-full h-auto"
-          />
+        
+        <div className="rounded-lg border bg-muted/50 p-4">
+          <p className="text-sm font-medium mb-2">Example workflow:</p>
+          <div className="space-y-2 text-sm text-muted-foreground">
+            <p><strong>Your Prompt:</strong> "Create a login button for customer app"</p>
+            <p className="ml-4">↓</p>
+            <p><strong>AI Reads Context Files:</strong></p>
+            <ul className="list-disc list-inside ml-4 space-y-1">
+              <li><code className="rounded bg-muted px-1 font-mono text-xs">glossary.md</code> → "customer" = apps/customer-app</li>
+              <li><code className="rounded bg-muted px-1 font-mono text-xs">glossary.md</code> → "button" = Button component pattern</li>
+              <li><code className="rounded bg-muted px-1 font-mono text-xs">code-style.md</code> → TypeScript strict mode</li>
+              <li><code className="rounded bg-muted px-1 font-mono text-xs">testing.md</code> → Include numbered test cases</li>
+            </ul>
+            <p className="ml-4">↓</p>
+            <p><strong>Context-Aware Code Generated</strong> matching YOUR patterns</p>
+          </div>
         </div>
-        <p className="text-muted-foreground leading-relaxed">
-          When you provide a prompt, the AI reads your context files (glossary, code-style, testing guidelines,
-          architecture decisions, and AI behavior rules) to generate code that perfectly matches your project's patterns
-          and standards.
-        </p>
       </div>
 
       <div className="space-y-4 pt-4">

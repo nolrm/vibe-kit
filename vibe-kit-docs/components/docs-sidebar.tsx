@@ -12,21 +12,7 @@ const docsNav = [
       { title: "Installation", href: "/docs/installation" },
       { title: "Quick Start", href: "/docs/quick-start" },
       { title: "Project Structure", href: "/docs/project-structure" },
-    ],
-  },
-  {
-    title: "Core Concepts",
-    items: [
-      { title: "Context Engineering", href: "/docs/context-engineering" },
-      { title: "Standards & Templates", href: "/docs/standards" },
-      { title: "Git Hooks", href: "/docs/git-hooks" },
-    ],
-  },
-  {
-    title: "Commands",
-    items: [
-      { title: "CLI Reference", href: "/docs/cli" },
-      { title: "Configuration", href: "/docs/configuration" },
+      { title: "Platform Examples", href: "/docs/platform-examples" },
     ],
   },
 ]

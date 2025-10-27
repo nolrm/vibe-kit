@@ -11,13 +11,37 @@ export default function ProjectStructurePage() {
 
       <div className="space-y-4 pt-4">
         <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight">Directory Overview</h2>
-        <p className="text-muted-foreground leading-relaxed">Vibe Kit creates two main directories in your project:</p>
-        <div className="rounded-lg border bg-card p-6 my-6">
-          <img
-            src="/images/project-structure.png"
-            alt="Vibe Kit project structure showing .vibe-kit and .cursor directories with their subdirectories and purposes"
-            className="w-full h-auto"
-          />
+        <p className="text-muted-foreground leading-relaxed">
+          When you run <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">vibe-kit install</code>, Vibe Kit creates a comprehensive directory structure:
+        </p>
+        <div className="rounded-lg border bg-card p-4 mt-4">
+          <p className="text-sm font-medium mb-3">Directory structure created:</p>
+          <pre className="rounded bg-muted p-3 font-mono text-xs overflow-x-auto">
+            {`your-project/
+├── .vibe-kit/
+│   ├── standards/
+│   │   ├── glossary.md          ← Project shortcuts & terminology
+│   │   ├── code-style.md        ← Coding conventions
+│   │   ├── testing.md           ← Test patterns
+│   │   ├── architecture.md      ← Architecture decisions
+│   │   └── ai-guidelines.md     ← AI behavior rules
+│   ├── commands/
+│   │   └── analyze.md            ← Analysis workflow
+│   ├── templates/
+│   │   └── component.tsx         ← Component template
+│   ├── hooks/
+│   ├── types/
+│   └── CONTEXT.md                ← Single context file for CLI
+│
+├── .cursor/rules/
+│   └── vibe-kit.mdc             ← Makes AI read the .md files
+├── .continue/
+│   └── config.json               ← Continue.dev integration
+├── .aider/
+│   └── rules.md                  ← Aider integration
+└── .vscode/
+    └── settings.json             ← VS Code integration`}
+          </pre>
         </div>
       </div>
 
@@ -78,15 +102,44 @@ export default function ProjectStructurePage() {
       </div>
 
       <div className="space-y-4 pt-4">
-        <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight">The .cursor/rules Directory</h2>
-        <p className="text-muted-foreground leading-relaxed">For Cursor AI integration:</p>
+        <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight">Platform-Specific Integrations</h2>
+        <p className="text-muted-foreground leading-relaxed">Vibe Kit integrates with multiple AI platforms:</p>
 
-        <div className="rounded-lg border bg-card p-4 mt-4">
-          <h3 className="font-semibold text-lg mb-2">vibe-kit.mdc</h3>
-          <p className="text-sm text-muted-foreground">
-            Makes Cursor read the .md files from your standards directory, ensuring the AI assistant has full context of
-            your project's conventions and patterns.
-          </p>
+        <div className="space-y-4 mt-4">
+          <div className="rounded-lg border bg-card p-4">
+            <h3 className="font-semibold text-lg mb-2">Cursor - .cursor/rules/vibe-kit.mdc</h3>
+            <p className="text-sm text-muted-foreground">
+              Makes Cursor read the .md files from your standards directory, ensuring the AI assistant has full context of your project's conventions and patterns.
+            </p>
+          </div>
+
+          <div className="rounded-lg border bg-card p-4">
+            <h3 className="font-semibold text-lg mb-2">Continue.dev - .continue/config.json</h3>
+            <p className="text-sm text-muted-foreground">
+              Auto-loads context files for Continue.dev integration across any editor.
+            </p>
+          </div>
+
+          <div className="rounded-lg border bg-card p-4">
+            <h3 className="font-semibold text-lg mb-2">Aider - .aider/rules.md</h3>
+            <p className="text-sm text-muted-foreground">
+              Automatically reads context files for Aider command-line AI assistance.
+            </p>
+          </div>
+
+          <div className="rounded-lg border bg-card p-4">
+            <h3 className="font-semibold text-lg mb-2">VS Code - .vscode/settings.json</h3>
+            <p className="text-sm text-muted-foreground">
+              Configuration settings for VS Code and GitHub Copilot integration.
+            </p>
+          </div>
+
+          <div className="rounded-lg border bg-card p-4">
+            <h3 className="font-semibold text-lg mb-2">CLI Tools - .vibe-kit/scripts/ai-cli.sh</h3>
+            <p className="text-sm text-muted-foreground">
+              Universal helper scripts for Claude CLI, Gemini CLI, and other command-line AI tools.
+            </p>
+          </div>
         </div>
       </div>
 

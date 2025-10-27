@@ -49,12 +49,28 @@ export default function InstallationPage() {
       </div>
 
       <div className="space-y-4 pt-4">
+        <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight">Alternative Installation</h2>
+        <p className="text-muted-foreground leading-relaxed">
+          For users without Node.js, you can use the fallback installation method:
+        </p>
+        <div className="rounded-lg border border-border bg-card p-4 shadow-sm">
+          <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+            <Terminal className="h-4 w-4" />
+            <span className="font-mono">Fallback install</span>
+          </div>
+          <code className="block rounded bg-muted px-4 py-2 font-mono text-sm">
+            curl -sSL https://raw.githubusercontent.com/nolrm/vibe-kit/main/install-fallback.sh | bash
+          </code>
+        </div>
+      </div>
+
+      <div className="space-y-4 pt-4">
         <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight">Next Steps</h2>
         <p className="text-muted-foreground leading-relaxed">Now that you have Vibe Kit installed, you can:</p>
         <ul className="list-disc list-inside space-y-2 text-muted-foreground ml-4">
-          <li>Initialize Vibe Kit in your project</li>
-          <li>Configure your standards and templates</li>
-          <li>Set up Git hooks for automated workflows</li>
+          <li>Install Vibe Kit in your project directory with <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">vibe-kit install</code></li>
+          <li>Run <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">vibe-kit analyze</code> to customize standards</li>
+          <li>Customize your standards in <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">.vibe-kit/standards/</code></li>
           <li>Start using AI-assisted development with proper context</li>
         </ul>
       </div>
