@@ -1,0 +1,8 @@
+{
+  "buildCommand": "cd vibe-kit-docs && npm run build",
+  "outputDirectory": "vibe-kit-docs/.next",
+  "installCommand": "cd vibe-kit-docs && npm install",
+  "framework": "nextjs",
+  "ignoreCommand": "git diff HEAD^ HEAD --quiet ./vibe-kit-docs/",
+  "devCommand": "cd vibe-kit-docs && npm run dev"
+}

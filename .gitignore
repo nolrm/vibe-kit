@@ -164,3 +164,8 @@ build/
 
 .cursor/
 .vibe-kit/
+
+# Docs build artifacts
+vibe-kit-docs/.next/
+vibe-kit-docs/out/
+vibe-kit-docs/.vercel/
