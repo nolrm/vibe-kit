@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Github } from "lucide-react"
+import { Logo } from "./logo"
 
 export function Header() {
   return (
@@ -8,9 +9,7 @@ export function Header() {
       <div className="container mx-auto flex h-14 max-w-screen-2xl items-center">
         <div className="mr-4 flex">
           <Link href="/" className="mr-6 flex items-center space-x-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary">
-              <span className="font-mono text-lg font-bold text-primary-foreground">VK</span>
-            </div>
+            <Logo />
             <span className="hidden font-bold sm:inline-block">Vibe Kit</span>
           </Link>
           <nav className="flex items-center gap-6 text-sm">

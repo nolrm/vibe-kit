@@ -1,0 +1,42 @@
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Vibe Kit",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "softwareVersion": "0.4.1",
+  "description": "Context Engineering for AI Development - Give your AI assistants structured context through markdown files. Works with Cursor, Claude, VS Code Copilot, Aider, Continue.dev, and more.",
+  "author": {
+    "@type": "Person",
+    "name": "Marlon Maniti",
+    "url": "https://github.com/nolrm"
+  },
+  "keywords": [
+    "context-engineering",
+    "ai-context",
+    "ai-development",
+    "cursor",
+    "claude",
+    "aider",
+    "code-quality",
+    "project-standards",
+    "markdown-standards",
+    "ai-assistant",
+    "vibe-kit"
+  ],
+  "downloadUrl": "https://www.npmjs.com/package/@nolrm/vibe-kit",
+  "repository": {
+    "@type": "SoftwareSourceCode",
+    "url": "https://github.com/nolrm/vibe-kit"
+  },
+  "provider": {
+    "@type": "Organization",
+    "name": "Vibe Kit"
+  }
+}
+

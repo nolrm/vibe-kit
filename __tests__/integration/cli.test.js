@@ -43,10 +43,10 @@ describe('CLI Integration Tests', () => {
   });
 
   describe('error handling', () => {
-    test('should handle unknown command', () => {
-      expect(() => {
-        execSync(`node "${cliPath}" unknown-command`, { encoding: 'utf8' });
-      }).toThrow();
+    test('should handle unknown command as AI prompt', () => {
+      // Unknown commands are now treated as prompts, not errors
+      const result = execSync(`node "${cliPath}" unknown-command`, { encoding: 'utf8' });
+      expect(result).toContain('Vibe Kit not initialized');
     });
   });
 });

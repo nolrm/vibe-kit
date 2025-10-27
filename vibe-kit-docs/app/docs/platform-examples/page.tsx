@@ -32,9 +32,9 @@ export default function PlatformExamplesPage() {
 
           <div className="space-y-4">
             <div>
-              <h3 className="text-sm font-semibold mb-2">Setup (Already Done!)</h3>
+              <h3 className="text-sm font-semibold mb-2">Setup</h3>
               <p className="text-sm text-muted-foreground">
-                After running <code className="rounded bg-muted px-1 font-mono text-xs">vibe-kit install</code>, Cursor automatically reads your context files.
+                If <code className="rounded bg-muted px-1 font-mono text-xs">.vibe-kit</code> exists, run <code className="rounded bg-muted px-1 font-mono text-xs">vibe-kit cursor</code> to add Cursor integration. Cursor automatically reads your context files via <code className="rounded bg-muted px-1 font-mono text-xs">.cursor/rules/vibe-kit.mdc</code>.
               </p>
             </div>
 
@@ -87,7 +87,7 @@ export default function PlatformExamplesPage() {
             <div>
               <h3 className="text-sm font-semibold mb-2">Setup</h3>
               <p className="text-sm text-muted-foreground mb-2">
-                After running <code className="rounded bg-muted px-1 font-mono text-xs">vibe-kit install</code>, check <code className="rounded bg-muted px-1 font-mono text-xs">.vscode/VSCODE_USAGE.md</code> for details.
+                If <code className="rounded bg-muted px-1 font-mono text-xs">.vibe-kit</code> exists, run <code className="rounded bg-muted px-1 font-mono text-xs">vibe-kit vscode</code> to add VS Code integration. Check <code className="rounded bg-muted px-1 font-mono text-xs">.vscode/VSCODE_USAGE.md</code> for details.
               </p>
             </div>
 
@@ -143,7 +143,7 @@ export default function PlatformExamplesPage() {
             <div>
               <h3 className="text-sm font-semibold mb-2">Setup</h3>
               <p className="text-sm text-muted-foreground">
-                After running <code className="rounded bg-muted px-1 font-mono text-xs">vibe-kit install</code>, Continue.dev automatically loads context from <code className="rounded bg-muted px-1 font-mono text-xs">.continue/config.json</code>.
+                If <code className="rounded bg-muted px-1 font-mono text-xs">.vibe-kit</code> exists, run <code className="rounded bg-muted px-1 font-mono text-xs">vibe-kit continue</code> to add Continue integration. Continue.dev automatically loads context from <code className="rounded bg-muted px-1 font-mono text-xs">.continue/config.json</code>.
               </p>
             </div>
 
@@ -178,7 +178,7 @@ export default function PlatformExamplesPage() {
             <div>
               <h3 className="text-sm font-semibold mb-2">Setup</h3>
               <p className="text-sm text-muted-foreground">
-                After running <code className="rounded bg-muted px-1 font-mono text-xs">vibe-kit install</code>, the <code className="rounded bg-muted px-1 font-mono text-xs">.aider/rules.md</code> file is configured.
+                If <code className="rounded bg-muted px-1 font-mono text-xs">.vibe-kit</code> exists, run <code className="rounded bg-muted px-1 font-mono text-xs">vibe-kit aider</code> to add Aider integration. The <code className="rounded bg-muted px-1 font-mono text-xs">.aider/rules.md</code> file will be configured.
               </p>
             </div>
 
@@ -229,7 +229,7 @@ export default function PlatformExamplesPage() {
             <div>
               <h3 className="text-sm font-semibold mb-2">Setup</h3>
               <p className="text-sm text-muted-foreground">
-                After running <code className="rounded bg-muted px-1 font-mono text-xs">vibe-kit install</code>, reference <code className="rounded bg-muted px-1 font-mono text-xs">.vibe-kit</code> files directly.
+                If <code className="rounded bg-muted px-1 font-mono text-xs">.vibe-kit</code> exists, run <code className="rounded bg-muted px-1 font-mono text-xs">vibe-kit claude</code> to set up Claude integration. Then reference <code className="rounded bg-muted px-1 font-mono text-xs">.vibe-kit</code> files directly.
               </p>
             </div>
 
@@ -280,7 +280,7 @@ export default function PlatformExamplesPage() {
             <div>
               <h3 className="text-sm font-semibold mb-2">Setup</h3>
               <p className="text-sm text-muted-foreground">
-                After running <code className="rounded bg-muted px-1 font-mono text-xs">vibe-kit install</code>, reference <code className="rounded bg-muted px-1 font-mono text-xs">.vibe-kit</code> files directly.
+                If <code className="rounded bg-muted px-1 font-mono text-xs">.vibe-kit</code> exists, use it directly. Gemini CLI works by referencing <code className="rounded bg-muted px-1 font-mono text-xs">.vibe-kit</code> files in your prompts.
               </p>
             </div>
 
@@ -311,6 +311,25 @@ export default function PlatformExamplesPage() {
                   vibe-kit ai "create a button component"
                 </code>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="rounded-lg border border-blue-500/20 bg-blue-500/5 p-4">
+        <div className="flex items-start gap-3">
+          <CheckCircle2 className="h-5 w-5 text-blue-600 dark:text-blue-400 mt-0.5 shrink-0" />
+          <div>
+            <p className="text-sm font-medium mb-1">👥 Multi-Team Workflow</p>
+            <p className="text-sm text-muted-foreground mb-2">
+              Perfect for teams where members use different AI tools. Share the <code className="rounded bg-muted px-1 font-mono text-xs">.vibe-kit/</code> directory, and each team member adds their specific integration:
+            </p>
+            <div className="space-y-1 text-xs text-muted-foreground font-mono">
+              <div>Person 1: <code className="rounded bg-muted px-1">vibe-kit install</code></div>
+              <div>Person 2 (Cursor): <code className="rounded bg-muted px-1">vibe-kit cursor</code></div>
+              <div>Person 3 (VS Code): <code className="rounded bg-muted px-1">vibe-kit vscode</code></div>
+              <div>Person 4 (Claude): <code className="rounded bg-muted px-1">vibe-kit claude</code></div>
+              <div>Person 5 (Gemini): <code className="rounded bg-muted px-1">vibe-kit gemini</code></div>
             </div>
           </div>
         </div>

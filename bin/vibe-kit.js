@@ -69,7 +69,7 @@ program
     }
   });
 
-// AI command
+// AI command with "ai" keyword
 program
   .command('ai <prompt>')
   .description('Chat with AI using Vibe Kit context')
@@ -82,6 +82,104 @@ program
       process.exit(1);
     }
   });
+
+// Platform-specific install commands
+program
+  .command('cursor')
+  .description('Install Cursor integration only')
+  .option('--non-interactive', 'Skip interactive prompts')
+  .action(async (options) => {
+    try {
+      await install({ platform: 'cursor', ...options });
+    } catch (error) {
+      console.error(chalk.red('❌ Installation failed:'), error.message);
+      process.exit(1);
+    }
+  });
+
+program
+  .command('continue')
+  .description('Install Continue integration only')
+  .option('--non-interactive', 'Skip interactive prompts')
+  .action(async (options) => {
+    try {
+      await install({ platform: 'continue', ...options });
+    } catch (error) {
+      console.error(chalk.red('❌ Installation failed:'), error.message);
+      process.exit(1);
+    }
+  });
+
+program
+  .command('aider')
+  .description('Install Aider integration only')
+  .option('--non-interactive', 'Skip interactive prompts')
+  .action(async (options) => {
+    try {
+      await install({ platform: 'aider', ...options });
+    } catch (error) {
+      console.error(chalk.red('❌ Installation failed:'), error.message);
+      process.exit(1);
+    }
+  });
+
+program
+  .command('vscode')
+  .description('Install VS Code integration only')
+  .option('--non-interactive', 'Skip interactive prompts')
+  .action(async (options) => {
+    try {
+      await install({ platform: 'vscode', ...options });
+    } catch (error) {
+      console.error(chalk.red('❌ Installation failed:'), error.message);
+      process.exit(1);
+    }
+  });
+
+program
+  .command('claude')
+  .description('Install Claude CLI integration only')
+  .option('--non-interactive', 'Skip interactive prompts')
+  .action(async (options) => {
+    try {
+      await install({ platform: 'claude', ...options });
+    } catch (error) {
+      console.error(chalk.red('❌ Installation failed:'), error.message);
+      process.exit(1);
+    }
+  });
+
+program
+  .command('gemini')
+  .description('Install Gemini CLI integration only')
+  .option('--non-interactive', 'Skip interactive prompts')
+  .action(async (options) => {
+    try {
+      await install({ platform: 'gemini', ...options });
+    } catch (error) {
+      console.error(chalk.red('❌ Installation failed:'), error.message);
+      process.exit(1);
+    }
+  });
+
+// Catch-all for unknown commands (treats them as prompts)
+// This MUST be registered AFTER all commands but BEFORE parse()
+program.on('command:*', function(args) {
+  // The command wasn't found, treat it as a prompt
+  const prompt = args.join(' ');
+  
+  if (prompt) {
+    try {
+      ai(prompt, {}).catch(error => {
+        console.error(chalk.red('❌ AI chat failed:'), error.message);
+        process.exit(1);
+      });
+    } catch (error) {
+      console.error(chalk.red('❌ AI chat failed:'), error.message);
+      process.exit(1);
+    }
+  }
+});
 
 // Parse command line arguments
 program.parse();

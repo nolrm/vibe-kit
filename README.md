@@ -1,8 +1,10 @@
 # Vibe Kit
 
-> Context-aware AI for development
+> Context Engineering for AI Development
 
-Give your AI assistants structured context through markdown files. Vibe Kit creates a knowledge base that ensures AI generates code matching your exact patterns, style, and architecture—no more hallucinated code or mismatched conventions.
+Give your AI assistants (Cursor, Claude, VS Code Copilot, Aider) structured context through markdown files. Vibe Kit creates a knowledge base that ensures AI generates code matching your exact patterns, style, and architecture—no more hallucinated code or mismatched conventions.
+
+Vibe Kit is a CLI tool that provides **context-engineering** capabilities by creating `.vibe-kit/` directories with project standards, guidelines, and patterns that AI assistants read automatically.
 
 ## Why Vibe Kit?
 
@@ -49,6 +51,28 @@ This creates `.vibe-kit/` with starter context files:
 vk analyze
 # or in Cursor chat:  @.vibe-kit/commands/analyze.md
 ```
+
+---
+
+## Multi-Team Workflow
+
+Perfect for teams where members use different AI tools:
+
+```bash
+# First team member (any tool) - sets up the project
+vibe-kit install
+
+# Cursor users add their integration
+vibe-kit cursor    # or: vk cursor
+
+# Claude users add their integration  
+vibe-kit claude    # or: vk claude
+
+# VS Code users add their integration
+vibe-kit vscode    # or: vk vscode
+```
+
+Each platform integration is added to `.vibe-kit/` without overwriting existing files. Share your analyzed `.vibe-kit/standards/*.md` files with the team and everyone gets the same context.
 
 ---
 
@@ -110,10 +134,23 @@ read .vibe-kit/commands/analyze.md and execute
 ## Commands
 
 ```bash
+# Installation & Setup
 vk install     # set up .vibe-kit in this repo
+vk cursor      # add Cursor integration
+vk continue    # add Continue integration
+vk aider       # add Aider integration
+vk vscode      # add VS Code integration
+vk claude      # add Claude CLI integration
+vk gemini      # add Gemini CLI integration
+
+# Analysis & Updates
 vk analyze     # customize standards to your project  
 vk update      # pull latest updates
 vk status      # check install & integrations
+
+# AI Usage (loads .vibe-kit context automatically)
+vk "create a button"  # quick AI chat with context
+vk ai "create a button"  # explicit AI command
 ```
 
 See [full documentation](https://github.com/nolrm/vibe-kit/tree/main/vibe-kit-docs) for detailed guides.

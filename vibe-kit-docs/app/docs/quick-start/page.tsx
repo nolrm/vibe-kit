@@ -66,6 +66,21 @@ export default function QuickStartPage() {
           <p className="text-sm text-muted-foreground">
             This creates the <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">.vibe-kit/</code> directory with standards, templates, and commands. Vibe Kit auto-detects your project type and AI tools.
           </p>
+          
+          <div className="rounded-lg border border-blue-500/20 bg-blue-500/5 p-3">
+            <p className="text-sm font-medium mb-2">💡 Multi-Team Workflow</p>
+            <p className="text-sm text-muted-foreground mb-2">
+              If <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">.vibe-kit</code> already exists, add your specific AI tool:
+            </p>
+            <div className="flex flex-col gap-1 text-sm">
+              <code className="rounded bg-muted px-2 py-1 font-mono text-xs">vibe-kit cursor</code>
+              <code className="rounded bg-muted px-2 py-1 font-mono text-xs">vibe-kit vscode</code>
+              <code className="rounded bg-muted px-2 py-1 font-mono text-xs">vibe-kit claude</code>
+              <code className="rounded bg-muted px-2 py-1 font-mono text-xs">vibe-kit gemini</code>
+              <code className="rounded bg-muted px-2 py-1 font-mono text-xs">vibe-kit aider</code>
+              <code className="rounded bg-muted px-2 py-1 font-mono text-xs">vibe-kit continue</code>
+            </div>
+          </div>
         </div>
       </div>
 

@@ -1,7 +1,7 @@
 {
   "name": "@nolrm/vibe-kit",
-  "version": "0.4.0",
-  "description": "Context Engineering for AI Development - Provide rich context to AI through structured MD files with standards, code guides, and documentation",
+  "version": "0.4.1",
+  "description": "Context Engineering for AI Development - Provide rich context to AI through structured MD files with standards, code guides, and documentation. Works with Cursor, Claude, Aider, VS Code Copilot, and more.",
   "main": "lib/index.js",
   "bin": {
     "vibe-kit": "bin/vibe-kit.js",
@@ -13,6 +13,7 @@
     "test:coverage": "jest --coverage"
   },
   "keywords": [
+    "vibe-kit",
     "context-engineering",
     "ai-context",
     "ai-development",
@@ -26,7 +27,19 @@
     "workflow",
     "cli",
     "code-quality",
-    "ai-guidelines"
+    "ai-guidelines",
+    "cursor",
+    "cursor-ai",
+    "claude",
+    "aider",
+    "continodev",
+    "vscode-copilot",
+    "ai-assistant",
+    "context-engineering-for-ai",
+    "structured-context",
+    "markdown-standards",
+    "project-standards",
+    "code-patterns"
   ],
   "author": {
     "name": "Marlon Maniti",
