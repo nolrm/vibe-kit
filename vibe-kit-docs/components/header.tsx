@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Github, Search } from "lucide-react"
+import { Github } from "lucide-react"
 
 export function Header() {
   return (
@@ -17,36 +17,21 @@ export function Header() {
             <Link href="/docs" className="transition-colors hover:text-foreground/80 text-foreground/60">
               Docs
             </Link>
-            <Link href="/guide" className="transition-colors hover:text-foreground/80 text-foreground/60">
-              Guide
+            <Link href="/docs/quick-start" className="transition-colors hover:text-foreground/80 text-foreground/60">
+              Quick Start
             </Link>
-            <Link href="/examples" className="transition-colors hover:text-foreground/80 text-foreground/60">
+            <Link href="/docs/platform-examples" className="transition-colors hover:text-foreground/80 text-foreground/60">
               Examples
             </Link>
           </nav>
         </div>
-        <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
-          <div className="w-full flex-1 md:w-auto md:flex-none">
-            <Button
-              variant="outline"
-              className="relative h-8 w-full justify-start rounded-md bg-muted/50 text-sm font-normal text-muted-foreground shadow-none sm:pr-12 md:w-40 lg:w-64"
-            >
-              <Search className="mr-2 h-4 w-4" />
-              <span className="hidden lg:inline-flex">Search documentation...</span>
-              <span className="inline-flex lg:hidden">Search...</span>
-              <kbd className="pointer-events-none absolute right-1.5 top-1.5 hidden h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
-                <span className="text-xs">⌘</span>K
-              </kbd>
-            </Button>
-          </div>
-          <nav className="flex items-center gap-2">
-            <Button variant="ghost" size="icon" asChild>
-              <Link href="https://github.com/nolrm/vibe-kit" target="_blank" rel="noopener noreferrer">
-                <Github className="h-5 w-5" />
-                <span className="sr-only">GitHub</span>
-              </Link>
-            </Button>
-          </nav>
+        <div className="flex flex-1 items-center justify-end gap-2">
+          <Button variant="ghost" size="icon" asChild>
+            <Link href="https://github.com/nolrm/vibe-kit" target="_blank" rel="noopener noreferrer">
+              <Github className="h-5 w-5" />
+              <span className="sr-only">GitHub</span>
+            </Link>
+          </Button>
         </div>
       </div>
     </header>

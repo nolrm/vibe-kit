@@ -109,7 +109,7 @@ export default function ProjectStructurePage() {
           <div className="rounded-lg border bg-card p-4">
             <h3 className="font-semibold text-lg mb-2">Cursor - .cursor/rules/vibe-kit.mdc</h3>
             <p className="text-sm text-muted-foreground">
-              Makes Cursor read the .md files from your standards directory, ensuring the AI assistant has full context of your project's conventions and patterns.
+              <strong>Automatic:</strong> Cursor reads all context files for every AI prompt via <code className="rounded bg-muted px-1 font-mono text-xs">alwaysApply: true</code>. No manual references needed!
             </p>
           </div>
 
@@ -130,7 +130,7 @@ export default function ProjectStructurePage() {
           <div className="rounded-lg border bg-card p-4">
             <h3 className="font-semibold text-lg mb-2">VS Code - .vscode/settings.json</h3>
             <p className="text-sm text-muted-foreground">
-              Configuration settings for VS Code and GitHub Copilot integration.
+              Configuration settings for VS Code and GitHub Copilot integration. <strong>Note:</strong> Unlike Cursor, you must manually reference context files in your Copilot prompts (e.g., <code className="rounded bg-muted px-1 font-mono text-xs">@.vibe-kit</code> includes all files).
             </p>
           </div>
 

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <!-- Background with rounded corners -->
+  <rect width="128" height="128" rx="16" fill="#6366f1"/>
+  
+  <!-- VK Text -->
+  <text x="64" y="88" font-family="monospace" font-size="64" font-weight="bold" fill="white" text-anchor="middle">VK</text>
+</svg>
+

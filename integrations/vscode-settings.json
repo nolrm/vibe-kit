@@ -9,18 +9,18 @@
   "vibeKit.templatesPath": ".vibe-kit/templates",
   "vibeKit.commandsPath": ".vibe-kit/commands",
   
+  "// Quick Usage in Copilot Chat": "Simply mention @.vibe-kit in your prompts",
+  "// Examples": [
+  "// @.vibe-kit Create a login button",
+  "// @.vibe-kit/standards Create a component (standards only)",
+  "// @.vibe-kit/standards/code-style.md For specific files"
+  ],
+  
   "// AI Guidelines": "Use these in your prompts with Copilot",
   "ai.guidelines": [
     "Follow: .vibe-kit/standards/code-style.md",
     "Testing: .vibe-kit/standards/testing.md",
     "Architecture: .vibe-kit/standards/architecture.md",
     "Guidelines: .vibe-kit/standards/ai-guidelines.md"
-  ],
-  
-  "// Quick Prompts for Copilot Chat": "You can use these patterns",
-  "copilot.prompts": {
-    "createComponent": "Create a component following .vibe-kit/standards/code-style.md and .vibe-kit/templates/component.tsx",
-    "addTests": "Add tests following .vibe-kit/standards/testing.md with numbered cases",
-    "analyze": "Read .vibe-kit/commands/analyze.md and execute analysis"
-  }
+  ]
 }

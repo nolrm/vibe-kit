@@ -21,12 +21,11 @@ export function Hero() {
           </h1>
 
           <p className="text-balance text-xl text-muted-foreground sm:text-2xl md:text-3xl max-w-3xl">
-            AI Guidance, Type Safety & Quality Checks
+            Give your AI assistants structured context through markdown files
           </p>
 
           <p className="text-balance text-base text-muted-foreground max-w-2xl leading-relaxed mt-2">
-            A comprehensive development toolkit that provides AI guidance through structured markdown context, ensuring
-            your AI assistants generate code that matches your exact patterns and architecture.
+            Create a knowledge base that ensures AI generates code matching your exact patterns, style, and architecture. Works with Cursor, VS Code, Claude CLI, and more.
           </p>
         </div>
 
@@ -38,7 +37,7 @@ export function Hero() {
             </Link>
           </Button>
           <Button size="lg" variant="outline" asChild className="text-base bg-transparent">
-            <Link href="/guide">Quick Start</Link>
+            <Link href="/docs/quick-start">Quick Start</Link>
           </Button>
           <Button size="lg" variant="outline" asChild className="text-base bg-transparent">
             <Link href="https://github.com/nolrm/vibe-kit" target="_blank">

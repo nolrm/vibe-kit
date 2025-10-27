@@ -12,6 +12,11 @@ export const metadata: Metadata = {
   description:
     "A comprehensive development toolkit that provides AI guidance, type safety, quality checks, and automated workflows for modern development teams.",
   generator: "v0.app",
+  icons: {
+    icon: "/icon.svg",
+    apple: "/apple-icon.svg",
+  },
+  manifest: "/manifest.json",
 }
 
 export default function RootLayout({

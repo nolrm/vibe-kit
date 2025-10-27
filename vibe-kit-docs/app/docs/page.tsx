@@ -1,17 +1,57 @@
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, Brain, FileCode, Zap, CheckCircle2, Sparkles } from "lucide-react"
 
 export default function DocsPage() {
   return (
     <div className="space-y-6">
-      <div className="space-y-3">
-        <h1 className="scroll-m-20 text-4xl font-bold tracking-tight">What is Vibe Kit?</h1>
-        <p className="text-lg text-muted-foreground leading-relaxed">
-          Vibe Kit is a <strong>Context Engineering toolkit</strong> designed for building fast, AI-assisted development
-          workflows. It enriches AI assistants with structured markdown files containing your project's standards, code
-          guides, and documentation.
+      <div className="space-y-4">
+        <h1 className="scroll-m-20 text-4xl font-bold tracking-tight">Welcome to Vibe Kit</h1>
+        <p className="text-xl text-muted-foreground leading-relaxed">
+          Context-aware AI development. Give your AI assistants structured context through markdown files and get code that matches your exact patterns and conventions.
         </p>
+      </div>
+
+      <div className="grid gap-4 md:grid-cols-2 mt-6">
+        <div className="rounded-lg border bg-card p-4 hover:border-primary/50 transition-colors">
+          <div className="flex items-center gap-2 mb-2">
+            <Brain className="h-5 w-5 text-primary" />
+            <h3 className="font-semibold">No AI Hallucinations</h3>
+          </div>
+          <p className="text-sm text-muted-foreground">
+            AI has access to your actual standards, not generic patterns. It reads your real project structure and conventions.
+          </p>
+        </div>
+
+        <div className="rounded-lg border bg-card p-4 hover:border-primary/50 transition-colors">
+          <div className="flex items-center gap-2 mb-2">
+            <CheckCircle2 className="h-5 w-5 text-primary" />
+            <h3 className="font-semibold">Consistent Code</h3>
+          </div>
+          <p className="text-sm text-muted-foreground">
+            Every suggestion follows your specific patterns. TypeScript config, component structure, testing approach—all matched to your codebase.
+          </p>
+        </div>
+
+        <div className="rounded-lg border bg-card p-4 hover:border-primary/50 transition-colors">
+          <div className="flex items-center gap-2 mb-2">
+            <FileCode className="h-5 w-5 text-primary" />
+            <h3 className="font-semibold">Project-Specific Guidance</h3>
+          </div>
+          <p className="text-sm text-muted-foreground">
+            Tailored to your tech stack and team preferences. Update the markdown files as your project evolves.
+          </p>
+        </div>
+
+        <div className="rounded-lg border bg-card p-4 hover:border-primary/50 transition-colors">
+          <div className="flex items-center gap-2 mb-2">
+            <Sparkles className="h-5 w-5 text-primary" />
+            <h3 className="font-semibold">Living Documentation</h3>
+          </div>
+          <p className="text-sm text-muted-foreground">
+            Your standards evolve with your project. Document decisions once, reuse them across all AI interactions.
+          </p>
+        </div>
       </div>
 
       <div className="rounded-lg border border-primary/20 bg-primary/5 p-4">
@@ -50,34 +90,90 @@ export default function DocsPage() {
       </div>
 
       <div className="space-y-4 pt-4">
+        <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight">Auto-Detection & Integration</h2>
+        <p className="text-muted-foreground leading-relaxed">
+          Vibe Kit automatically detects which AI tools you have installed and configures integrations accordingly:
+        </p>
+        <div className="rounded-lg border bg-muted/50 p-4 mt-3">
+          <code className="block text-sm font-mono mb-2">$ vibe-kit install</code>
+          <div className="space-y-1 text-sm text-muted-foreground">
+            <p>🎵 Installing Vibe Kit...</p>
+            <p>✅ AI Tools detected: cursor, aider, claude_cli</p>
+            <p>✅ Cursor integration installed</p>
+            <p>✅ Aider integration installed</p>
+            <p>✅ CLI helpers installed</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="space-y-4 pt-4">
         <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight">Use Cases</h2>
 
-        <div className="space-y-6">
-          <div>
-            <h3 className="text-xl font-semibold mb-2">Context Engineering</h3>
-            <p className="text-muted-foreground leading-relaxed">
-              Vibe Kit provides structured context to AI assistants through markdown files. By providing comprehensive
-              context, you prevent AI hallucinations and get code that matches your exact patterns, style, and
-              architecture. This is the core philosophy of Context Engineering - giving AI the right information to
-              generate the right code.
+        <div className="grid gap-4 md:grid-cols-3 mt-4">
+          <div className="rounded-lg border bg-card p-4 hover:border-primary/50 transition-colors">
+            <Brain className="h-6 w-6 text-primary mb-3" />
+            <h3 className="font-semibold text-lg mb-2">Context Engineering</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Structure AI context through markdown files. Give AI assistants the right information to generate code that matches your patterns.
             </p>
           </div>
 
-          <div>
-            <h3 className="text-xl font-semibold mb-2">Development Toolkit</h3>
-            <p className="text-muted-foreground leading-relaxed">
-              Beyond AI guidance, Vibe Kit includes type safety checks, quality assurance tools, automated Git hooks,
-              and pre-configured standards. It's a complete toolkit for modern development teams who want to maintain
-              consistency and quality across their codebase.
+          <div className="rounded-lg border bg-card p-4 hover:border-primary/50 transition-colors">
+            <FileCode className="h-6 w-6 text-primary mb-3" />
+            <h3 className="font-semibold text-lg mb-2">Development Toolkit</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Complete toolkit for teams: type safety, quality checks, Git hooks, and standards. Maintain consistency across your codebase.
             </p>
           </div>
 
-          <div>
-            <h3 className="text-xl font-semibold mb-2">Team Collaboration</h3>
-            <p className="text-muted-foreground leading-relaxed">
-              With shared standards, templates, and automated workflows, Vibe Kit ensures your entire team follows the
-              same patterns and best practices. Whether you're working with AI assistants or human developers, everyone
-              has access to the same context and guidelines.
+          <div className="rounded-lg border bg-card p-4 hover:border-primary/50 transition-colors">
+            <Zap className="h-6 w-6 text-primary mb-3" />
+            <h3 className="font-semibold text-lg mb-2">Team Collaboration</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Shared standards, templates, and workflows ensure everyone follows the same patterns and best practices.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="space-y-4 pt-4">
+        <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight">Context Files</h2>
+        <p className="text-muted-foreground leading-relaxed">
+          These markdown files provide context to your AI assistant:
+        </p>
+        <div className="grid gap-3 md:grid-cols-2 mt-3">
+          <div className="rounded-lg border bg-card p-4">
+            <code className="text-sm font-mono mb-1">glossary.md</code>
+            <p className="text-sm text-muted-foreground">
+              Project shortcuts & terminology (e.g., @btn = Button component)
+            </p>
+          </div>
+
+          <div className="rounded-lg border bg-card p-4">
+            <code className="text-sm font-mono mb-1">code-style.md</code>
+            <p className="text-sm text-muted-foreground">
+              Your coding conventions and style preferences
+            </p>
+          </div>
+
+          <div className="rounded-lg border bg-card p-4">
+            <code className="text-sm font-mono mb-1">testing.md</code>
+            <p className="text-sm text-muted-foreground">
+              Testing patterns and expectations
+            </p>
+          </div>
+
+          <div className="rounded-lg border bg-card p-4">
+            <code className="text-sm font-mono mb-1">architecture.md</code>
+            <p className="text-sm text-muted-foreground">
+              Architecture decisions and patterns
+            </p>
+          </div>
+
+          <div className="rounded-lg border bg-card p-4 md:col-span-2">
+            <code className="text-sm font-mono mb-1">ai-guidelines.md</code>
+            <p className="text-sm text-muted-foreground">
+              AI behavior rules and best practices for AI interactions
             </p>
           </div>
         </div>
@@ -86,21 +182,43 @@ export default function DocsPage() {
       <div className="space-y-4 pt-4">
         <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight">Developer Experience</h2>
         <p className="text-muted-foreground leading-relaxed">
-          Vibe Kit aims to provide a great Developer Experience (DX) when working with AI-assisted development. It
-          includes:
+          Vibe Kit is designed for a great Developer Experience when working with AI-assisted development:
         </p>
-        <ul className="list-disc list-inside space-y-2 text-muted-foreground ml-4">
-          <li>Intuitive CLI with helpful commands and clear output</li>
-          <li>Comprehensive documentation and examples</li>
-          <li>TypeScript support with full type safety</li>
-          <li>Automated workflows that save time and reduce errors</li>
-          <li>Flexible configuration to match your team's needs</li>
-        </ul>
+        <div className="grid gap-3 md:grid-cols-2 mt-3">
+          <div className="rounded-lg border bg-muted/30 p-3 flex items-start gap-2">
+            <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+            <div>
+              <p className="text-sm font-medium">Intuitive CLI</p>
+              <p className="text-xs text-muted-foreground">Clear commands with helpful output</p>
+            </div>
+          </div>
+          <div className="rounded-lg border bg-muted/30 p-3 flex items-start gap-2">
+            <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+            <div>
+              <p className="text-sm font-medium">TypeScript Support</p>
+              <p className="text-xs text-muted-foreground">Full type safety throughout</p>
+            </div>
+          </div>
+          <div className="rounded-lg border bg-muted/30 p-3 flex items-start gap-2">
+            <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+            <div>
+              <p className="text-sm font-medium">Automated Workflows</p>
+              <p className="text-xs text-muted-foreground">Saves time and reduces errors</p>
+            </div>
+          </div>
+          <div className="rounded-lg border bg-muted/30 p-3 flex items-start gap-2">
+            <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+            <div>
+              <p className="text-sm font-medium">Flexible Configuration</p>
+              <p className="text-xs text-muted-foreground">Match your team's needs</p>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div className="flex gap-4 pt-6">
         <Button asChild>
-          <Link href="/docs/installation">
+          <Link href="/docs/quick-start">
             Get Started
             <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
