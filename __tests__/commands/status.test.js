@@ -5,6 +5,7 @@ const axios = require('axios');
 // Mock dependencies
 jest.mock('fs-extra');
 jest.mock('axios');
+jest.mock('../../lib/utils/status-manager');
 
 // Mock chalk to return strings without color codes
 jest.mock('chalk', () => ({
@@ -14,6 +15,8 @@ jest.mock('chalk', () => ({
   blue: (str) => str,
   magenta: (str) => str
 }));
+
+const StatusManager = require('../../lib/utils/status-manager');
 
 describe('Status Command', () => {
   beforeEach(() => {
@@ -55,6 +58,27 @@ git_hooks: true`;
       });
       
       fs.readFile.mockResolvedValue(mockConfig);
+
+      // Mock StatusManager
+      StatusManager.mockImplementation(() => ({
+        getStatus: jest.fn().mockResolvedValue({
+          version: '0.1.0',
+          installed_at: '2024-01-01T00:00:00.000Z',
+          last_updated: '2024-01-01T00:00:00.000Z',
+          features: {
+            git_hooks: false,
+            standards: true,
+            templates: true
+          }
+        }),
+        getAnalyzeInfo: jest.fn().mockResolvedValue({
+          isFirstTime: true,
+          lastRun: null,
+          projectType: null,
+          packageManager: null,
+          customizations: []
+        })
+      }));
     });
 
     test('should show installation details', async () => {

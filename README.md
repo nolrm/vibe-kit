@@ -123,6 +123,7 @@ Context-Aware Code Generated
 - ✅ **Quality Checks** - Automated pre-commit and pre-push hooks
 - 🛡️ **Safe Installation** - Backs up existing files with automatic rollback
 - 📦 **Multi-Package Manager** - Supports npm, yarn, and pnpm
+- 🚀 **Multi-Platform Support** - Works with Cursor, Continue, Aider, VS Code, and CLI tools
 
 ## Quick Start
 
@@ -139,6 +140,9 @@ cd your-project
 
 # Install Vibe Kit in current project
 vibe-kit install
+
+# Or use the short alias (after installation)
+vk install
 ```
 
 ### **Step 3: Customize Standards (Recommended)**
@@ -164,7 +168,8 @@ curl -sSL https://raw.githubusercontent.com/nolrm/vibe-kit/main/install-fallback
 - 📦 Auto-detects package manager (npm/yarn/pnpm)
 - 🎯 Smart project type detection
 - 🪝 Optional Git hooks (interactive prompt)
-- 🔄 Easy updates with `vibe-kit update`
+- 🔄 Easy updates with `vk update` or `vibe-kit update`
+- 🚀 Short alias: `vk` available for faster typing
 - 🤖 **AI-powered analysis** for project-specific customization
 
 **For CI/CD environments:**
@@ -176,11 +181,23 @@ NON_INTERACTIVE=true vibe-kit install
 ## Usage
 
 ### **CLI Commands**
+
+**Short alias available:** `vk` can be used instead of `vibe-kit`
+
 ```bash
+# Using full command
 vibe-kit install    # Install in current project
 vibe-kit status     # Check installation status
 vibe-kit update     # Update to latest version
-vibe-kit --version  # Show version
+vibe-kit analyze    # Analyze project and customize standards
+vibe-kit ai <prompt> # Chat with AI using Vibe Kit context
+
+# Using short alias
+vk install          # Install in current project
+vk status           # Check installation status
+vk update           # Update to latest version
+vk analyze          # Analyze project and customize standards
+vk ai "create a button component"
 ```
 
 ### **🤖 AI-Powered Analysis Workflow**
@@ -188,7 +205,10 @@ vibe-kit --version  # Show version
 # 1. Check if analysis is needed
 vibe-kit status
 
-# 2. Run analysis in Cursor AI chat
+# 2. Run analysis (works with any AI tool)
+vibe-kit analyze
+
+# Or in Cursor AI chat
 @.vibe-kit/commands/analyze.md
 ```
 
@@ -198,31 +218,77 @@ vibe-kit status
 - **Interactive customization** - choose what to update
 - **Automatic file updates** - standards files customized for your project
 
+### **🎯 Multi-Platform Support**
+
+Vibe Kit automatically detects and configures for your AI tools:
+
+**Supported Platforms:**
+- ✅ **Cursor** - `.cursor/rules/vibe-kit.mdc`
+- ✅ **Continue.dev** - `.continue/config.json`
+- ✅ **Aider** - `.aider/rules.md`
+- ✅ **VS Code** - `.vscode/settings.json`
+- ✅ **CLI Tools** - `.vibe-kit/scripts/ai-cli.sh`
+
+**Auto-Detection:**
+```bash
+$ vibe-kit install
+
+🎵 Installing Vibe Kit...
+✅ AI Tools detected: cursor, aider, claude_cli
+✅ Cursor integration installed
+✅ Aider integration installed
+✅ CLI helpers installed
+```
+
+**CLI Usage:**
+```bash
+# Chat with AI using Vibe Kit context
+vk ai "create a button component"
+
+# Or set your preferred AI tool
+export AI_TOOL=aider
+vk ai "create a button component"
+```
+
 ### **Project Structure**
 
 After installation, Vibe Kit creates:
 
 ```
-.vibe-kit/
-├── standards/           ← Standards that AI reads as context
-│   ├── glossary.md      ← YOUR project shortcuts & terms
-│   ├── code-style.md     ← YOUR coding conventions
-│   ├── testing.md        ← YOUR test patterns
-│   ├── architecture.md   ← YOUR architecture decisions
-│   └── ai-guidelines.md  ← AI behavior rules
-├── commands/             ← AI workflow commands
-├── hooks/                ← Git hooks (optional)
-├── types/                ← Type safety configs
-└── templates/            ← Code templates
-
-.cursor/rules/
-└── vibe-kit.mdc          ← Makes Cursor read the .md files
+your-project/
+├── .vibe-kit/
+│   ├── standards/        ← Universal standards
+│   │   ├── glossary.md   ← Project shortcuts & terms
+│   │   ├── code-style.md ← Coding conventions
+│   │   ├── testing.md    ← Test patterns
+│   │   ├── architecture.md ← Architecture decisions
+│   │   └── ai-guidelines.md ← AI behavior rules
+│   ├── commands/         ← AI workflow commands
+│   ├── hooks/            ← Git hooks (optional)
+│   ├── types/            ← Type safety configs
+│   ├── templates/        ← Code templates
+│   ├── scripts/          ← CLI helpers
+│   └── CONTEXT.md        ← Single context file for CLI
+│
+├── .cursor/rules/
+│   └── vibe-kit.mdc      ← Cursor integration
+│
+├── .continue/
+│   └── config.json       ← Continue integration
+│
+├── .aider/
+│   └── rules.md          ← Aider integration
+│
+└── .vscode/
+    └── settings.json     ← VS Code integration
 ```
 
-**How it works:**
-- AI automatically reads the MD files as context
-- You reference them using `@.vibe-kit/standards/...`
-- Each file provides specific guidance to AI
+**Platform-Specific Integrations:**
+- **Cursor**: `.cursor/rules/vibe-kit.mdc` - Auto-loads in Cursor
+- **Continue**: `.continue/config.json` - Works across editors
+- **Aider**: `.aider/rules.md` - Auto-reads context
+- **VS Code**: `.vscode/settings.json` - Config settings
+- **CLI Tools**: `.vibe-kit/CONTEXT.md` - Universal context
 
 ## Pre-Push Hook
 

@@ -1,0 +1,26 @@
+{
+  "// Vibe Kit - Context Engineering for AI Development": "GitHub Copilot and other VS Code AI tools will use these settings",
+  
+  "copilot.suggestions.enabled": true,
+  "copilot.editor.enableAutoCompletions": true,
+  
+  "// Project Standards": "Reference in your prompts to use Vibe Kit standards",
+  "vibeKit.standardsPath": ".vibe-kit/standards",
+  "vibeKit.templatesPath": ".vibe-kit/templates",
+  "vibeKit.commandsPath": ".vibe-kit/commands",
+  
+  "// AI Guidelines": "Use these in your prompts with Copilot",
+  "ai.guidelines": [
+    "Follow: .vibe-kit/standards/code-style.md",
+    "Testing: .vibe-kit/standards/testing.md",
+    "Architecture: .vibe-kit/standards/architecture.md",
+    "Guidelines: .vibe-kit/standards/ai-guidelines.md"
+  ],
+  
+  "// Quick Prompts for Copilot Chat": "You can use these patterns",
+  "copilot.prompts": {
+    "createComponent": "Create a component following .vibe-kit/standards/code-style.md and .vibe-kit/templates/component.tsx",
+    "addTests": "Add tests following .vibe-kit/standards/testing.md with numbered cases",
+    "analyze": "Read .vibe-kit/commands/analyze.md and execute analysis"
+  }
+}

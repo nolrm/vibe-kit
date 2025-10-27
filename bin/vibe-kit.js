@@ -3,6 +3,8 @@
 const { program } = require('commander');
 const chalk = require('chalk');
 const { install, update, status } = require('../lib');
+const analyze = require('../lib/commands/analyze');
+const ai = require('../lib/commands/ai');
 const packageJson = require('../package.json');
 
 // Set up the CLI
@@ -49,6 +51,34 @@ program
       await update(options);
     } catch (error) {
       console.error(chalk.red('❌ Update failed:'), error.message);
+      process.exit(1);
+    }
+  });
+
+// Analyze command
+program
+  .command('analyze')
+  .description('Analyze project and customize Vibe Kit standards')
+  .option('--ai <tool>', 'AI tool to use (aider, claude, gemini)')
+  .action(async (options) => {
+    try {
+      await analyze(options);
+    } catch (error) {
+      console.error(chalk.red('❌ Analysis failed:'), error.message);
+      process.exit(1);
+    }
+  });
+
+// AI command
+program
+  .command('ai <prompt>')
+  .description('Chat with AI using Vibe Kit context')
+  .option('--ai <tool>', 'AI tool to use (aider, claude, gemini)')
+  .action(async (prompt, options) => {
+    try {
+      await ai(prompt, options);
+    } catch (error) {
+      console.error(chalk.red('❌ AI chat failed:'), error.message);
       process.exit(1);
     }
   });

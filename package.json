@@ -1,10 +1,11 @@
 {
   "name": "@nolrm/vibe-kit",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Context Engineering for AI Development - Provide rich context to AI through structured MD files with standards, code guides, and documentation",
   "main": "lib/index.js",
   "bin": {
-    "vibe-kit": "bin/vibe-kit.js"
+    "vibe-kit": "bin/vibe-kit.js",
+    "vk": "bin/vibe-kit.js"
   },
   "scripts": {
     "test": "jest",
