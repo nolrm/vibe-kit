@@ -23,12 +23,14 @@ Works with: **Cursor** (auto) • **VS Code** (`@.vibe-kit`) • **Claude CLI** 
 
 ## Quick Start (60s)
 
-```bash
-# Option 1: Try without installing (downloads latest each time)
-npx @nolrm/vibe-kit@latest install
+**Requirements:** Node.js 14.x+ (16.x+ recommended) and npm/yarn. Optional: Git for hooks, AI tools for usage.
 
-# Option 2: Install globally (recommended)
+```bash
+# Step 1: Install globally (recommended)
 npm i -g @nolrm/vibe-kit
+
+# Step 2: Navigate to your project and install
+cd your-project
 vibe-kit install
 ```
 

@@ -11,6 +11,15 @@ export default function QuickStartPage() {
         </p>
       </div>
 
+      <div className="rounded-lg border border-primary/20 bg-primary/5 p-4">
+        <p className="text-sm font-medium mb-2">📋 Prerequisites</p>
+        <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground ml-2">
+          <li><strong>Required:</strong> Node.js 14.x or higher (16.x+ recommended), npm or yarn</li>
+          <li><strong>Optional:</strong> Git (needed for Git hooks feature)</li>
+          <li><strong>Optional:</strong> AI tools (Cursor, VS Code, Aider, etc.) - auto-detected during install</li>
+        </ul>
+      </div>
+
       {/* Step 1 */}
       <div className="space-y-4 pt-4">
         <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight flex items-center gap-2">
@@ -45,13 +54,17 @@ export default function QuickStartPage() {
         </h2>
         
         <div className="space-y-3">
-          <p className="text-muted-foreground leading-relaxed">Navigate to your project and run install:</p>
+          <p className="text-muted-foreground leading-relaxed">Navigate to your project directory and run install:</p>
           <div className="rounded-lg border bg-card p-4">
+            <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+              <Terminal className="h-4 w-4" />
+              <span className="font-mono">In your terminal</span>
+            </div>
             <code className="block rounded bg-muted px-4 py-2 font-mono text-sm">cd your-project</code>
             <code className="block rounded bg-muted px-4 py-2 font-mono text-sm mt-2">vibe-kit install</code>
           </div>
           <p className="text-sm text-muted-foreground">
-            This creates the <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">.vibe-kit/</code> directory with standards, templates, and commands.
+            This creates the <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">.vibe-kit/</code> directory with standards, templates, and commands. Vibe Kit auto-detects your project type and AI tools.
           </p>
         </div>
       </div>
