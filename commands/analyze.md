@@ -92,3 +92,32 @@ I'll analyze your project and customize the Vibe Kit standards to match your spe
 I'll analyze your project and provide customized recommendations. The analysis will be intelligent and respect your existing patterns while suggesting improvements based on best practices.
 
 **Let me know when you're ready to begin the analysis!** 🚀
+
+---
+
+## ⚠️ After Analysis - Important!
+
+After completing the analysis, the AI will update your standards files. **You should:**
+
+1. **Review** `.vibe-kit/standards/` - Check all updated files
+2. **Edit** Add project-specific details, remove what doesn't fit
+3. **Fine-tune** The AI gives you a good start, but YOU know your project best
+4. **Keep updated** As your project evolves, update these files
+
+### Files to Review
+
+- `glossary.md` - Verify shortcuts match your team's usage
+- `code-style.md` - Adjust rules to match your conventions
+- `testing.md` - Update patterns based on your testing approach
+- `architecture.md` - Refine based on your architecture decisions
+- `ai-guidelines.md` - Add project-specific AI behavior rules
+
+### Keep It Living
+
+These aren't set-and-forget files. Update them as:
+- Your patterns evolve
+- You add new components/patterns
+- Your team adopts new conventions
+- Requirements change
+
+**Treat them as living documentation that grows with your project.**

@@ -145,7 +145,7 @@ export default function DocsPage() {
           <div className="rounded-lg border bg-card p-4">
             <code className="text-sm font-mono mb-1">glossary.md</code>
             <p className="text-sm text-muted-foreground">
-              Project shortcuts & terminology (e.g., @btn = Button component)
+              Project terminology and business terms (e.g., checkout, customer, order)
             </p>
           </div>
 

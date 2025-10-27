@@ -9,7 +9,7 @@ Give your AI assistants structured context through markdown files. Vibe Kit crea
 **The problem:** LLMs are great at syntax, not at *your* conventions. Generic AI output requires manual fixes for style, structure, and architecture.
 
 **The solution:** Vibe Kit provides your AI with:
-- **Glossary** of project shortcuts and terms (e.g., `@btn` = your Button pattern)
+- **Glossary** of project terminology and business terms (e.g., `checkout`, `customer`, `order`)
 - **Standards** for code style, testing patterns, and architecture
 - **Templates** with canonical component shapes
 
@@ -56,22 +56,20 @@ vk analyze
 
 **Prompt**
 ```
-"Add @btn to customer for order checkout"
+"Add checkout flow for customer"
 ```
 
 **What the AI does with Vibe Kit**
-- Reads `glossary.md` → `@btn` = your Button pattern; `customer` = app folder
+- Reads `glossary.md` → `checkout` = checkout process; `customer` = customer account
 - Applies `code-style.md` → strict TS, functional components
 - Follows `testing.md` → numbered test cases
 
 **Result (diff)**
 ```diff
-- import Button from '../ui/button'
-+ import { Button } from '@/components/Button'  // from your template
-
 - const Checkout = () => <button>Buy</button>
-+ export function CheckoutButton({ onClick }: { onClick: () => void }) {
-+   return <Button intent="primary" onClick={onClick}>Checkout</Button>
++ export function CheckoutFlow({ customer }: { customer: string }) {
++   // Uses customer from glossary context
++   return <div>Checkout for {customer}</div>
 + }
 ```
 
@@ -86,12 +84,12 @@ vk analyze
 
 **VS Code** (Copilot Chat)
 ```
-@.vibe-kit Create a Button component
+@.vibe-kit Create checkout flow for customer
 ```
 
 **CLI** (Chat with AI)
 ```bash
-vk ai "create a Button component"
+vk ai "create checkout flow for customer"
 ```
 
 **Claude / Gemini / Aider** (Direct context)

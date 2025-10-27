@@ -46,7 +46,7 @@ export default function PlatformExamplesPage() {
                   <span className="font-mono">In Cursor AI chat</span>
                 </div>
                 <code className="block rounded bg-muted px-4 py-2 font-mono text-sm">
-                  Create a login button using @btn pattern
+                  Create a login button using btn pattern
                 </code>
               </div>
             </div>

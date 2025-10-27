@@ -117,7 +117,7 @@ export default function QuickStartPage() {
               Use in Cursor
             </h3>
             <p className="text-sm text-muted-foreground">
-              Cursor automatically loads all context files. Try: <code className="rounded bg-muted px-1 font-mono text-xs">Create a login button using @btn</code>
+              Cursor automatically loads all context files. Try: <code className="rounded bg-muted px-1 font-mono text-xs">Create checkout flow for customer</code>
             </p>
           </div>
 
@@ -127,7 +127,7 @@ export default function QuickStartPage() {
               Use in VS Code
             </h3>
             <p className="text-sm text-muted-foreground">
-              In Copilot Chat: <code className="rounded bg-muted px-1 font-mono text-xs">@.vibe-kit Create a login button</code>
+              In Copilot Chat: <code className="rounded bg-muted px-1 font-mono text-xs">@.vibe-kit Create checkout flow for customer</code>
             </p>
           </div>
 
