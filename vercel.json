@@ -1,8 +1,6 @@
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "version": 2,
-  "buildCommand": "cd vibe-kit-docs && pnpm install && pnpm run build",
-  "outputDirectory": "vibe-kit-docs/.next",
-  "installCommand": "cd vibe-kit-docs && pnpm install",
-  "framework": "nextjs"
+  "buildCommand": "pnpm run build",
+  "installCommand": "pnpm install",
+  "framework": "nextjs",
+  "outputDirectory": ".next"
 }
