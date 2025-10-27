@@ -64,7 +64,7 @@ export default function QuickStartPage() {
             <code className="block rounded bg-muted px-4 py-2 font-mono text-sm mt-2">vibe-kit install</code>
           </div>
           <p className="text-sm text-muted-foreground">
-            This creates the <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">.vibe-kit/</code> directory with standards, templates, and commands. Vibe Kit auto-detects your project type and AI tools.
+            This creates the <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">.vibe-kit/</code> directory with skeleton standards files (blank templates). Vibe Kit auto-detects your project type and AI tools. <strong>After install, run <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">vk analyze</code> to generate content for these files.</strong>
           </p>
           
           <div className="rounded-lg border border-blue-500/20 bg-blue-500/5 p-3">
@@ -107,8 +107,9 @@ export default function QuickStartPage() {
             <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground ml-2">
               <li>Scans your project structure and dependencies</li>
               <li>Detects existing patterns and configurations</li>
-              <li>Updates standards to match your tech stack (React, Vue, TypeScript, etc.)</li>
-              <li>Customizes AI guidelines for your project type</li>
+              <li>Generates standards content based on your actual codebase</li>
+              <li>Creates project-specific AI guidelines</li>
+              <li><strong>⚠️ Important:</strong> Review and edit the generated content manually</li>
             </ul>
           </div>
         </div>

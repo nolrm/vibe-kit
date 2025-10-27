@@ -95,29 +95,47 @@ I'll analyze your project and provide customized recommendations. The analysis w
 
 ---
 
-## ⚠️ After Analysis - Important!
+## ⚠️ After Generation - IMPORTANT: Manual Review Required!
 
-After completing the analysis, the AI will update your standards files. **You should:**
+After generating content for your skeleton files, **YOU MUST:**
 
-1. **Review** `.vibe-kit/standards/` - Check all updated files
-2. **Edit** Add project-specific details, remove what doesn't fit
-3. **Fine-tune** The AI gives you a good start, but YOU know your project best
-4. **Keep updated** As your project evolves, update these files
+### 🔍 Step 1: Review Generated Content
+Review each generated file in `.vibe-kit/standards/`:
+- ✅ Check that content matches your project
+- ✅ Verify frameworks and tools are correct
+- ✅ Ensure patterns align with your codebase
+- ⚠️  AI-generated content is a starting point, NOT final
 
-### Files to Review
+### ✏️ Step 2: Edit & Customize
+- **Add missing details** specific to your project
+- **Remove irrelevant content** that doesn't apply
+- **Adjust formatting** to match your preferences
+- **Add project-specific rules** not captured by AI
 
-- `glossary.md` - Verify shortcuts match your team's usage
-- `code-style.md` - Adjust rules to match your conventions
-- `testing.md` - Update patterns based on your testing approach
-- `architecture.md` - Refine based on your architecture decisions
-- `ai-guidelines.md` - Add project-specific AI behavior rules
+### 🎯 Step 3: Fine-tune to Perfection
+The AI provides a foundation, but:
+- YOU know your project's nuances best
+- YOU understand your team's conventions
+- YOU are the expert on what fits
 
-### Keep It Living
+### 📝 Step 4: Commit to Your Repo
+Once reviewed and customized:
+- ✅ Commit these files to your repository
+- ✅ They're now PART OF YOUR PROJECT
+- ✅ Keep them updated as you grow
 
-These aren't set-and-forget files. Update them as:
-- Your patterns evolve
-- You add new components/patterns
-- Your team adopts new conventions
-- Requirements change
+### 📋 Files to Review:
+- `code-style.md` - Verify coding conventions
+- `testing.md` - Check test patterns match your approach
+- `architecture.md` - Ensure structure matches reality
+- `ai-guidelines.md` - Add project-specific AI rules
+- `workflows.md` - Adjust to your team processes
 
-**Treat them as living documentation that grows with your project.**
+### 🌱 Living Documentation
+These standards should evolve with your project:
+- Update when patterns change
+- Modify when adopting new tools
+- Refine based on team decisions
+- Never let them become stale
+
+**Remember:** Generated content is a starting point. Your manual review and editing is what makes it truly valuable.

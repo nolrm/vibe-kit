@@ -67,11 +67,11 @@ export default function CommandsPage() {
               <div className="flex-1">
                 <h3 className="font-semibold text-lg mb-1">vibe-kit analyze</h3>
                 <p className="text-sm text-muted-foreground mb-2">
-                  Analyze your project and customize standards to match your tech stack, patterns, and preferences.
+                  Analyze your project and generate customized standards based on your actual codebase.
                 </p>
                 <code className="block rounded bg-muted px-4 py-2 font-mono text-sm">vibe-kit analyze</code>
                 <p className="text-sm text-muted-foreground mt-2">
-                  <strong>What it does:</strong> Scans project structure, detects patterns, and updates standards files to match your setup.
+                  <strong>What it does:</strong> AI scans your codebase and generates content for skeleton standards files. <strong>⚠️ You must review and edit the generated content manually.</strong>
                 </p>
               </div>
             </div>

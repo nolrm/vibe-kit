@@ -36,21 +36,25 @@ cd your-project
 vibe-kit install
 ```
 
-This creates `.vibe-kit/` with starter context files:
+This creates `.vibe-kit/` with skeleton context files (blank templates to be filled by AI):
 
 ```
 .vibe-kit/
-  standards/       # glossary.md, code-style.md, testing.md, architecture.md, ai-guidelines.md
+  standards/       # Skeleton files: code-style.md, testing.md, architecture.md, ai-guidelines.md, workflows.md
+                  # Real files: glossary.md (universal), README.md (overview)
   commands/        # analyze.md (project analysis & customization)
   templates/       # example component template
 ```
 
-**Analyze & customize** (recommended):
+**Generate content with AI** (recommended):
 
 ```bash
 vk analyze
+# AI scans your codebase and generates content for the skeleton files
 # or in Cursor chat:  @.vibe-kit/commands/analyze.md
 ```
+
+⚠️ **Important:** After running `vk analyze`, manually review and edit the generated content to match your exact needs. The AI provides a starting point, but you must customize it.
 
 ---
 
@@ -126,7 +130,8 @@ read .vibe-kit/commands/analyze.md and execute
 ## Key Features
 
 - 🧠 **Context Engineering** - Structured MD files your AI reads automatically
-- 🔍 **Smart Analysis** - Auto-detects your project patterns and customizes standards
+- 🔍 **Smart Analysis** - AI generates standards content based on your codebase
+- 🌍 **Project Agnostic** - Works with React, Vue, Node.js, PHP, Python, Rust, monorepos—any project type
 - 🤖 **Multi-Platform** - Works with Cursor, Claude CLI, Aider, Continue, VS Code, Gemini
 - 🛡️ **Safe Install** - Backs up existing files with rollback support
 - ⚡ **Zero Config** - Auto-detects package managers and AI tools
