@@ -27,22 +27,10 @@ export default function ProjectStructurePage() {
 │   │   └── ai-guidelines.md     ← AI behavior rules
 │   │   ├── README.md             ← Overview (real file)
 │   │   └── workflows.md           ← Skeleton (run vk analyze)
-│   ├── commands/
-│   │   └── analyze.md            ← Analysis workflow
-│   ├── templates/
-│   │   └── component.tsx         ← Component template
-│   ├── hooks/
-│   ├── types/
 │   └── context.md                ← Single context file for CLI
 │
 ├── .cursor/rules/
-│   └── vibe-kit.mdc             ← Makes AI read the .md files
-├── .continue/
-│   └── config.json               ← Continue.dev integration
-├── .aider/
-│   └── rules.md                  ← Aider integration
-└── .vscode/
-    └── settings.json             ← VS Code integration`}
+│   └── vibe-kit.mdc             ← Makes AI read the .md files`}
           </pre>
           <div className="mt-3 rounded-lg border border-blue-500/20 bg-blue-500/5 p-3">
             <p className="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">ℹ️ Skeleton Files</p>
