@@ -33,7 +33,7 @@ export default function ProjectStructurePage() {
 │   │   └── component.tsx         ← Component template
 │   ├── hooks/
 │   ├── types/
-│   └── CONTEXT.md                ← Single context file for CLI
+│   └── context.md                ← Single context file for CLI
 │
 ├── .cursor/rules/
 │   └── vibe-kit.mdc             ← Makes AI read the .md files

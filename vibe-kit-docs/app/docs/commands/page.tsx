@@ -37,6 +37,7 @@ export default function CommandsPage() {
               <code className="block rounded bg-muted px-3 py-1 font-mono text-xs">vibe-kit vscode</code>
               <code className="block rounded bg-muted px-3 py-1 font-mono text-xs">vibe-kit claude</code>
               <code className="block rounded bg-muted px-3 py-1 font-mono text-xs">vibe-kit gemini</code>
+              <code className="block rounded bg-muted px-3 py-1 font-mono text-xs">vibe-kit codex</code>
               <code className="block rounded bg-muted px-3 py-1 font-mono text-xs">vibe-kit aider</code>
               <code className="block rounded bg-muted px-3 py-1 font-mono text-xs">vibe-kit continue</code>
             </div>
@@ -119,7 +120,7 @@ export default function CommandsPage() {
                 <div className="rounded-lg border border-blue-500/20 bg-blue-500/5 p-2 mt-2">
                   <p className="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">💡 How it works:</p>
                   <ul className="text-xs text-muted-foreground list-disc list-inside space-y-0.5">
-                    <li>Automatically loads <code className="rounded bg-muted px-0.5 font-mono">.vibe-kit/CONTEXT.md</code></li>
+                    <li>Automatically loads <code className="rounded bg-muted px-0.5 font-mono">.vibe-kit/context.md</code></li>
                     <li>Includes all standards files (code-style, testing, architecture, guidelines)</li>
                     <li>Sends full context to your AI tool (Aider, Claude, Gemini)</li>
                   </ul>

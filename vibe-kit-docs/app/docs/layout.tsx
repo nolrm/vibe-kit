@@ -19,9 +19,9 @@ export default function DocsLayout({
             <FeedbackSection page="docs" />
           </div>
           <div className="hidden text-sm xl:block">
-            <div className="sticky top-16 -mt-10 pt-4">
-              <div className="space-y-2">
-                <p className="font-medium">On this page</p>
+            <div className="sticky top-16 -mt-10 pt-6 pr-6 lg:py-8">
+              <div className="h-full">
+                <div id="toc-container"></div>
               </div>
             </div>
           </div>

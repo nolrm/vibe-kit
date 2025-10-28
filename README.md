@@ -19,7 +19,7 @@ Update `.md` files as your project evolves; the AI follows.
 
 ## Multi-Platform Support
 
-Works with: **Cursor** (auto) • **VS Code** (`@.vibe-kit`) • **Claude CLI** • **Aider** • **Continue** • **Gemini CLI**
+Works with: **Cursor** (auto) • **VS Code** (`@.vibe-kit`) • **Claude CLI** • **Codex CLI** • **Aider** • **Continue** • **Gemini CLI**
 
 ---
 
@@ -72,6 +72,9 @@ vibe-kit cursor    # or: vk cursor
 # Claude users add their integration  
 vibe-kit claude    # or: vk claude
 
+# Codex users add their integration
+vibe-kit codex     # or: vk codex
+
 # VS Code users add their integration
 vibe-kit vscode    # or: vk vscode
 ```
@@ -120,7 +123,7 @@ Each platform integration is added to `.vibe-kit/` without overwriting existing 
 vk ai "create checkout flow for customer"
 ```
 
-**Claude / Gemini / Aider** (Direct context)
+**Claude / Gemini / Codex / Aider** (Direct context)
 ```
 read .vibe-kit/commands/analyze.md and execute
 ```
@@ -132,7 +135,7 @@ read .vibe-kit/commands/analyze.md and execute
 - 🧠 **Context Engineering** - Structured MD files your AI reads automatically
 - 🔍 **Smart Analysis** - AI generates standards content based on your codebase
 - 🌍 **Project Agnostic** - Works with React, Vue, Node.js, PHP, Python, Rust, monorepos—any project type
-- 🤖 **Multi-Platform** - Works with Cursor, Claude CLI, Aider, Continue, VS Code, Gemini
+- 🤖 **Multi-Platform** - Works with Cursor, Claude CLI, Codex CLI, Aider, Continue, VS Code, Gemini
 - 🛡️ **Safe Install** - Backs up existing files with rollback support
 - ⚡ **Zero Config** - Auto-detects package managers and AI tools
 
@@ -146,6 +149,7 @@ vk continue    # add Continue integration
 vk aider       # add Aider integration
 vk vscode      # add VS Code integration
 vk claude      # add Claude CLI integration
+vk codex       # add Codex CLI integration
 vk gemini      # add Gemini CLI integration
 
 # Analysis & Updates

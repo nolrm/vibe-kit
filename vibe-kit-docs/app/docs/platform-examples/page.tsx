@@ -1,18 +1,53 @@
+'use client'
+
+import React, { useEffect } from "react"
 import { Terminal, Monitor, Code, Sparkles, Bot, CheckCircle2, Zap } from "lucide-react"
 
 export default function PlatformExamplesPage() {
+  const headings = [
+    { id: 'cursor', text: 'Cursor' },
+    { id: 'vscode', text: 'VS Code' },
+    { id: 'claude', text: 'Claude CLI' },
+    { id: 'codex', text: 'Codex CLI' },
+    { id: 'continue', text: 'Continue.dev' },
+    { id: 'aider', text: 'Aider' },
+    { id: 'gemini', text: 'Gemini CLI' },
+  ];
+
+  useEffect(() => {
+    // Render TOC in right sidebar
+    const tocContainer = document.getElementById('toc-container')
+    if (tocContainer) {
+      tocContainer.innerHTML = `
+        <nav class="space-y-2">
+          <p class="font-medium text-sm mb-3">On this page</p>
+          <div class="grid grid-flow-row auto-rows-max text-sm">
+            ${headings.map(h => `
+              <a
+                href="#${h.id}"
+                class="group flex w-full items-center rounded-md border border-transparent pr-2 py-1.5 hover:underline text-sm text-muted-foreground"
+              >
+                ${h.text}
+              </a>
+            `).join('')}
+          </div>
+        </nav>
+      `
+    }
+  }, [headings])
+
   return (
     <div className="space-y-6">
-      <div className="space-y-3">
-        <h1 className="scroll-m-20 text-4xl font-bold tracking-tight">Platform Examples</h1>
-        <p className="text-lg text-muted-foreground leading-relaxed">
-          Step-by-step examples for using Vibe Kit with Cursor, VS Code, Claude CLI, and other AI tools.
-        </p>
-      </div>
+        <div className="space-y-3">
+          <h1 className="scroll-m-20 text-4xl font-bold tracking-tight">Platform Examples</h1>
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            Step-by-step examples for using Vibe Kit with Cursor, VS Code, Claude CLI, Gemini CLI, Codex CLI, and other AI tools.
+          </p>
+        </div>
 
-      <div className="space-y-6 pt-4">
+        <div className="space-y-6 pt-4">
         {/* Cursor */}
-        <div className="rounded-lg border bg-card p-6">
+        <div id="cursor" className="rounded-lg border bg-card p-6 scroll-mt-20 mb-8">
           <div className="flex items-center gap-3 mb-4">
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
               <Code className="h-5 w-5 text-primary" />
@@ -72,7 +107,7 @@ export default function PlatformExamplesPage() {
         </div>
 
         {/* VS Code */}
-        <div className="rounded-lg border bg-card p-6">
+        <div id="vscode" className="rounded-lg border bg-card p-6 scroll-mt-20 mb-8">
           <div className="flex items-center gap-3 mb-4">
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
               <Monitor className="h-5 w-5 text-primary" />
@@ -127,8 +162,110 @@ export default function PlatformExamplesPage() {
           </div>
         </div>
 
+        {/* Claude CLI */}
+        <div id="claude" className="rounded-lg border bg-card p-6 scroll-mt-20 mb-8">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
+              <Bot className="h-5 w-5 text-primary" />
+            </div>
+            <div>
+              <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight">Claude CLI</h2>
+              <p className="text-sm text-muted-foreground">Direct file references</p>
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            <div>
+              <h3 className="text-sm font-semibold mb-2">Setup</h3>
+              <p className="text-sm text-muted-foreground">
+                Run <code className="rounded bg-muted px-1 font-mono text-xs">vibe-kit claude</code> to set up Claude integration. Claude CLI works by referencing <code className="rounded bg-muted px-1 font-mono text-xs">.vibe-kit</code> files in your prompts.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-sm font-semibold mb-2">Usage</h3>
+              <div className="rounded-lg border border-border bg-muted/50 p-4">
+                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+                  <Terminal className="h-4 w-4" />
+                  <span className="font-mono">Terminal</span>
+                </div>
+                <code className="block rounded bg-muted px-4 py-2 font-mono text-sm">
+                  claude "read .vibe-kit/context.md and create a button"
+                </code>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-sm font-semibold mb-2">Using Vibe Kit Wrapper</h3>
+              <div className="rounded-lg border border-border bg-muted/50 p-4">
+                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+                  <Terminal className="h-4 w-4" />
+                  <span className="font-mono">Terminal</span>
+                </div>
+                <code className="block rounded bg-muted px-4 py-2 font-mono text-sm">
+                  export AI_TOOL=claude_cli
+                </code>
+                <code className="block rounded bg-muted px-4 py-2 font-mono text-sm mt-2">
+                  vibe-kit ai "create a button component"
+                </code>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Codex CLI */}
+        <div id="codex" className="rounded-lg border bg-card p-6 scroll-mt-20 mb-8">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
+              <Bot className="h-5 w-5 text-primary" />
+            </div>
+            <div>
+              <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight">OpenAI Codex CLI</h2>
+              <p className="text-sm text-muted-foreground">Direct file references</p>
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            <div>
+              <h3 className="text-sm font-semibold mb-2">Setup</h3>
+              <p className="text-sm text-muted-foreground">
+                Run <code className="rounded bg-muted px-1 font-mono text-xs">vibe-kit codex</code> to set up Codex integration. Codex CLI works by referencing <code className="rounded bg-muted px-1 font-mono text-xs">.vibe-kit</code> files in your prompts.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-sm font-semibold mb-2">Usage</h3>
+              <div className="rounded-lg border border-border bg-muted/50 p-4">
+                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+                  <Terminal className="h-4 w-4" />
+                  <span className="font-mono">Terminal</span>
+                </div>
+                <code className="block rounded bg-muted px-4 py-2 font-mono text-sm">
+                  codex "read .vibe-kit/context.md and create a button"
+                </code>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-sm font-semibold mb-2">Using Vibe Kit Wrapper</h3>
+              <div className="rounded-lg border border-border bg-muted/50 p-4">
+                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+                  <Terminal className="h-4 w-4" />
+                  <span className="font-mono">Terminal</span>
+                </div>
+                <code className="block rounded bg-muted px-4 py-2 font-mono text-sm">
+                  export AI_TOOL=codex
+                </code>
+                <code className="block rounded bg-muted px-4 py-2 font-mono text-sm mt-2">
+                  vibe-kit ai "create a button component"
+                </code>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Continue.dev */}
-        <div className="rounded-lg border bg-card p-6">
+        <div id="continue" className="rounded-lg border bg-card p-6 scroll-mt-20 mb-8">
           <div className="flex items-center gap-3 mb-4">
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
               <Sparkles className="h-5 w-5 text-primary" />
@@ -163,7 +300,7 @@ export default function PlatformExamplesPage() {
         </div>
 
         {/* Aider */}
-        <div className="rounded-lg border bg-card p-6">
+        <div id="aider" className="rounded-lg border bg-card p-6 scroll-mt-20 mb-8">
           <div className="flex items-center gap-3 mb-4">
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
               <Terminal className="h-5 w-5 text-primary" />
@@ -213,59 +350,8 @@ export default function PlatformExamplesPage() {
           </div>
         </div>
 
-        {/* Claude CLI */}
-        <div className="rounded-lg border bg-card p-6">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
-              <Bot className="h-5 w-5 text-primary" />
-            </div>
-            <div>
-              <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight">Claude CLI</h2>
-              <p className="text-sm text-muted-foreground">Direct file references</p>
-            </div>
-          </div>
-
-          <div className="space-y-4">
-            <div>
-              <h3 className="text-sm font-semibold mb-2">Setup</h3>
-              <p className="text-sm text-muted-foreground">
-                If <code className="rounded bg-muted px-1 font-mono text-xs">.vibe-kit</code> exists, run <code className="rounded bg-muted px-1 font-mono text-xs">vibe-kit claude</code> to set up Claude integration. Then reference <code className="rounded bg-muted px-1 font-mono text-xs">.vibe-kit</code> files directly.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-sm font-semibold mb-2">Usage</h3>
-              <div className="rounded-lg border border-border bg-muted/50 p-4">
-                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
-                  <Terminal className="h-4 w-4" />
-                  <span className="font-mono">Terminal</span>
-                </div>
-                <code className="block rounded bg-muted px-4 py-2 font-mono text-sm">
-                  claude "read .vibe-kit/commands/analyze.md and execute"
-                </code>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-sm font-semibold mb-2">Using Vibe Kit Wrapper</h3>
-              <div className="rounded-lg border border-border bg-muted/50 p-4">
-                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
-                  <Terminal className="h-4 w-4" />
-                  <span className="font-mono">Terminal</span>
-                </div>
-                <code className="block rounded bg-muted px-4 py-2 font-mono text-sm">
-                  export AI_TOOL=claude_cli
-                </code>
-                <code className="block rounded bg-muted px-4 py-2 font-mono text-sm mt-2">
-                  vibe-kit ai "create a button component"
-                </code>
-              </div>
-            </div>
-          </div>
-        </div>
-
         {/* Gemini CLI */}
-        <div className="rounded-lg border bg-card p-6">
+        <div id="gemini" className="rounded-lg border bg-card p-6 scroll-mt-20 mb-8">
           <div className="flex items-center gap-3 mb-4">
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
               <Bot className="h-5 w-5 text-primary" />
@@ -292,7 +378,7 @@ export default function PlatformExamplesPage() {
                   <span className="font-mono">Terminal</span>
                 </div>
                 <code className="block rounded bg-muted px-4 py-2 font-mono text-sm">
-                  gemini "read .vibe-kit/commands/analyze.md and execute"
+                  gemini "read .vibe-kit/context.md and create a button"
                 </code>
               </div>
             </div>
@@ -330,6 +416,7 @@ export default function PlatformExamplesPage() {
               <div>Person 3 (VS Code): <code className="rounded bg-muted px-1">vibe-kit vscode</code></div>
               <div>Person 4 (Claude): <code className="rounded bg-muted px-1">vibe-kit claude</code></div>
               <div>Person 5 (Gemini): <code className="rounded bg-muted px-1">vibe-kit gemini</code></div>
+              <div>Person 6 (Codex): <code className="rounded bg-muted px-1">vibe-kit codex</code></div>
             </div>
           </div>
         </div>
