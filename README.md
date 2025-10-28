@@ -162,13 +162,15 @@ vk "create a button"  # quick AI chat with context
 vk ai "create a button"  # explicit AI command
 ```
 
-See [full documentation](https://github.com/nolrm/vibe-kit/tree/main/vibe-kit-docs) for detailed guides.
+See [full documentation](https://vibe-kit-docs.vercel.app/) for detailed guides.
 
 ---
 
 ## Links
 
-📚 [Full Documentation](https://github.com/nolrm/vibe-kit/tree/main/vibe-kit-docs) • 🐛 [Issues](https://github.com/nolrm/vibe-kit/issues) • 💬 [Discussions](https://github.com/nolrm/vibe-kit/discussions)
+• 📚 [Full Documentation](https://vibe-kit-docs.vercel.app/)
+• 🐛 [Issues](https://github.com/nolrm/vibe-kit/issues)
+• 💬 [Discussions](https://github.com/nolrm/vibe-kit/discussions)
 
 ---
 
