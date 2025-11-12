@@ -10,12 +10,18 @@ Vibe Kit is **Context Engineering for AI Development** - it provides structured 
 
 ```
 .vibe-kit/
-├── standards/
+├── standards/           ← Code style, testing, architecture standards
 │   ├── glossary.md      ← Project shortcuts (@btn, customer, etc.)
-│   ├── code-style.md     ← Your coding conventions
-│   ├── testing.md        ← Your test patterns
-│   └── ai-guidelines.md  ← AI behavior rules
-└── ...
+│   ├── code-style.md    ← Your coding conventions
+│   ├── testing.md       ← Your test patterns
+│   └── ai-guidelines.md ← AI behavior rules
+├── product/             ← Product context (mission, roadmap, decisions)
+├── instructions/        ← Workflow instructions
+│   ├── meta/           ← Pre-flight/post-flight checks
+│   └── core/           ← Core workflows
+├── policies/           ← Policy enforcement configs
+├── corrections.md      ← AI performance tracking
+└── config.yml          ← Enhanced manifest schema
 ```
 
 ### 2. **AI Reads Files as Context**
@@ -84,6 +90,44 @@ bash install.sh
 - `@.vibe-kit/commands/quality-check.md` - Quality check
 - `@.vibe-kit/commands/add-documentation.md` - Add documentation
 
+### CLI Commands
+
+#### Validation & Compliance
+```bash
+vk check              # Validate installation & policy compliance
+vk check --strict     # Treat warnings as errors
+vk check --verbose    # Show detailed information
+```
+
+#### Corrections Logging
+```bash
+vk note "AI didn't follow testing standards" --category "AI Behavior" --priority HIGH
+vk note "Good behavior observed" --category "Preferences" --priority LOW
+```
+
+#### Workflow Orchestration
+```bash
+vk run create-component              # Run workflow
+vk run create-component --interactive  # Interactive mode (pause between steps)
+```
+
+#### Registry & Versioning
+```bash
+# Publish your Vibe Kit configuration
+vk publish --name @company/react-standards --version 1.0.0
+
+# Pull shared configurations
+vk pull @company/react-standards@1.0.0
+vk pull @company/react-standards@latest --backup
+```
+
+#### Observability Dashboard
+```bash
+vk dashboard              # Start web dashboard (http://localhost:3001)
+vk dashboard --port 8080  # Custom port
+vk dashboard --no-server  # CLI metrics only
+```
+
 ### Standards Reference
 
 - `@.vibe-kit/standards/README.md` - Complete development standards
@@ -127,3 +171,62 @@ Add comprehensive tests for the UserCard component
 ```
 Run quality checks on the current codebase
 ```
+
+## Enterprise Features
+
+### Policy Enforcement
+
+Configure policies in `.vibe-kit/policies/policy.yml`:
+
+```yaml
+enforcement:
+  testing:
+    numbered_cases: warn  # off | warn | block
+    coverage_threshold: 80
+  code_style:
+    typescript_strict: warn
+```
+
+Run `vk check` to validate compliance.
+
+### Workflow Orchestration
+
+Create structured workflows in `.vibe-kit/instructions/core/`:
+
+```markdown
+<process_flow>
+  <step number="1" name="gather_input">
+    ### Step 1: Gather Input
+    [Instructions]
+  </step>
+</process_flow>
+```
+
+Run with: `vk run <workflow-name>`
+
+### Registry & Sharing
+
+Share standards across teams:
+
+```bash
+# Publish
+vk publish --name @company/react-standards --version 1.0.0
+
+# Pull
+vk pull @company/react-standards@latest --backup
+```
+
+### Observability
+
+Monitor standards health:
+
+```bash
+vk dashboard  # Web dashboard
+vk dashboard --no-server  # CLI metrics
+```
+
+Dashboard shows:
+- Standards freshness
+- Corrections log statistics
+- Policy compliance
+- Product context status

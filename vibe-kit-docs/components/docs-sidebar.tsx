@@ -15,6 +15,13 @@ const docsNav = [
       { title: "Commands", href: "/docs/commands" },
     ],
   },
+  {
+    title: "Advanced",
+    items: [
+      { title: "Monorepo Support", href: "/docs/monorepo" },
+      { title: "Enterprise Features", href: "/docs/enterprise-features" },
+    ],
+  },
 ]
 
 export function DocsSidebar() {

@@ -68,11 +68,195 @@ export default function CommandsPage() {
               <div className="flex-1">
                 <h3 className="font-semibold text-lg mb-1">vibe-kit analyze</h3>
                 <p className="text-sm text-muted-foreground mb-2">
-                  Analyze your project and generate customized standards based on your actual codebase.
+                  Analyze your project and generate customized standards based on your actual codebase. <strong>Monorepo-aware:</strong> Automatically detects and prompts for frontend/backend scope.
                 </p>
                 <code className="block rounded bg-muted px-4 py-2 font-mono text-sm">vibe-kit analyze</code>
+                <div className="mt-2 space-y-1">
+                  <p className="text-sm text-muted-foreground">
+                    <strong>Options:</strong>
+                  </p>
+                  <ul className="text-sm text-muted-foreground list-disc list-inside ml-2 space-y-0.5">
+                    <li><code className="rounded bg-muted px-1 font-mono text-xs">--scope frontend|backend|both</code> - Analyze specific scope (non-interactive)</li>
+                    <li><code className="rounded bg-muted px-1 font-mono text-xs">--package &lt;path&gt;</code> - Analyze specific package (e.g., apps/admin)</li>
+                    <li><code className="rounded bg-muted px-1 font-mono text-xs">--non-interactive</code> - Skip prompts</li>
+                  </ul>
+                </div>
                 <p className="text-sm text-muted-foreground mt-2">
                   <strong>What it does:</strong> AI scans your codebase and generates content for skeleton standards files. <strong>⚠️ You must review and edit the generated content manually.</strong>
+                </p>
+                <div className="rounded-lg border border-blue-500/20 bg-blue-500/5 p-2 mt-2">
+                  <p className="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">📦 Monorepo Support:</p>
+                  <p className="text-xs text-muted-foreground">
+                    For monorepos, automatically detects packages and prompts to analyze frontend, backend, or both. Generates separate standards when analyzing both.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="space-y-4 pt-4">
+        <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight">Validation & Compliance</h2>
+        
+        <div className="space-y-3">
+          <div className="rounded-lg border bg-card p-4">
+            <div className="flex items-start gap-3">
+              <Terminal className="h-5 w-5 text-primary mt-0.5" />
+              <div className="flex-1">
+                <h3 className="font-semibold text-lg mb-1">vibe-kit check</h3>
+                <p className="text-sm text-muted-foreground mb-2">
+                  Validate installation and check policy compliance based on <code className="rounded bg-muted px-1 font-mono text-xs">.vibe-kit/policies/policy.yml</code>.
+                </p>
+                <code className="block rounded bg-muted px-4 py-2 font-mono text-sm">vibe-kit check</code>
+                <div className="mt-2 space-y-1">
+                  <p className="text-sm text-muted-foreground">
+                    <strong>Options:</strong>
+                  </p>
+                  <ul className="text-sm text-muted-foreground list-disc list-inside ml-2 space-y-0.5">
+                    <li><code className="rounded bg-muted px-1 font-mono text-xs">--strict</code> - Treat warnings as errors</li>
+                    <li><code className="rounded bg-muted px-1 font-mono text-xs">--verbose</code> - Show detailed information</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="space-y-4 pt-4">
+        <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight">Corrections Logging</h2>
+        
+        <div className="space-y-3">
+          <div className="rounded-lg border bg-card p-4">
+            <div className="flex items-start gap-3">
+              <Terminal className="h-5 w-5 text-primary mt-0.5" />
+              <div className="flex-1">
+                <h3 className="font-semibold text-lg mb-1">vibe-kit note</h3>
+                <p className="text-sm text-muted-foreground mb-2">
+                  Add entries to the corrections log for tracking AI performance issues and improvements.
+                </p>
+                <code className="block rounded bg-muted px-4 py-2 font-mono text-sm">vibe-kit note "AI didn't follow testing standards"</code>
+                <div className="mt-2 space-y-1">
+                  <p className="text-sm text-muted-foreground">
+                    <strong>Options:</strong>
+                  </p>
+                  <ul className="text-sm text-muted-foreground list-disc list-inside ml-2 space-y-0.5">
+                    <li><code className="rounded bg-muted px-1 font-mono text-xs">--category &lt;category&gt;</code> - Category (AI Behavior, Preferences, etc.)</li>
+                    <li><code className="rounded bg-muted px-1 font-mono text-xs">--priority &lt;priority&gt;</code> - Priority (HIGH, MEDIUM, LOW)</li>
+                    <li><code className="rounded bg-muted px-1 font-mono text-xs">--task &lt;task&gt;</code> - Related task description</li>
+                  </ul>
+                </div>
+                <p className="text-sm text-muted-foreground mt-2 italic">
+                  Example: <code className="rounded bg-muted px-1 font-mono text-xs">vk note "Good behavior observed" --category "Preferences" --priority LOW</code>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="space-y-4 pt-4">
+        <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight">Workflow Orchestration</h2>
+        
+        <div className="space-y-3">
+          <div className="rounded-lg border bg-card p-4">
+            <div className="flex items-start gap-3">
+              <Terminal className="h-5 w-5 text-primary mt-0.5" />
+              <div className="flex-1">
+                <h3 className="font-semibold text-lg mb-1">vibe-kit run &lt;workflow&gt;</h3>
+                <p className="text-sm text-muted-foreground mb-2">
+                  Execute structured workflows defined in <code className="rounded bg-muted px-1 font-mono text-xs">.vibe-kit/instructions/core/</code>.
+                </p>
+                <code className="block rounded bg-muted px-4 py-2 font-mono text-sm">vibe-kit run create-component</code>
+                <div className="mt-2 space-y-1">
+                  <p className="text-sm text-muted-foreground">
+                    <strong>Options:</strong>
+                  </p>
+                  <ul className="text-sm text-muted-foreground list-disc list-inside ml-2 space-y-0.5">
+                    <li><code className="rounded bg-muted px-1 font-mono text-xs">--interactive</code> - Pause between steps for review</li>
+                  </ul>
+                </div>
+                <p className="text-sm text-muted-foreground mt-2">
+                  Workflows use XML-like tags (<code className="rounded bg-muted px-1 font-mono text-xs">&lt;process_flow&gt;</code>, <code className="rounded bg-muted px-1 font-mono text-xs">&lt;step&gt;</code>) for structured execution.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="space-y-4 pt-4">
+        <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight">Registry & Versioning</h2>
+        
+        <div className="space-y-3">
+          <div className="rounded-lg border bg-card p-4">
+            <div className="flex items-start gap-3">
+              <Terminal className="h-5 w-5 text-primary mt-0.5" />
+              <div className="flex-1">
+                <h3 className="font-semibold text-lg mb-1">vibe-kit publish</h3>
+                <p className="text-sm text-muted-foreground mb-2">
+                  Package and publish your Vibe Kit configuration to the local registry for sharing across teams.
+                </p>
+                <code className="block rounded bg-muted px-4 py-2 font-mono text-sm">vibe-kit publish --name @company/react-standards --version 1.0.0</code>
+                <p className="text-sm text-muted-foreground mt-2">
+                  Creates a versioned archive in <code className="rounded bg-muted px-1 font-mono text-xs">~/.vibe-kit-registry</code>.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="rounded-lg border bg-card p-4">
+            <div className="flex items-start gap-3">
+              <Terminal className="h-5 w-5 text-primary mt-0.5" />
+              <div className="flex-1">
+                <h3 className="font-semibold text-lg mb-1">vibe-kit pull &lt;package&gt;</h3>
+                <p className="text-sm text-muted-foreground mb-2">
+                  Pull a Vibe Kit configuration from the registry.
+                </p>
+                <code className="block rounded bg-muted px-4 py-2 font-mono text-sm">vibe-kit pull @company/react-standards@1.0.0</code>
+                <div className="mt-2 space-y-1">
+                  <p className="text-sm text-muted-foreground">
+                    <strong>Options:</strong>
+                  </p>
+                  <ul className="text-sm text-muted-foreground list-disc list-inside ml-2 space-y-0.5">
+                    <li><code className="rounded bg-muted px-1 font-mono text-xs">--force</code> - Overwrite existing files</li>
+                    <li><code className="rounded bg-muted px-1 font-mono text-xs">--backup</code> - Backup existing files before overwriting</li>
+                  </ul>
+                </div>
+                <p className="text-sm text-muted-foreground mt-2 italic">
+                  Use <code className="rounded bg-muted px-1 font-mono text-xs">@latest</code> to pull the latest version.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="space-y-4 pt-4">
+        <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight">Observability</h2>
+        
+        <div className="space-y-3">
+          <div className="rounded-lg border bg-card p-4">
+            <div className="flex items-start gap-3">
+              <Terminal className="h-5 w-5 text-primary mt-0.5" />
+              <div className="flex-1">
+                <h3 className="font-semibold text-lg mb-1">vibe-kit dashboard</h3>
+                <p className="text-sm text-muted-foreground mb-2">
+                  Start a web-based observability dashboard to visualize standards freshness, corrections log analytics, and policy compliance.
+                </p>
+                <code className="block rounded bg-muted px-4 py-2 font-mono text-sm">vibe-kit dashboard</code>
+                <div className="mt-2 space-y-1">
+                  <p className="text-sm text-muted-foreground">
+                    <strong>Options:</strong>
+                  </p>
+                  <ul className="text-sm text-muted-foreground list-disc list-inside ml-2 space-y-0.5">
+                    <li><code className="rounded bg-muted px-1 font-mono text-xs">--port &lt;port&gt;</code> - Custom port (default: 3001)</li>
+                    <li><code className="rounded bg-muted px-1 font-mono text-xs">--no-server</code> - Display metrics in CLI only</li>
+                  </ul>
+                </div>
+                <p className="text-sm text-muted-foreground mt-2">
+                  Dashboard shows: standards freshness, corrections log statistics, policy compliance, and product context status.
                 </p>
               </div>
             </div>

@@ -137,6 +137,50 @@ export default function DocsPage() {
       </div>
 
       <div className="space-y-4 pt-4">
+        <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight">Enterprise Features</h2>
+        <p className="text-muted-foreground leading-relaxed">
+          Vibe Kit includes enterprise-grade features for larger teams and complex projects:
+        </p>
+        <div className="grid gap-3 md:grid-cols-2 mt-3">
+          <div className="rounded-lg border bg-card p-4">
+            <h3 className="font-semibold text-base mb-1">Policy Enforcement</h3>
+            <p className="text-sm text-muted-foreground">
+              Configure and enforce coding standards with <code className="rounded bg-muted px-1 font-mono text-xs">vk check</code>
+            </p>
+          </div>
+          <div className="rounded-lg border bg-card p-4">
+            <h3 className="font-semibold text-base mb-1">Workflow Orchestration</h3>
+            <p className="text-sm text-muted-foreground">
+              Execute structured workflows with <code className="rounded bg-muted px-1 font-mono text-xs">vk run</code>
+            </p>
+          </div>
+          <div className="rounded-lg border bg-card p-4">
+            <h3 className="font-semibold text-base mb-1">Registry & Versioning</h3>
+            <p className="text-sm text-muted-foreground">
+              Share standards across teams with <code className="rounded bg-muted px-1 font-mono text-xs">vk publish/pull</code>
+            </p>
+          </div>
+          <div className="rounded-lg border bg-card p-4">
+            <h3 className="font-semibold text-base mb-1">Observability</h3>
+            <p className="text-sm text-muted-foreground">
+              Monitor standards health with <code className="rounded bg-muted px-1 font-mono text-xs">vk dashboard</code>
+            </p>
+          </div>
+          <div className="rounded-lg border bg-card p-4 md:col-span-2">
+            <h3 className="font-semibold text-base mb-1">Monorepo Support</h3>
+            <p className="text-sm text-muted-foreground">
+              Automatic detection and separate analysis for frontend/backend packages. Works with Turborepo, Nx, Lerna, and workspaces.
+            </p>
+          </div>
+        </div>
+        <div className="mt-3">
+          <Link href="/docs/enterprise-features" className="text-sm text-primary hover:underline font-medium">
+            Learn more about Enterprise Features →
+          </Link>
+        </div>
+      </div>
+
+      <div className="space-y-4 pt-4">
         <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight">Context Files</h2>
         <p className="text-muted-foreground leading-relaxed">
           These markdown files provide context to your AI assistant:

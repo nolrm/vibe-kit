@@ -138,6 +138,11 @@ read .vibe-kit/commands/analyze.md and execute
 - 🤖 **Multi-Platform** - Works with Cursor, Claude CLI, Codex CLI, Aider, Continue, VS Code, Gemini
 - 🛡️ **Safe Install** - Backs up existing files with rollback support
 - ⚡ **Zero Config** - Auto-detects package managers and AI tools
+- ✅ **Policy Enforcement** - Configurable validation with `vk check`
+- 📝 **Corrections Tracking** - Track AI performance issues with corrections log
+- 🔄 **Workflow Orchestration** - Structured workflows with `vk run`
+- 📦 **Registry System** - Share standards across teams with `vk publish/pull`
+- 📊 **Observability Dashboard** - Visual metrics and compliance tracking
 
 ## Commands
 
@@ -156,6 +161,28 @@ vk gemini      # add Gemini CLI integration
 vk analyze     # customize standards to your project  
 vk update      # pull latest updates
 vk status      # check install & integrations
+
+# Validation & Compliance
+vk check       # validate installation & policy compliance
+vk check --strict  # treat warnings as errors
+
+# Corrections Logging
+vk note "message"  # add note to corrections log
+vk note "AI issue" --category "AI Behavior" --priority HIGH
+
+# Workflow Orchestration
+vk run <workflow>  # run structured workflow
+vk run create-component  # example workflow
+vk run create-component --interactive  # interactive mode
+
+# Registry & Versioning
+vk publish --name @company/react-standards --version 1.0.0
+vk pull @company/react-standards@1.0.0
+vk pull @company/react-standards@latest --backup
+
+# Observability
+vk dashboard   # start web dashboard
+vk dashboard --no-server  # CLI metrics only
 
 # AI Usage (loads .vibe-kit context automatically)
 vk "create a button"  # quick AI chat with context

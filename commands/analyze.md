@@ -26,10 +26,19 @@ I'll analyze your project and customize the Vibe Kit standards to match your spe
 - **Security Standards** - Based on your project requirements
 
 ### 📝 **Files I'll Update**
+
+**For single-package projects:**
 - `.vibe-kit/standards/code-style.md` - Customized coding standards
 - `.vibe-kit/standards/testing.md` - Project-specific testing guidelines
 - `.vibe-kit/standards/architecture.md` - Framework-specific architecture patterns
 - `.vibe-kit/standards/README.md` - Updated overview with your project details
+
+**For monorepos (when analyzing both frontend + backend):**
+- `.vibe-kit/standards/frontend/code-style.md` - Frontend coding standards
+- `.vibe-kit/standards/frontend/testing.md` - Frontend testing guidelines
+- `.vibe-kit/standards/backend/code-style.md` - Backend coding standards
+- `.vibe-kit/standards/backend/testing.md` - Backend testing guidelines
+- Shared standards in `.vibe-kit/standards/` for common patterns
 
 ## Analysis Process:
 
@@ -38,6 +47,9 @@ I'll analyze your project and customize the Vibe Kit standards to match your spe
    - Build tool identification (Vite, Webpack, Rollup, etc.)
    - Package manager detection (npm, yarn, pnpm)
    - Monorepo vs single-package structure
+   - **Monorepo detection**: Automatically detects Turborepo, Nx, Lerna, and workspace structures
+   - **Package classification**: Identifies frontend vs backend packages
+   - **Scope selection**: For monorepos, you'll be prompted to analyze frontend, backend, or both
    - Directory organization patterns
 
 2. **📦 Dependencies Analysis**

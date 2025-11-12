@@ -169,3 +169,5 @@ build/
 vibe-kit-docs/.next/
 vibe-kit-docs/out/
 vibe-kit-docs/.vercel/
+
+test-project/

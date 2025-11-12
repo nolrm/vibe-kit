@@ -1,6 +1,6 @@
 {
   "name": "@nolrm/vibe-kit",
-  "version": "0.5.2",
+  "version": "0.6.0",
   "description": "Context Engineering for AI Development - Provide rich context to AI through structured MD files with standards, code guides, and documentation. Works with Cursor, Claude, Aider, VS Code Copilot, and more.",
   "main": "lib/index.js",
   "bin": {
@@ -64,6 +64,7 @@
     "commander": "^11.0.0",
     "fs-extra": "^11.1.1",
     "inquirer": "^8.2.6",
+    "js-yaml": "^4.1.0",
     "ora": "^5.4.1"
   },
   "files": [

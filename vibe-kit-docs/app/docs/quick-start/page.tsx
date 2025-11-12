@@ -112,6 +112,20 @@ export default function QuickStartPage() {
               <li><strong>⚠️ Important:</strong> Review and edit the generated content manually</li>
             </ul>
           </div>
+          <div className="rounded-lg border border-blue-500/20 bg-blue-500/5 p-3 mt-3">
+            <p className="text-sm font-medium mb-2">📦 Monorepo Support</p>
+            <p className="text-sm text-muted-foreground mb-2">
+              For monorepos, <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">vk analyze</code> automatically detects frontend/backend packages and prompts you to select which to analyze:
+            </p>
+            <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground ml-2">
+              <li><strong>Frontend:</strong> Analyzes React/Vue/Angular packages</li>
+              <li><strong>Backend:</strong> Analyzes API/server packages</li>
+              <li><strong>Both:</strong> Generates separate standards for frontend and backend</li>
+            </ul>
+            <p className="text-sm text-muted-foreground mt-2">
+              Use <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">--scope frontend</code> or <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">--scope backend</code> for non-interactive mode.
+            </p>
+          </div>
         </div>
       </div>
 
