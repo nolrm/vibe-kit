@@ -2,9 +2,11 @@
 
 > Context Engineering for AI Development
 
-Give your AI assistants (Cursor, Claude, VS Code Copilot, Aider) structured context through markdown files. Vibe Kit creates a knowledge base that ensures AI generates code matching your exact patterns, style, and architecture—no more hallucinated code or mismatched conventions.
+Give your AI assistants (Cursor, Claude, Copilot, Codex, Gemini, Aider, Continue, Windsurf) structured context through markdown files. Vibe Kit creates a knowledge base that ensures AI generates code matching your exact patterns, style, and architecture—no more hallucinated code or mismatched conventions.
 
 Vibe Kit is a CLI tool that provides **context-engineering** capabilities by creating `.vibe-kit/` directories with project standards, guidelines, and patterns that AI assistants read automatically.
+
+**[Read the full documentation](https://vibe-kit-docs.vercel.app/)**
 
 ## Why Vibe Kit?
 
@@ -19,7 +21,9 @@ Update `.md` files as your project evolves; the AI follows.
 
 ## Multi-Platform Support
 
-Works with: **Cursor** (auto) • **VS Code** (`@.vibe-kit`) • **Claude CLI** • **Codex CLI** • **Aider** • **Continue** • **Gemini CLI**
+Works with: **Cursor** • **Claude Code** • **GitHub Copilot** • **Codex CLI** • **Gemini CLI** • **Aider** • **Continue** • **Windsurf**
+
+Each platform gets auto-loaded bridge files (`CLAUDE.md`, `AGENTS.md`, `GEMINI.md`, `.windsurfrules`, etc.) so your AI tools read project standards automatically.
 
 ---
 
@@ -66,20 +70,19 @@ Perfect for teams where members use different AI tools:
 # First team member (any tool) - sets up the project
 vibe-kit install
 
-# Cursor users add their integration
-vibe-kit cursor    # or: vk cursor
-
-# Claude users add their integration  
-vibe-kit claude    # or: vk claude
-
-# Codex users add their integration
-vibe-kit codex     # or: vk codex
-
-# VS Code users add their integration
-vibe-kit vscode    # or: vk vscode
+# Each team member adds their platform
+vk claude      # creates CLAUDE.md + .claude/rules/
+vk cursor      # creates .cursor/rules/ (scoped .mdc files)
+vk copilot     # creates .github/copilot-instructions.md
+vk codex       # creates AGENTS.md
+vk gemini      # creates GEMINI.md + .gemini/settings.json
+vk aider       # creates CONVENTIONS.md + .aider/rules.md
+vk continue    # creates .continue/rules/ + config.yaml
+vk windsurf    # creates .windsurfrules + .windsurf/rules/
+vk vscode      # alias for copilot
 ```
 
-Each platform integration is added to `.vibe-kit/` without overwriting existing files. Share your analyzed `.vibe-kit/standards/*.md` files with the team and everyone gets the same context.
+Each platform generates bridge files that the AI tool auto-reads. If a bridge file already exists (e.g., you have a custom `CLAUDE.md`), Vibe Kit appends its section below your content instead of overwriting. Share your `.vibe-kit/standards/*.md` files with the team and everyone gets the same context.
 
 ---
 
@@ -108,24 +111,29 @@ Each platform integration is added to `.vibe-kit/` without overwriting existing 
 
 ## Use it in your tool
 
-**Cursor** (AI chat)
+**Cursor** — rules auto-load from `.cursor/rules/`
 ```
 @.vibe-kit/commands/analyze.md
 ```
 
-**VS Code** (Copilot Chat)
+**Claude Code** — reads `CLAUDE.md` + `.claude/rules/` automatically
+```bash
+claude "create checkout flow for customer"
+```
+
+**GitHub Copilot** — reads `.github/copilot-instructions.md` automatically
 ```
 @.vibe-kit Create checkout flow for customer
+```
+
+**Codex CLI** — reads `AGENTS.md` automatically
+```bash
+codex "create checkout flow for customer"
 ```
 
 **CLI** (Chat with AI)
 ```bash
 vk ai "create checkout flow for customer"
-```
-
-**Claude / Gemini / Codex / Aider** (Direct context)
-```
-read .vibe-kit/commands/analyze.md and execute
 ```
 
 ---
@@ -135,7 +143,7 @@ read .vibe-kit/commands/analyze.md and execute
 - 🧠 **Context Engineering** - Structured MD files your AI reads automatically
 - 🔍 **Smart Analysis** - AI generates standards content based on your codebase
 - 🌍 **Project Agnostic** - Works with React, Vue, Node.js, PHP, Python, Rust, monorepos—any project type
-- 🤖 **Multi-Platform** - Works with Cursor, Claude CLI, Codex CLI, Aider, Continue, VS Code, Gemini
+- 🤖 **Multi-Platform** - Works with Cursor, Claude Code, Copilot, Codex, Gemini, Aider, Continue, Windsurf
 - 🛡️ **Safe Install** - Backs up existing files with rollback support
 - ⚡ **Zero Config** - Auto-detects package managers and AI tools
 - ✅ **Policy Enforcement** - Configurable validation with `vk check`
@@ -149,13 +157,15 @@ read .vibe-kit/commands/analyze.md and execute
 ```bash
 # Installation & Setup
 vk install     # set up .vibe-kit in this repo
-vk cursor      # add Cursor integration
+vk claude      # add Claude Code integration (CLAUDE.md + rules)
+vk cursor      # add Cursor integration (scoped .mdc rules)
+vk copilot     # add GitHub Copilot integration
+vk codex       # add Codex CLI integration (AGENTS.md)
+vk gemini      # add Gemini CLI integration (GEMINI.md)
+vk aider       # add Aider integration (CONVENTIONS.md)
 vk continue    # add Continue integration
-vk aider       # add Aider integration
-vk vscode      # add VS Code integration
-vk claude      # add Claude CLI integration
-vk codex       # add Codex CLI integration
-vk gemini      # add Gemini CLI integration
+vk windsurf    # add Windsurf integration (.windsurfrules)
+vk vscode      # alias for copilot
 
 # Analysis & Updates
 vk analyze     # customize standards to your project  
@@ -189,13 +199,8 @@ vk "create a button"  # quick AI chat with context
 vk ai "create a button"  # explicit AI command
 ```
 
-See [full documentation](https://vibe-kit-docs.vercel.app/) for detailed guides.
-
----
-
 ## Links
 
-• 📚 [Full Documentation](https://vibe-kit-docs.vercel.app/)
 • 🐛 [Issues](https://github.com/nolrm/vibe-kit/issues)
 • 💬 [Discussions](https://github.com/nolrm/vibe-kit/discussions)
 
