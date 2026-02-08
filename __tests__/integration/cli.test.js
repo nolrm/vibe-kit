@@ -27,6 +27,17 @@ describe('CLI Integration Tests', () => {
       expect(result).toContain('update');
     });
 
+    test('should show platform commands in help', () => {
+      const result = execSync(`node "${cliPath}" --help`, { encoding: 'utf8' });
+      expect(result).toContain('windsurf');
+      expect(result).toContain('codex');
+      expect(result).toContain('copilot');
+      expect(result).toContain('claude');
+      expect(result).toContain('cursor');
+      expect(result).toContain('gemini');
+      expect(result).toContain('aider');
+    });
+
     test('should show help for install command', () => {
       const result = execSync(`node "${cliPath}" install --help`, { encoding: 'utf8' });
       expect(result).toContain('Install Vibe Kit in current project');

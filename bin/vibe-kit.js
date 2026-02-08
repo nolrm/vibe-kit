@@ -262,6 +262,45 @@ program
     }
   });
 
+program
+  .command('codex')
+  .description('Install Codex CLI integration only')
+  .option('--non-interactive', 'Skip interactive prompts')
+  .action(async (options) => {
+    try {
+      await install({ platform: 'codex', ...options });
+    } catch (error) {
+      console.error(chalk.red('❌ Installation failed:'), error.message);
+      process.exit(1);
+    }
+  });
+
+program
+  .command('copilot')
+  .description('Install GitHub Copilot integration only')
+  .option('--non-interactive', 'Skip interactive prompts')
+  .action(async (options) => {
+    try {
+      await install({ platform: 'copilot', ...options });
+    } catch (error) {
+      console.error(chalk.red('❌ Installation failed:'), error.message);
+      process.exit(1);
+    }
+  });
+
+program
+  .command('windsurf')
+  .description('Install Windsurf integration only')
+  .option('--non-interactive', 'Skip interactive prompts')
+  .action(async (options) => {
+    try {
+      await install({ platform: 'windsurf', ...options });
+    } catch (error) {
+      console.error(chalk.red('❌ Installation failed:'), error.message);
+      process.exit(1);
+    }
+  });
+
 // Catch-all for unknown commands (treats them as prompts)
 // This MUST be registered AFTER all commands but BEFORE parse()
 program.on('command:*', function(args) {

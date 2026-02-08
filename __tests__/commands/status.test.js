@@ -13,7 +13,9 @@ jest.mock('chalk', () => ({
   green: (str) => str,
   yellow: (str) => str,
   blue: (str) => str,
-  magenta: (str) => str
+  magenta: (str) => str,
+  dim: (str) => str,
+  bold: (str) => str
 }));
 
 const StatusManager = require('../../lib/utils/status-manager');
