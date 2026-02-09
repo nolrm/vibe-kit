@@ -10,7 +10,10 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    
+    permissions:
+      contents: read
+      id-token: write
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -20,7 +23,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18.x'
+          node-version: '22.x'
           registry-url: 'https://registry.npmjs.org/'
 
       - name: Install dependencies
@@ -33,14 +36,14 @@ jobs:
         run: |
           CURRENT_VERSION=$(node -p "require('./package.json').version")
           echo "🔍 Checking version: $CURRENT_VERSION"
-          
+
           # Check if version exists on npm
           if npm view @nolrm/vibe-kit@$CURRENT_VERSION version > /dev/null 2>&1; then
             echo "⏭️  Version $CURRENT_VERSION already exists - skipping publish"
             echo "✅ No action needed"
           else
             echo "🚀 Publishing new version $CURRENT_VERSION..."
-            npm publish --access public
+            npm publish --access public --provenance
             echo "✅ Successfully published @nolrm/vibe-kit@$CURRENT_VERSION"
             echo "📦 Package: https://www.npmjs.com/package/@nolrm/vibe-kit"
             echo "🎵 Vibe Kit is now available for installation!"
@@ -49,5 +52,3 @@ jobs:
             echo "   git tag v$CURRENT_VERSION"
             echo "   git push origin v$CURRENT_VERSION"
           fi
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
