@@ -25,7 +25,7 @@ describe('Status Command', () => {
     jest.clearAllMocks();
   });
 
-  describe('when Vibe Kit is not installed', () => {
+  describe('when ContextKit is not installed', () => {
     test('should show not installed message', async () => {
       fs.pathExists.mockResolvedValue(false);
       
@@ -33,14 +33,14 @@ describe('Status Command', () => {
       
       await status();
       
-      expect(consoleSpy).toHaveBeenCalledWith('❌ Vibe Kit is not installed in this project');
-      expect(consoleSpy).toHaveBeenCalledWith('💡 Run: vibe-kit install');
+      expect(consoleSpy).toHaveBeenCalledWith('❌ ContextKit is not installed in this project');
+      expect(consoleSpy).toHaveBeenCalledWith('💡 Run: contextkit install');
       
       consoleSpy.mockRestore();
     });
   });
 
-  describe('when Vibe Kit is installed', () => {
+  describe('when ContextKit is installed', () => {
     const mockConfig = `version: "0.1.0"
 project_name: "test-project"
 project_type: "react"
@@ -53,7 +53,7 @@ git_hooks: true`;
 
     beforeEach(() => {
       fs.pathExists.mockImplementation((path) => {
-        if (path === '.vibe-kit/config.yml') return true;
+        if (path === '.contextkit/config.yml') return true;
         if (path === 'package.json') return true;
         if (path === 'package-lock.json') return true;
         return false;
@@ -93,7 +93,7 @@ git_hooks: true`;
 
       await status();
       
-      expect(consoleSpy).toHaveBeenCalledWith('🎵 Vibe Kit Status');
+      expect(consoleSpy).toHaveBeenCalledWith('🎵 ContextKit Status');
       expect(consoleSpy).toHaveBeenCalledWith('');
       expect(consoleSpy).toHaveBeenCalledWith('📦 Installation:');
       // Check that version is displayed (dynamic from package.json)
@@ -101,7 +101,7 @@ git_hooks: true`;
       expect(versionCall).toBeDefined();
       expect(consoleSpy).toHaveBeenCalledWith('🔍 Analysis:');
       expect(consoleSpy).toHaveBeenCalledWith('   Status: Not analyzed');
-      expect(consoleSpy).toHaveBeenCalledWith('   Recommendation: Run @.vibe-kit/commands/analyze.md to customize standards');
+      expect(consoleSpy).toHaveBeenCalledWith('   Recommendation: Run @.contextkit/commands/analyze.md to customize standards');
       
       consoleSpy.mockRestore();
     });
@@ -132,7 +132,7 @@ git_hooks: true`;
 
       await status();
       
-      expect(consoleSpy).toHaveBeenCalledWith('✅ Vibe Kit is up to date');
+      expect(consoleSpy).toHaveBeenCalledWith('✅ ContextKit is up to date');
       
       consoleSpy.mockRestore();
     });
@@ -151,7 +151,7 @@ git_hooks: true`;
       const currentVersionCall = consoleSpy.mock.calls.find(call => call[0].includes('Current:'));
       expect(currentVersionCall).toBeDefined();
       expect(consoleSpy).toHaveBeenCalledWith('   Latest: 0.3.0');
-      expect(consoleSpy).toHaveBeenCalledWith('💡 Run: vibe-kit update');
+      expect(consoleSpy).toHaveBeenCalledWith('💡 Run: contextkit update');
       
       consoleSpy.mockRestore();
     });
@@ -163,7 +163,7 @@ git_hooks: true`;
 
       await status();
       
-      expect(consoleSpy).toHaveBeenCalledWith('✅ Vibe Kit is up to date');
+      expect(consoleSpy).toHaveBeenCalledWith('✅ ContextKit is up to date');
       
       consoleSpy.mockRestore();
     });
@@ -178,7 +178,7 @@ git_hooks: true`;
       
       await status();
       
-      expect(consoleSpy).toHaveBeenCalledWith('❌ Error reading Vibe Kit configuration:', 'File read error');
+      expect(consoleSpy).toHaveBeenCalledWith('❌ Error reading ContextKit configuration:', 'File read error');
       
       consoleSpy.mockRestore();
     });
@@ -187,7 +187,7 @@ git_hooks: true`;
   describe('project type detection', () => {
     test('should detect React project', async () => {
       fs.pathExists.mockImplementation((path) => {
-        if (path === '.vibe-kit/config.yml') return true;
+        if (path === '.contextkit/config.yml') return true;
         if (path === 'package.json') return true;
         return false;
       });
@@ -214,7 +214,7 @@ git_hooks: true`;
       // Check that the analysis section shows the recommendation
       expect(consoleSpy).toHaveBeenCalledWith('🔍 Analysis:');
       expect(consoleSpy).toHaveBeenCalledWith('   Status: Not analyzed');
-      expect(consoleSpy).toHaveBeenCalledWith('   Recommendation: Run @.vibe-kit/commands/analyze.md to customize standards');
+      expect(consoleSpy).toHaveBeenCalledWith('   Recommendation: Run @.contextkit/commands/analyze.md to customize standards');
       
       require = originalRequire;
       consoleSpy.mockRestore();
@@ -224,7 +224,7 @@ git_hooks: true`;
   describe('package manager detection', () => {
     test('should detect yarn', async () => {
       fs.pathExists.mockImplementation((path) => {
-        if (path === '.vibe-kit/config.yml') return true;
+        if (path === '.contextkit/config.yml') return true;
         if (path === 'yarn.lock') return true;
         return false;
       });
@@ -242,7 +242,7 @@ git_hooks: true`;
       // Check that the analysis section shows the recommendation
       expect(consoleSpy).toHaveBeenCalledWith('🔍 Analysis:');
       expect(consoleSpy).toHaveBeenCalledWith('   Status: Not analyzed');
-      expect(consoleSpy).toHaveBeenCalledWith('   Recommendation: Run @.vibe-kit/commands/analyze.md to customize standards');
+      expect(consoleSpy).toHaveBeenCalledWith('   Recommendation: Run @.contextkit/commands/analyze.md to customize standards');
       
       consoleSpy.mockRestore();
     });

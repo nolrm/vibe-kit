@@ -22,8 +22,8 @@ Add documentation for UserService including API methods and error handling
 
 ## Standards Applied
 
-- @.vibe-kit/standards/code-style.md - Code style guidelines
-- @.vibe-kit/standards/ai-guidelines.md - AI development guidelines
+- @.contextkit/standards/code-style.md - Code style guidelines
+- @.contextkit/standards/ai-guidelines.md - AI development guidelines
 
 ## Documentation Types
 

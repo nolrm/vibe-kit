@@ -11,7 +11,7 @@ BLUE='\033[0;34m'
 PURPLE='\033[0;35m'
 NC='\033[0m' # No Color
 
-echo -e "${PURPLE}🎵 Vibe Kit Installation${NC}"
+echo -e "${PURPLE}🎵 ContextKit Installation${NC}"
 echo ""
 
 # Check if Node.js is available
@@ -20,17 +20,17 @@ if command -v node >/dev/null 2>&1; then
     echo ""
     
     # Install via npm
-    npm install -g @nolrm/vibe-kit
+    npm install -g @nolrm/contextkit
     
     echo ""
-    echo -e "${GREEN}🎉 Vibe Kit installed successfully!${NC}"
+    echo -e "${GREEN}🎉 ContextKit installed successfully!${NC}"
     echo ""
     echo -e "${BLUE}📖 Usage:${NC}"
-    echo "  vibe-kit install    # Install in current project"
-    echo "  vibe-kit status     # Check installation status"
-    echo "  vibe-kit update     # Update to latest version"
+    echo "  contextkit install    # Install in current project"
+    echo "  contextkit status     # Check installation status"
+    echo "  contextkit update     # Update to latest version"
     echo ""
-    echo -e "${YELLOW}💡 Try: 'vibe-kit install' in your project directory${NC}"
+    echo -e "${YELLOW}💡 Try: 'contextkit install' in your project directory${NC}"
     
 else
     echo -e "${YELLOW}⚠️  Node.js not found. Installing via shell script...${NC}"
@@ -40,19 +40,19 @@ else
     echo -e "${BLUE}📥 Downloading installation script...${NC}"
     
     # Download and run the legacy install.sh
-    curl -sSL https://raw.githubusercontent.com/nolrm/vibe-kit/main/legacy/install.sh | bash
+    curl -sSL https://raw.githubusercontent.com/nolrm/contextkit/main/legacy/install.sh | bash
     
     echo ""
-    echo -e "${GREEN}🎉 Vibe Kit installed successfully!${NC}"
+    echo -e "${GREEN}🎉 ContextKit installed successfully!${NC}"
     echo ""
     echo -e "${BLUE}📖 Usage:${NC}"
-    echo "  Use AI commands with @.vibe-kit/ references"
-    echo "  Read .vibe-kit/standards/README.md for guidelines"
+    echo "  Use AI commands with @.contextkit/ references"
+    echo "  Read .contextkit/standards/README.md for guidelines"
     echo ""
-    echo -e "${YELLOW}💡 Try: 'Create a Button component following vibe-kit standards'${NC}"
+    echo -e "${YELLOW}💡 Try: 'Create a Button component following contextkit standards'${NC}"
     echo ""
     echo -e "${BLUE}💡 For CLI commands, install Node.js and run:${NC}"
-    echo "  npm install -g @nolrm/vibe-kit"
+    echo "  npm install -g @nolrm/contextkit"
 fi
 
 echo ""

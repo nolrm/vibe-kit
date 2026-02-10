@@ -1,9 +1,9 @@
 #!/bin/bash
-# commit-msg.sh - Commit message hook for Vibe Kit
+# commit-msg.sh - Commit message hook for ContextKit
 
 set -e
 
-echo "🎵 Running Vibe Kit commit message validation..."
+echo "🎵 Running ContextKit commit message validation..."
 
 # Check commit message format
 COMMIT_MSG_FILE=$1

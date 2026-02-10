@@ -22,9 +22,9 @@ Run quality check on UserCard component with type safety and accessibility
 
 ## Standards Applied
 
-- @.vibe-kit/standards/code-style.md - Code style guidelines
-- @.vibe-kit/standards/testing.md - Testing patterns
-- @.vibe-kit/standards/ai-guidelines.md - AI development guidelines
+- @.contextkit/standards/code-style.md - Code style guidelines
+- @.contextkit/standards/testing.md - Testing patterns
+- @.contextkit/standards/ai-guidelines.md - AI development guidelines
 
 ## Quality Checks
 

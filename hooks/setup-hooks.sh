@@ -1,12 +1,12 @@
 #!/bin/bash
-# setup-hooks.sh - Setup Git hooks for Vibe Kit
+# setup-hooks.sh - Setup Git hooks for ContextKit
 
 set -e
 
-echo "🎵 Setting up Vibe Kit Git hooks..."
+echo "🎵 Setting up ContextKit Git hooks..."
 
 # Make hooks executable
-chmod +x .vibe-kit/hooks/*.sh
+chmod +x .contextkit/hooks/*.sh
 
 # Setup Husky if package.json exists
 if [ -f "package.json" ]; then
@@ -21,14 +21,14 @@ if [ -f "package.json" ]; then
     npx husky install
     
     # Add hooks
-    npx husky add .husky/pre-commit ".vibe-kit/hooks/pre-commit.sh"
-    npx husky add .husky/pre-push ".vibe-kit/hooks/pre-push.sh"
-    npx husky add .husky/commit-msg ".vibe-kit/hooks/commit-msg.sh"
+    npx husky add .husky/pre-commit ".contextkit/hooks/pre-commit.sh"
+    npx husky add .husky/pre-push ".contextkit/hooks/pre-push.sh"
+    npx husky add .husky/commit-msg ".contextkit/hooks/commit-msg.sh"
     
     echo "✅ Husky hooks setup complete"
 else
     echo "⚠️  No package.json found, skipping Husky setup"
-    echo "   You can manually setup Git hooks by copying .vibe-kit/hooks/*.sh to .git/hooks/"
+    echo "   You can manually setup Git hooks by copying .contextkit/hooks/*.sh to .git/hooks/"
 fi
 
 echo "✅ Git hooks setup complete!"

@@ -26,8 +26,8 @@
 ## How to Use
 
 In Cursor: Just use the keywords naturally - `"Create checkout flow for customer"`  
-In VS Code: Mention file first - `@.vibe-kit Create checkout flow for customer`  
-In CLI: Reference file - `"Read .vibe-kit/standards/glossary.md and create checkout flow"`
+In VS Code: Mention file first - `@.contextkit Create checkout flow for customer`  
+In CLI: Reference file - `"Read .contextkit/standards/glossary.md and create checkout flow"`
 
 ---
 

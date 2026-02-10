@@ -266,7 +266,7 @@ describe('ProjectDetector', () => {
       fs.existsSync.mockReturnValue(false);
 
       const result = detector.getProjectName();
-      expect(result).toBe('vibe-kit'); // Current directory name
+      expect(result).toBe(require('path').basename(process.cwd()));
     });
   });
 });

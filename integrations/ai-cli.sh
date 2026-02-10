@@ -1,6 +1,6 @@
 #!/bin/bash
-# Vibe Kit AI CLI Wrapper
-# Usage: vibe-kit ai "create a button component"
+# ContextKit AI CLI Wrapper
+# Usage: contextkit ai "create a button component"
 # Or: vibe-ai "create a button" (with alias)
 
 # Colors for output
@@ -11,12 +11,12 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 # Load context file
-CONTEXT_FILE=".vibe-kit/CONTEXT.md"
+CONTEXT_FILE=".contextkit/CONTEXT.md"
 
-# Check if Vibe Kit is installed
+# Check if ContextKit is installed
 if [ ! -f "$CONTEXT_FILE" ]; then
-  echo -e "${RED}❌ Vibe Kit not initialized.${NC}"
-  echo -e "${YELLOW}   Run: vibe-kit install${NC}"
+  echo -e "${RED}❌ ContextKit not initialized.${NC}"
+  echo -e "${YELLOW}   Run: contextkit install${NC}"
   exit 1
 fi
 
@@ -26,7 +26,7 @@ PROMPT="$@"
 
 if [ -z "$PROMPT" ]; then
   echo -e "${RED}❌ Please provide a prompt${NC}"
-  echo -e "${BLUE}   Usage: vibe-kit ai \"your prompt here\"${NC}"
+  echo -e "${BLUE}   Usage: contextkit ai \"your prompt here\"${NC}"
   exit 1
 fi
 
@@ -35,7 +35,7 @@ CONTEXT=$(cat "$CONTEXT_FILE")
 
 # Show what we're doing
 echo -e "${BLUE}🤖 Using AI tool: ${AI_TOOL}${NC}"
-echo -e "${YELLOW}📝 Loading Vibe Kit context...${NC}"
+echo -e "${YELLOW}📝 Loading ContextKit context...${NC}"
 echo ""
 
 # Execute based on AI tool

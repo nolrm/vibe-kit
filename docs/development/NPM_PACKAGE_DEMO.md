@@ -1,14 +1,14 @@
-# Vibe Kit npm Package Demo
+# ContextKit npm Package Demo
 
 ## Installation & Usage
 
 ### **1. Global Installation**
 ```bash
 # Install globally
-npm install -g @nolrm/vibe-kit
+npm install -g @nolrm/contextkit
 
 # Verify installation
-vibe-kit --version
+contextkit --version
 # Output: 1.0.0
 ```
 
@@ -17,12 +17,12 @@ vibe-kit --version
 # Navigate to your project
 cd my-react-project
 
-# Install Vibe Kit
-vibe-kit install
+# Install ContextKit
+contextkit install
 
 # Interactive prompt appears:
 # 🪝 Git Hooks Setup
-# Vibe Kit can install pre-commit and pre-push hooks to automatically run quality checks.
+# ContextKit can install pre-commit and pre-push hooks to automatically run quality checks.
 # These hooks will run tests, linting, and type checking before commits.
 # 
 # Do you want to install Git hooks? (y/n): y
@@ -30,10 +30,10 @@ vibe-kit install
 
 ### **3. Check Status**
 ```bash
-vibe-kit status
+contextkit status
 
 # Output:
-# ✅ Vibe Kit is installed in this project
+# ✅ ContextKit is installed in this project
 # 
 # 📋 Installation Details:
 #    Version: 1.0.0
@@ -49,53 +49,53 @@ vibe-kit status
 #    Type Safety: ✅
 #    Git Hooks: ✅
 # 
-# ✅ Vibe Kit is up to date
+# ✅ ContextKit is up to date
 ```
 
 ### **4. Update**
 ```bash
-vibe-kit update
+contextkit update
 
 # Output:
-# 🔄 Updating Vibe Kit...
+# 🔄 Updating ContextKit...
 # 📦 Updating from 1.0.0 to 1.1.0
 # 📥 Downloading latest files...
 # ✅ Files updated successfully
-# ✅ Vibe Kit updated successfully!
+# ✅ ContextKit updated successfully!
 ```
 
 ## **CLI Commands**
 
 | Command | Description | Example |
 |---------|-------------|---------|
-| `vibe-kit install` | Install in current project | `vibe-kit install` |
-| `vibe-kit status` | Check installation status | `vibe-kit status` |
-| `vibe-kit update` | Update to latest version | `vibe-kit update` |
-| `vibe-kit --version` | Show version | `vibe-kit --version` |
-| `vibe-kit --help` | Show help | `vibe-kit --help` |
+| `contextkit install` | Install in current project | `contextkit install` |
+| `contextkit status` | Check installation status | `contextkit status` |
+| `contextkit update` | Update to latest version | `contextkit update` |
+| `contextkit --version` | Show version | `contextkit --version` |
+| `contextkit --help` | Show help | `contextkit --help` |
 
 ## **Installation Options**
 
 ### **Skip Git Hooks**
 ```bash
-vibe-kit install --no-hooks
+contextkit install --no-hooks
 ```
 
 ### **Non-Interactive Mode**
 ```bash
-NON_INTERACTIVE=true vibe-kit install
+NON_INTERACTIVE=true contextkit install
 ```
 
 ### **Force Update**
 ```bash
-vibe-kit update --force
+contextkit update --force
 ```
 
 ## **Project Structure After Installation**
 
 ```
 my-project/
-├── .vibe-kit/
+├── .contextkit/
 │   ├── config.yml          # Configuration
 │   ├── standards/          # Development standards
 │   │   ├── README.md
@@ -130,7 +130,7 @@ my-project/
 │       └── update.sh
 ├── .cursor/
 │   └── rules/
-│       └── vibe-kit.mdc    # Cursor integration
+│       └── contextkit.mdc    # Cursor integration
 └── .husky/                 # Git hooks (if enabled)
     ├── pre-commit
     ├── pre-push
@@ -139,10 +139,10 @@ my-project/
 
 ## **Configuration File**
 
-The `.vibe-kit/config.yml` file tracks your installation:
+The `.contextkit/config.yml` file tracks your installation:
 
 ```yaml
-# Vibe Kit Configuration
+# ContextKit Configuration
 version: "1.0.0"
 project_name: "my-react-project"
 project_type: "react-vite"
@@ -165,21 +165,21 @@ paths:
 
 # Commands
 commands:
-  create_component: "@.vibe-kit/commands/create-component.md"
-  create_feature: "@.vibe-kit/commands/create-feature.md"
-  run_tests: "@.vibe-kit/commands/run-tests.md"
-  add_docs: "@.vibe-kit/commands/add-documentation.md"
-  quality_check: "@.vibe-kit/commands/quality-check.md"
+  create_component: "@.contextkit/commands/create-component.md"
+  create_feature: "@.contextkit/commands/create-feature.md"
+  run_tests: "@.contextkit/commands/run-tests.md"
+  add_docs: "@.contextkit/commands/add-documentation.md"
+  quality_check: "@.contextkit/commands/quality-check.md"
 ```
 
 ## **Benefits of npm Package**
 
-✅ **Familiar Installation** - `npm install -g @nolrm/vibe-kit`  
-✅ **Easy Updates** - `vibe-kit update`  
+✅ **Familiar Installation** - `npm install -g @nolrm/contextkit`  
+✅ **Easy Updates** - `contextkit update`  
 ✅ **Version Management** - Built-in versioning  
 ✅ **Cross-Platform** - Works on Windows, Mac, Linux  
 ✅ **Professional** - Scoped package looks official  
-✅ **CLI Commands** - `vibe-kit install`, `vibe-kit status`  
+✅ **CLI Commands** - `contextkit install`, `contextkit status`  
 ✅ **Interactive Prompts** - User-friendly setup  
 ✅ **Safe Updates** - Backs up existing files  
 
@@ -188,7 +188,7 @@ commands:
 For users without Node.js:
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/nolrm/vibe-kit/main/install-fallback.sh | bash
+curl -sSL https://raw.githubusercontent.com/nolrm/contextkit/main/install-fallback.sh | bash
 ```
 
 This script detects Node.js and installs via npm if available, otherwise falls back to direct installation.

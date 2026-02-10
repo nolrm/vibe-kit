@@ -1,7 +1,7 @@
 {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  "name": "Vibe Kit",
+  "name": "ContextKit",
   "applicationCategory": "DeveloperApplication",
   "operatingSystem": "Any",
   "offers": {
@@ -27,16 +27,16 @@
     "project-standards",
     "markdown-standards",
     "ai-assistant",
-    "vibe-kit"
+    "contextkit"
   ],
-  "downloadUrl": "https://www.npmjs.com/package/@nolrm/vibe-kit",
+  "downloadUrl": "https://www.npmjs.com/package/@nolrm/contextkit",
   "repository": {
     "@type": "SoftwareSourceCode",
-    "url": "https://github.com/nolrm/vibe-kit"
+    "url": "https://github.com/nolrm/contextkit"
   },
   "provider": {
     "@type": "Organization",
-    "name": "Vibe Kit"
+    "name": "ContextKit"
   }
 }
 

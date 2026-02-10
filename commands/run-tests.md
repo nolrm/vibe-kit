@@ -22,8 +22,8 @@ Run tests for UserCard component with accessibility and error handling
 
 ## Standards Applied
 
-- @.vibe-kit/standards/testing.md - Testing patterns
-- @.vibe-kit/standards/ai-guidelines.md - AI development guidelines
+- @.contextkit/standards/testing.md - Testing patterns
+- @.contextkit/standards/ai-guidelines.md - AI development guidelines
 
 ## Test Types
 

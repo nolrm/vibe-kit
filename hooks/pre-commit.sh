@@ -1,9 +1,9 @@
 #!/bin/bash
-# pre-commit.sh - Pre-commit hook for Vibe Kit
+# pre-commit.sh - Pre-commit hook for ContextKit
 
 set -e
 
-echo "🎵 Running Vibe Kit pre-commit checks..."
+echo "🎵 Running ContextKit pre-commit checks..."
 
 # Run type checking
 if [ -f "package.json" ] && grep -q "typescript" package.json; then

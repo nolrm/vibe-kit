@@ -4,7 +4,7 @@ export default function ProjectStructurePage() {
       <div className="space-y-3">
         <h1 className="scroll-m-20 text-4xl font-bold tracking-tight">Project Structure</h1>
         <p className="text-lg text-muted-foreground leading-relaxed">
-          After installation, Vibe Kit creates a comprehensive directory structure that provides context to AI
+          After installation, ContextKit creates a comprehensive directory structure that provides context to AI
           assistants and organizes your development standards.
         </p>
       </div>
@@ -12,13 +12,13 @@ export default function ProjectStructurePage() {
       <div className="space-y-4 pt-4">
         <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight">Directory Overview</h2>
         <p className="text-muted-foreground leading-relaxed">
-          When you run <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">vibe-kit install</code>, Vibe Kit creates a comprehensive directory structure:
+          When you run <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">contextkit install</code>, ContextKit creates a comprehensive directory structure:
         </p>
         <div className="rounded-lg border bg-card p-4 mt-4">
           <p className="text-sm font-medium mb-3">Directory structure created:</p>
           <pre className="rounded bg-muted p-3 font-mono text-xs overflow-x-auto">
             {`your-project/
-├── .vibe-kit/
+├── .contextkit/
 │   ├── standards/
 │   │   ├── glossary.md          ← Project shortcuts & terminology
 │   │   ├── code-style.md        ← Coding conventions
@@ -53,19 +53,19 @@ export default function ProjectStructurePage() {
 │   └── context.md                ← Single context file for CLI
 │
 ├── .cursor/rules/
-│   └── vibe-kit.mdc             ← Makes AI read the .md files`}
+│   └── contextkit.mdc             ← Makes AI read the .md files`}
           </pre>
           <div className="mt-3 rounded-lg border border-blue-500/20 bg-blue-500/5 p-3">
             <p className="text-xs font-medium text-blue-700 dark:text-blue-400 mb-1">ℹ️ Skeleton Files</p>
             <p className="text-xs text-muted-foreground">
-              Files marked "Skeleton" start as blank templates. Run <code className="rounded bg-muted px-1 font-mono">vk analyze</code> to generate content from your codebase.
+              Files marked "Skeleton" start as blank templates. Run <code className="rounded bg-muted px-1 font-mono">ck analyze</code> to generate content from your codebase.
             </p>
           </div>
         </div>
       </div>
 
       <div className="space-y-4 pt-4">
-        <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight">The .vibe-kit Directory</h2>
+        <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight">The .contextkit Directory</h2>
         <p className="text-muted-foreground leading-relaxed">
           This is the main directory where all your project standards and context files live:
         </p>
@@ -171,7 +171,7 @@ export default function ProjectStructurePage() {
             <h3 className="font-semibold text-lg mb-2">corrections.md</h3>
             <p className="text-sm text-muted-foreground mb-3">AI performance tracking log</p>
             <p className="text-sm text-muted-foreground">
-              Tracks AI behavior issues, preferences, and improvements. Use <code className="rounded bg-muted px-1 font-mono text-xs">vk note</code> to add entries.
+              Tracks AI behavior issues, preferences, and improvements. Use <code className="rounded bg-muted px-1 font-mono text-xs">ck note</code> to add entries.
             </p>
           </div>
 
@@ -188,11 +188,11 @@ export default function ProjectStructurePage() {
 
       <div className="space-y-4 pt-4">
         <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight">Platform-Specific Integrations</h2>
-        <p className="text-muted-foreground leading-relaxed">Vibe Kit integrates with multiple AI platforms:</p>
+        <p className="text-muted-foreground leading-relaxed">ContextKit integrates with multiple AI platforms:</p>
 
         <div className="space-y-4 mt-4">
           <div className="rounded-lg border bg-card p-4">
-            <h3 className="font-semibold text-lg mb-2">Cursor - .cursor/rules/vibe-kit.mdc</h3>
+            <h3 className="font-semibold text-lg mb-2">Cursor - .cursor/rules/contextkit.mdc</h3>
             <p className="text-sm text-muted-foreground">
               <strong>Automatic:</strong> Cursor reads all context files for every AI prompt via <code className="rounded bg-muted px-1 font-mono text-xs">alwaysApply: true</code>. No manual references needed!
             </p>
@@ -215,12 +215,12 @@ export default function ProjectStructurePage() {
           <div className="rounded-lg border bg-card p-4">
             <h3 className="font-semibold text-lg mb-2">VS Code - .vscode/settings.json</h3>
             <p className="text-sm text-muted-foreground">
-              Configuration settings for VS Code and GitHub Copilot integration. <strong>Note:</strong> Unlike Cursor, you must manually reference context files in your Copilot prompts (e.g., <code className="rounded bg-muted px-1 font-mono text-xs">@.vibe-kit</code> includes all files).
+              Configuration settings for VS Code and GitHub Copilot integration. <strong>Note:</strong> Unlike Cursor, you must manually reference context files in your Copilot prompts (e.g., <code className="rounded bg-muted px-1 font-mono text-xs">@.contextkit</code> includes all files).
             </p>
           </div>
 
           <div className="rounded-lg border bg-card p-4">
-            <h3 className="font-semibold text-lg mb-2">CLI Tools - .vibe-kit/scripts/ai-cli.sh</h3>
+            <h3 className="font-semibold text-lg mb-2">CLI Tools - .contextkit/scripts/ai-cli.sh</h3>
             <p className="text-sm text-muted-foreground">
               Universal helper scripts for Claude CLI, Gemini CLI, and other command-line AI tools.
             </p>
@@ -231,7 +231,7 @@ export default function ProjectStructurePage() {
       <div className="space-y-4 pt-4">
         <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight">Customization</h2>
         <p className="text-muted-foreground leading-relaxed">
-          All files in the .vibe-kit directory are meant to be customized for your project. After running <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">vk analyze</code>, modify them to match your team's specific needs:
+          All files in the .contextkit directory are meant to be customized for your project. After running <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">ck analyze</code>, modify them to match your team's specific needs:
         </p>
         <ul className="list-disc list-inside space-y-2 text-muted-foreground ml-4 mt-3">
           <li>Add project-specific terminology to glossary.md</li>

@@ -3,7 +3,7 @@ const path = require('path');
 const packageJson = require('../../package.json');
 
 describe('CLI Integration Tests', () => {
-  const cliPath = path.join(__dirname, '../../bin/vibe-kit.js');
+  const cliPath = path.join(__dirname, '../../bin/contextkit.js');
 
   describe('version command', () => {
     test('should show version', () => {
@@ -20,7 +20,7 @@ describe('CLI Integration Tests', () => {
   describe('help command', () => {
     test('should show help', () => {
       const result = execSync(`node "${cliPath}" --help`, { encoding: 'utf8' });
-      expect(result).toContain('Get the right vibe for your code');
+      expect(result).toContain('Context Engineering for AI Development');
       expect(result).toContain('Commands:');
       expect(result).toContain('install');
       expect(result).toContain('status');
@@ -40,7 +40,7 @@ describe('CLI Integration Tests', () => {
 
     test('should show help for install command', () => {
       const result = execSync(`node "${cliPath}" install --help`, { encoding: 'utf8' });
-      expect(result).toContain('Install Vibe Kit in current project');
+      expect(result).toContain('Install ContextKit in current project');
       expect(result).toContain('--no-hooks');
       expect(result).toContain('--non-interactive');
     });
@@ -49,7 +49,7 @@ describe('CLI Integration Tests', () => {
   describe('status command', () => {
     test('should run status command', () => {
       const result = execSync(`node "${cliPath}" status`, { encoding: 'utf8' });
-      expect(result).toContain('Vibe Kit is not installed');
+      expect(result).toContain('ContextKit is not installed');
     });
   });
 
@@ -57,7 +57,7 @@ describe('CLI Integration Tests', () => {
     test('should handle unknown command as AI prompt', () => {
       // Unknown commands are now treated as prompts, not errors
       const result = execSync(`node "${cliPath}" unknown-command`, { encoding: 'utf8' });
-      expect(result).toContain('Vibe Kit not initialized');
+      expect(result).toContain('ContextKit not initialized');
     });
   });
 });

@@ -45,7 +45,7 @@ describe('DownloadManager', () => {
         responseType: 'stream',
         timeout: 30000,
         headers: {
-          'User-Agent': 'vibe-kit-cli/1.0.0'
+          'User-Agent': 'contextkit-cli/1.0.0'
         }
       });
       expect(fs.ensureDir).toHaveBeenCalled();

@@ -1,4 +1,4 @@
-# Vibe Kit Topics
+# ContextKit Topics
 
 ## Primary Topics
 - context-engineering

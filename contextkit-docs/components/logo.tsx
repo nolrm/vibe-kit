@@ -25,7 +25,7 @@ export function Logo() {
         fill="white" 
         textAnchor="middle"
       >
-        VK
+        CK
       </text>
     </svg>
   )

@@ -17,7 +17,7 @@ export function Hero() {
           </div>
 
           <h1 className="text-balance text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
-            Vibe Kit
+            ContextKit
           </h1>
 
           <p className="text-balance text-xl text-muted-foreground sm:text-2xl md:text-3xl max-w-3xl">
@@ -40,7 +40,7 @@ export function Hero() {
             <Link href="/docs/quick-start">Quick Start</Link>
           </Button>
           <Button size="lg" variant="outline" asChild className="text-base bg-transparent">
-            <Link href="https://github.com/nolrm/vibe-kit" target="_blank">
+            <Link href="https://github.com/nolrm/contextkit" target="_blank">
               GitHub
             </Link>
           </Button>
@@ -51,7 +51,7 @@ export function Hero() {
             <Terminal className="h-4 w-4" />
             <span className="font-mono">Install via npm</span>
           </div>
-          <code className="block rounded bg-muted px-4 py-2 font-mono text-sm">npm install -g @nolrm/vibe-kit</code>
+          <code className="block rounded bg-muted px-4 py-2 font-mono text-sm">npm install -g @nolrm/contextkit</code>
         </div>
       </div>
     </section>

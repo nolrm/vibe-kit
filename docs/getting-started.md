@@ -1,15 +1,15 @@
 # Getting Started
 
-## What is Vibe Kit?
+## What is ContextKit?
 
-Vibe Kit is **Context Engineering for AI Development** - it provides structured MD files that AI assistants read as context to prevent hallucinations and generate code matching your exact patterns.
+ContextKit is **Context Engineering for AI Development** - it provides structured MD files that AI assistants read as context to prevent hallucinations and generate code matching your exact patterns.
 
 ## How It Works
 
 ### 1. **Installation Creates Context Files**
 
 ```
-.vibe-kit/
+.contextkit/
 ├── standards/           ← Code style, testing, architecture standards
 │   ├── glossary.md      ← Project shortcuts (@btn, customer, etc.)
 │   ├── code-style.md    ← Your coding conventions
@@ -26,12 +26,12 @@ Vibe Kit is **Context Engineering for AI Development** - it provides structured 
 
 ### 2. **AI Reads Files as Context**
 
-In Cursor IDE, `.cursor/rules/vibe-kit.mdc` tells AI to read these files:
+In Cursor IDE, `.cursor/rules/contextkit.mdc` tells AI to read these files:
 
 ```markdown
-- @.vibe-kit/standards/glossary.md       ← Project shortcuts
-- @.vibe-kit/standards/code-style.md    ← Coding style
-- @.vibe-kit/standards/testing.md       ← Test patterns
+- @.contextkit/standards/glossary.md       ← Project shortcuts
+- @.contextkit/standards/code-style.md    ← Coding style
+- @.contextkit/standards/testing.md       ← Test patterns
 ```
 
 ### 3. **You Use Shortcuts in Prompts**
@@ -51,14 +51,14 @@ Generated code matches YOUR patterns!
 ### Quick Install
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/nolrm/vibe-kit/main/install-fallback.sh | bash
+curl -sSL https://raw.githubusercontent.com/nolrm/contextkit/main/install-fallback.sh | bash
 ```
 
 ### Manual Install
 
 ```bash
-git clone https://github.com/nolrm/vibe-kit.git
-cd vibe-kit
+git clone https://github.com/nolrm/contextkit.git
+cd contextkit
 bash install.sh
 ```
 
@@ -67,9 +67,9 @@ bash install.sh
 ### Project Setup
 
 1. Run the installation script
-2. **Run project analysis** (recommended): `@.vibe-kit/commands/analyze.md`
-3. Customize `.vibe-kit/config.yml`
-4. Review standards in `.vibe-kit/standards/`
+2. **Run project analysis** (recommended): `@.contextkit/commands/analyze.md`
+3. Customize `.contextkit/config.yml`
+4. Review standards in `.contextkit/standards/`
 5. Start using AI commands
 
 ### Customization
@@ -83,73 +83,73 @@ bash install.sh
 
 ### AI Commands
 
-- `@.vibe-kit/commands/analyze.md` - **Analyze and customize standards for your project**
-- `@.vibe-kit/commands/create-component.md` - Create new component
-- `@.vibe-kit/commands/create-feature.md` - Create new feature
-- `@.vibe-kit/commands/run-tests.md` - Run test suite
-- `@.vibe-kit/commands/quality-check.md` - Quality check
-- `@.vibe-kit/commands/add-documentation.md` - Add documentation
+- `@.contextkit/commands/analyze.md` - **Analyze and customize standards for your project**
+- `@.contextkit/commands/create-component.md` - Create new component
+- `@.contextkit/commands/create-feature.md` - Create new feature
+- `@.contextkit/commands/run-tests.md` - Run test suite
+- `@.contextkit/commands/quality-check.md` - Quality check
+- `@.contextkit/commands/add-documentation.md` - Add documentation
 
 ### CLI Commands
 
 #### Validation & Compliance
 ```bash
-vk check              # Validate installation & policy compliance
-vk check --strict     # Treat warnings as errors
-vk check --verbose    # Show detailed information
+ck check              # Validate installation & policy compliance
+ck check --strict     # Treat warnings as errors
+ck check --verbose    # Show detailed information
 ```
 
 #### Corrections Logging
 ```bash
-vk note "AI didn't follow testing standards" --category "AI Behavior" --priority HIGH
-vk note "Good behavior observed" --category "Preferences" --priority LOW
+ck note "AI didn't follow testing standards" --category "AI Behavior" --priority HIGH
+ck note "Good behavior observed" --category "Preferences" --priority LOW
 ```
 
 #### Workflow Orchestration
 ```bash
-vk run create-component              # Run workflow
-vk run create-component --interactive  # Interactive mode (pause between steps)
+ck run create-component              # Run workflow
+ck run create-component --interactive  # Interactive mode (pause between steps)
 ```
 
 #### Registry & Versioning
 ```bash
-# Publish your Vibe Kit configuration
-vk publish --name @company/react-standards --version 1.0.0
+# Publish your ContextKit configuration
+ck publish --name @company/react-standards --version 1.0.0
 
 # Pull shared configurations
-vk pull @company/react-standards@1.0.0
-vk pull @company/react-standards@latest --backup
+ck pull @company/react-standards@1.0.0
+ck pull @company/react-standards@latest --backup
 ```
 
 #### Observability Dashboard
 ```bash
-vk dashboard              # Start web dashboard (http://localhost:3001)
-vk dashboard --port 8080  # Custom port
-vk dashboard --no-server  # CLI metrics only
+ck dashboard              # Start web dashboard (http://localhost:3001)
+ck dashboard --port 8080  # Custom port
+ck dashboard --no-server  # CLI metrics only
 ```
 
 ### Standards Reference
 
-- `@.vibe-kit/standards/README.md` - Complete development standards
-- `@.vibe-kit/standards/code-style.md` - Code style guide
-- `@.vibe-kit/standards/testing.md` - Testing patterns
-- `@.vibe-kit/standards/architecture.md` - Architecture patterns
-- `@.vibe-kit/standards/ai-guidelines.md` - AI development guidelines
+- `@.contextkit/standards/README.md` - Complete development standards
+- `@.contextkit/standards/code-style.md` - Code style guide
+- `@.contextkit/standards/testing.md` - Testing patterns
+- `@.contextkit/standards/architecture.md` - Architecture patterns
+- `@.contextkit/standards/ai-guidelines.md` - AI development guidelines
 
 ### Templates
 
-- `.vibe-kit/templates/component.tsx` - React component template
-- `.vibe-kit/templates/test.tsx` - Test file template
-- `.vibe-kit/templates/story.tsx` - Storybook story template
-- `.vibe-kit/templates/hook.ts` - Custom hook template
-- `.vibe-kit/templates/api.ts` - API service template
+- `.contextkit/templates/component.tsx` - React component template
+- `.contextkit/templates/test.tsx` - Test file template
+- `.contextkit/templates/story.tsx` - Storybook story template
+- `.contextkit/templates/hook.ts` - Custom hook template
+- `.contextkit/templates/api.ts` - API service template
 
 ## Examples
 
 ### Project Analysis (First Time Setup)
 
 ```
-@.vibe-kit/commands/analyze.md
+@.contextkit/commands/analyze.md
 ```
 
 This will analyze your project and customize standards to match your tech stack.
@@ -176,7 +176,7 @@ Run quality checks on the current codebase
 
 ### Policy Enforcement
 
-Configure policies in `.vibe-kit/policies/policy.yml`:
+Configure policies in `.contextkit/policies/policy.yml`:
 
 ```yaml
 enforcement:
@@ -187,11 +187,11 @@ enforcement:
     typescript_strict: warn
 ```
 
-Run `vk check` to validate compliance.
+Run `ck check` to validate compliance.
 
 ### Workflow Orchestration
 
-Create structured workflows in `.vibe-kit/instructions/core/`:
+Create structured workflows in `.contextkit/instructions/core/`:
 
 ```markdown
 <process_flow>
@@ -202,7 +202,7 @@ Create structured workflows in `.vibe-kit/instructions/core/`:
 </process_flow>
 ```
 
-Run with: `vk run <workflow-name>`
+Run with: `ck run <workflow-name>`
 
 ### Registry & Sharing
 
@@ -210,10 +210,10 @@ Share standards across teams:
 
 ```bash
 # Publish
-vk publish --name @company/react-standards --version 1.0.0
+ck publish --name @company/react-standards --version 1.0.0
 
 # Pull
-vk pull @company/react-standards@latest --backup
+ck pull @company/react-standards@latest --backup
 ```
 
 ### Observability
@@ -221,8 +221,8 @@ vk pull @company/react-standards@latest --backup
 Monitor standards health:
 
 ```bash
-vk dashboard  # Web dashboard
-vk dashboard --no-server  # CLI metrics
+ck dashboard  # Web dashboard
+ck dashboard --no-server  # CLI metrics
 ```
 
 Dashboard shows:

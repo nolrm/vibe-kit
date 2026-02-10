@@ -6,7 +6,7 @@ export default function DocsPage() {
   return (
     <div className="space-y-6">
       <div className="space-y-4">
-        <h1 className="scroll-m-20 text-4xl font-bold tracking-tight">Welcome to Vibe Kit</h1>
+        <h1 className="scroll-m-20 text-4xl font-bold tracking-tight">Welcome to ContextKit</h1>
         <p className="text-xl text-muted-foreground leading-relaxed">
           Context-aware AI development. Give your AI assistants structured context through markdown files and get code that matches your exact patterns and conventions.
         </p>
@@ -67,7 +67,7 @@ export default function DocsPage() {
       <div className="space-y-4 pt-4">
         <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight">The Context Engineering Flow</h2>
         <p className="text-muted-foreground leading-relaxed">
-          Vibe Kit works by providing structured context to AI assistants through markdown files. Here's how the flow
+          ContextKit works by providing structured context to AI assistants through markdown files. Here's how the flow
           works:
         </p>
         
@@ -92,12 +92,12 @@ export default function DocsPage() {
       <div className="space-y-4 pt-4">
         <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight">Auto-Detection & Integration</h2>
         <p className="text-muted-foreground leading-relaxed">
-          Vibe Kit automatically detects which AI tools you have installed and configures integrations accordingly:
+          ContextKit automatically detects which AI tools you have installed and configures integrations accordingly:
         </p>
         <div className="rounded-lg border bg-muted/50 p-4 mt-3">
-          <code className="block text-sm font-mono mb-2">$ vibe-kit install</code>
+          <code className="block text-sm font-mono mb-2">$ contextkit install</code>
           <div className="space-y-1 text-sm text-muted-foreground">
-            <p>🎵 Installing Vibe Kit...</p>
+            <p>🎵 Installing ContextKit...</p>
             <p>✅ AI Tools detected: cursor, aider, claude_cli</p>
             <p>✅ Cursor integration installed</p>
             <p>✅ Aider integration installed</p>
@@ -139,31 +139,31 @@ export default function DocsPage() {
       <div className="space-y-4 pt-4">
         <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight">Enterprise Features</h2>
         <p className="text-muted-foreground leading-relaxed">
-          Vibe Kit includes enterprise-grade features for larger teams and complex projects:
+          ContextKit includes enterprise-grade features for larger teams and complex projects:
         </p>
         <div className="grid gap-3 md:grid-cols-2 mt-3">
           <div className="rounded-lg border bg-card p-4">
             <h3 className="font-semibold text-base mb-1">Policy Enforcement</h3>
             <p className="text-sm text-muted-foreground">
-              Configure and enforce coding standards with <code className="rounded bg-muted px-1 font-mono text-xs">vk check</code>
+              Configure and enforce coding standards with <code className="rounded bg-muted px-1 font-mono text-xs">ck check</code>
             </p>
           </div>
           <div className="rounded-lg border bg-card p-4">
             <h3 className="font-semibold text-base mb-1">Workflow Orchestration</h3>
             <p className="text-sm text-muted-foreground">
-              Execute structured workflows with <code className="rounded bg-muted px-1 font-mono text-xs">vk run</code>
+              Execute structured workflows with <code className="rounded bg-muted px-1 font-mono text-xs">ck run</code>
             </p>
           </div>
           <div className="rounded-lg border bg-card p-4">
             <h3 className="font-semibold text-base mb-1">Registry & Versioning</h3>
             <p className="text-sm text-muted-foreground">
-              Share standards across teams with <code className="rounded bg-muted px-1 font-mono text-xs">vk publish/pull</code>
+              Share standards across teams with <code className="rounded bg-muted px-1 font-mono text-xs">ck publish/pull</code>
             </p>
           </div>
           <div className="rounded-lg border bg-card p-4">
             <h3 className="font-semibold text-base mb-1">Observability</h3>
             <p className="text-sm text-muted-foreground">
-              Monitor standards health with <code className="rounded bg-muted px-1 font-mono text-xs">vk dashboard</code>
+              Monitor standards health with <code className="rounded bg-muted px-1 font-mono text-xs">ck dashboard</code>
             </p>
           </div>
           <div className="rounded-lg border bg-card p-4 md:col-span-2">
@@ -226,7 +226,7 @@ export default function DocsPage() {
       <div className="space-y-4 pt-4">
         <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight">Developer Experience</h2>
         <p className="text-muted-foreground leading-relaxed">
-          Vibe Kit is designed for a great Developer Experience when working with AI-assisted development:
+          ContextKit is designed for a great Developer Experience when working with AI-assisted development:
         </p>
         <div className="grid gap-3 md:grid-cols-2 mt-3">
           <div className="rounded-lg border bg-muted/30 p-3 flex items-start gap-2">
@@ -268,7 +268,7 @@ export default function DocsPage() {
           </Link>
         </Button>
         <Button variant="outline" asChild>
-          <Link href="https://github.com/nolrm/vibe-kit" target="_blank">
+          <Link href="https://github.com/nolrm/contextkit" target="_blank">
             View on GitHub
           </Link>
         </Button>

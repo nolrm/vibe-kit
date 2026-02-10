@@ -9,7 +9,7 @@ describe('CursorIntegration', () => {
   let originalCwd;
 
   beforeEach(async () => {
-    tempDir = await fs.mkdtemp(path.join(os.tmpdir(), 'vibe-kit-cursor-'));
+    tempDir = await fs.mkdtemp(path.join(os.tmpdir(), 'contextkit-cursor-'));
     originalCwd = process.cwd();
     process.chdir(tempDir);
   });
@@ -23,26 +23,26 @@ describe('CursorIntegration', () => {
     const integration = new CursorIntegration();
     await integration.install();
 
-    expect(await fs.pathExists('.cursor/rules/vibe-kit-standards.mdc')).toBe(true);
-    expect(await fs.pathExists('.cursor/rules/vibe-kit-testing.mdc')).toBe(true);
-    expect(await fs.pathExists('.cursor/rules/vibe-kit-components.mdc')).toBe(true);
-    expect(await fs.pathExists('.cursor/rules/vibe-kit-api.mdc')).toBe(true);
+    expect(await fs.pathExists('.cursor/rules/contextkit-standards.mdc')).toBe(true);
+    expect(await fs.pathExists('.cursor/rules/contextkit-testing.mdc')).toBe(true);
+    expect(await fs.pathExists('.cursor/rules/contextkit-components.mdc')).toBe(true);
+    expect(await fs.pathExists('.cursor/rules/contextkit-api.mdc')).toBe(true);
   });
 
   test('2. standards rule has alwaysApply true', async () => {
     const integration = new CursorIntegration();
     await integration.install();
 
-    const content = await fs.readFile('.cursor/rules/vibe-kit-standards.mdc', 'utf-8');
+    const content = await fs.readFile('.cursor/rules/contextkit-standards.mdc', 'utf-8');
     expect(content).toContain('alwaysApply: true');
-    expect(content).toContain('@.vibe-kit/standards/code-style.md');
+    expect(content).toContain('@.contextkit/standards/code-style.md');
   });
 
   test('3. testing rule has test file globs', async () => {
     const integration = new CursorIntegration();
     await integration.install();
 
-    const content = await fs.readFile('.cursor/rules/vibe-kit-testing.mdc', 'utf-8');
+    const content = await fs.readFile('.cursor/rules/contextkit-testing.mdc', 'utf-8');
     expect(content).toContain('*.test.*');
     expect(content).toContain('*.spec.*');
     expect(content).toContain('alwaysApply: false');
@@ -52,20 +52,20 @@ describe('CursorIntegration', () => {
     const integration = new CursorIntegration();
     await integration.install();
 
-    const content = await fs.readFile('.cursor/rules/vibe-kit-components.mdc', 'utf-8');
+    const content = await fs.readFile('.cursor/rules/contextkit-components.mdc', 'utf-8');
     expect(content).toContain('**/components/**');
   });
 
-  test('5. removes legacy monolithic vibe-kit.mdc', async () => {
+  test('5. removes legacy monolithic contextkit.mdc', async () => {
     // Create legacy file
     await fs.ensureDir('.cursor/rules');
-    await fs.writeFile('.cursor/rules/vibe-kit.mdc', '# Legacy content');
+    await fs.writeFile('.cursor/rules/contextkit.mdc', '# Legacy content');
 
     const integration = new CursorIntegration();
     await integration.install();
 
-    expect(await fs.pathExists('.cursor/rules/vibe-kit.mdc')).toBe(false);
-    expect(await fs.pathExists('.cursor/rules/vibe-kit-standards.mdc')).toBe(true);
+    expect(await fs.pathExists('.cursor/rules/contextkit.mdc')).toBe(false);
+    expect(await fs.pathExists('.cursor/rules/contextkit-standards.mdc')).toBe(true);
   });
 
   test('6. validate returns valid after install', async () => {

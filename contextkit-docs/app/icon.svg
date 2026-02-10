@@ -2,7 +2,7 @@
   <!-- Background with rounded corners -->
   <rect width="128" height="128" rx="16" fill="#6366f1"/>
   
-  <!-- VK Text -->
-  <text x="64" y="88" font-family="monospace" font-size="64" font-weight="bold" fill="white" text-anchor="middle">VK</text>
+  <!-- CK Text -->
+  <text x="64" y="88" font-family="monospace" font-size="64" font-weight="bold" fill="white" text-anchor="middle">CK</text>
 </svg>
 

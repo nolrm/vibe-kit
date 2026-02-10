@@ -1,8 +1,8 @@
-# Analyze Project for Vibe Kit Customization
+# Analyze Project for ContextKit Customization
 
-🎵 **Vibe Kit Project Analysis**
+🎵 **ContextKit Project Analysis**
 
-I'll analyze your project and customize the Vibe Kit standards to match your specific setup.
+I'll analyze your project and customize the ContextKit standards to match your specific setup.
 
 ## What I'll Do:
 
@@ -28,17 +28,17 @@ I'll analyze your project and customize the Vibe Kit standards to match your spe
 ### 📝 **Files I'll Update**
 
 **For single-package projects:**
-- `.vibe-kit/standards/code-style.md` - Customized coding standards
-- `.vibe-kit/standards/testing.md` - Project-specific testing guidelines
-- `.vibe-kit/standards/architecture.md` - Framework-specific architecture patterns
-- `.vibe-kit/standards/README.md` - Updated overview with your project details
+- `.contextkit/standards/code-style.md` - Customized coding standards
+- `.contextkit/standards/testing.md` - Project-specific testing guidelines
+- `.contextkit/standards/architecture.md` - Framework-specific architecture patterns
+- `.contextkit/standards/README.md` - Updated overview with your project details
 
 **For monorepos (when analyzing both frontend + backend):**
-- `.vibe-kit/standards/frontend/code-style.md` - Frontend coding standards
-- `.vibe-kit/standards/frontend/testing.md` - Frontend testing guidelines
-- `.vibe-kit/standards/backend/code-style.md` - Backend coding standards
-- `.vibe-kit/standards/backend/testing.md` - Backend testing guidelines
-- Shared standards in `.vibe-kit/standards/` for common patterns
+- `.contextkit/standards/frontend/code-style.md` - Frontend coding standards
+- `.contextkit/standards/frontend/testing.md` - Frontend testing guidelines
+- `.contextkit/standards/backend/code-style.md` - Backend coding standards
+- `.contextkit/standards/backend/testing.md` - Backend testing guidelines
+- Shared standards in `.contextkit/standards/` for common patterns
 
 ## Analysis Process:
 
@@ -112,7 +112,7 @@ I'll analyze your project and provide customized recommendations. The analysis w
 After generating content for your skeleton files, **YOU MUST:**
 
 ### 🔍 Step 1: Review Generated Content
-Review each generated file in `.vibe-kit/standards/`:
+Review each generated file in `.contextkit/standards/`:
 - ✅ Check that content matches your project
 - ✅ Verify frameworks and tools are correct
 - ✅ Ensure patterns align with your codebase

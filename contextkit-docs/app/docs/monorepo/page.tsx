@@ -7,7 +7,7 @@ export default function MonorepoPage() {
       <div className="space-y-3">
         <h1 className="scroll-m-20 text-4xl font-bold tracking-tight">Monorepo Support</h1>
         <p className="text-lg text-muted-foreground leading-relaxed">
-          Vibe Kit automatically detects monorepo structures and intelligently analyzes frontend and backend packages separately.
+          ContextKit automatically detects monorepo structures and intelligently analyzes frontend and backend packages separately.
         </p>
       </div>
 
@@ -31,7 +31,7 @@ export default function MonorepoPage() {
               <div className="flex-1">
                 <h3 className="font-semibold text-lg mb-2">1. Automatic Detection</h3>
                 <p className="text-sm text-muted-foreground mb-2">
-                  Vibe Kit scans for monorepo indicators:
+                  ContextKit scans for monorepo indicators:
                 </p>
                 <ul className="text-sm text-muted-foreground list-disc list-inside ml-2 space-y-1">
                   <li><code className="rounded bg-muted px-1 font-mono text-xs">turbo.json</code> (Turborepo)</li>
@@ -80,7 +80,7 @@ export default function MonorepoPage() {
               <div className="flex-1">
                 <h3 className="font-semibold text-lg mb-2">3. Scope Selection</h3>
                 <p className="text-sm text-muted-foreground mb-3">
-                  When running <code className="rounded bg-muted px-1 font-mono text-xs">vk analyze</code>, you'll be prompted to select:
+                  When running <code className="rounded bg-muted px-1 font-mono text-xs">ck analyze</code>, you'll be prompted to select:
                 </p>
                 <div className="space-y-2">
                   <div className="rounded-lg border border-muted p-2">
@@ -109,10 +109,10 @@ export default function MonorepoPage() {
           <div className="rounded-lg border bg-card p-4">
             <h3 className="font-semibold text-lg mb-2">Interactive Mode</h3>
             <p className="text-sm text-muted-foreground mb-2">
-              Vibe Kit will prompt you to select the scope:
+              ContextKit will prompt you to select the scope:
             </p>
             <code className="block rounded bg-muted px-4 py-2 font-mono text-sm">
-              vibe-kit analyze
+              contextkit analyze
             </code>
             <div className="rounded-lg border border-blue-500/20 bg-blue-500/5 p-2 mt-2">
               <p className="text-xs text-muted-foreground">
@@ -127,16 +127,16 @@ export default function MonorepoPage() {
               Use CLI flags to skip prompts:
             </p>
             <code className="block rounded bg-muted px-4 py-2 font-mono text-sm mb-2">
-              vibe-kit analyze --scope frontend
+              contextkit analyze --scope frontend
             </code>
             <code className="block rounded bg-muted px-4 py-2 font-mono text-sm mb-2">
-              vibe-kit analyze --scope backend
+              contextkit analyze --scope backend
             </code>
             <code className="block rounded bg-muted px-4 py-2 font-mono text-sm mb-2">
-              vibe-kit analyze --scope both
+              contextkit analyze --scope both
             </code>
             <code className="block rounded bg-muted px-4 py-2 font-mono text-sm">
-              vibe-kit analyze --package apps/admin
+              contextkit analyze --package apps/admin
             </code>
           </div>
         </div>
@@ -147,10 +147,10 @@ export default function MonorepoPage() {
         
         <div className="rounded-lg border bg-card p-4">
           <p className="text-sm text-muted-foreground mb-3">
-            When analyzing both frontend and backend, Vibe Kit generates separate standards:
+            When analyzing both frontend and backend, ContextKit generates separate standards:
           </p>
           <pre className="rounded bg-muted p-3 font-mono text-xs overflow-x-auto">
-            {`.vibe-kit/
+            {`.contextkit/
 ├── standards/
 │   ├── frontend/          ← Frontend-specific standards
 │   │   ├── code-style.md
@@ -187,7 +187,7 @@ export default function MonorepoPage() {
           <div className="rounded-lg border bg-card p-4">
             <h3 className="font-semibold text-base mb-2">3. Share Standards Across Teams</h3>
             <p className="text-sm text-muted-foreground">
-              Use <code className="rounded bg-muted px-1 font-mono text-xs">vk publish</code> to share your monorepo standards configuration with other teams.
+              Use <code className="rounded bg-muted px-1 font-mono text-xs">ck publish</code> to share your monorepo standards configuration with other teams.
             </p>
           </div>
         </div>

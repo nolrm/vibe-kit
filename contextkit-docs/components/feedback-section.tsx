@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 
 export function FeedbackSection({ page }: { page: string }) {
   const handleFeedback = () => {
-    const url = `https://github.com/nolrm/vibe-kit/issues/new?title=Docs%20Feedback&body=Page:%20${page}%0A%0AFeedback:%20`
+    const url = `https://github.com/nolrm/contextkit/issues/new?title=Docs%20Feedback&body=Page:%20${page}%0A%0AFeedback:%20`
     window.open(url, '_blank')
   }
 

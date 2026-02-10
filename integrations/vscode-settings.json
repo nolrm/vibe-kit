@@ -1,26 +1,26 @@
 {
-  "// Vibe Kit - Context Engineering for AI Development": "GitHub Copilot and other VS Code AI tools will use these settings",
+  "// ContextKit - Context Engineering for AI Development": "GitHub Copilot and other VS Code AI tools will use these settings",
   
   "copilot.suggestions.enabled": true,
   "copilot.editor.enableAutoCompletions": true,
   
-  "// Project Standards": "Reference in your prompts to use Vibe Kit standards",
-  "vibeKit.standardsPath": ".vibe-kit/standards",
-  "vibeKit.templatesPath": ".vibe-kit/templates",
-  "vibeKit.commandsPath": ".vibe-kit/commands",
+  "// Project Standards": "Reference in your prompts to use ContextKit standards",
+  "vibeKit.standardsPath": ".contextkit/standards",
+  "vibeKit.templatesPath": ".contextkit/templates",
+  "vibeKit.commandsPath": ".contextkit/commands",
   
-  "// Quick Usage in Copilot Chat": "Simply mention @.vibe-kit in your prompts",
+  "// Quick Usage in Copilot Chat": "Simply mention @.contextkit in your prompts",
   "// Examples": [
-  "// @.vibe-kit Create a login button",
-  "// @.vibe-kit/standards Create a component (standards only)",
-  "// @.vibe-kit/standards/code-style.md For specific files"
+  "// @.contextkit Create a login button",
+  "// @.contextkit/standards Create a component (standards only)",
+  "// @.contextkit/standards/code-style.md For specific files"
   ],
   
   "// AI Guidelines": "Use these in your prompts with Copilot",
   "ai.guidelines": [
-    "Follow: .vibe-kit/standards/code-style.md",
-    "Testing: .vibe-kit/standards/testing.md",
-    "Architecture: .vibe-kit/standards/architecture.md",
-    "Guidelines: .vibe-kit/standards/ai-guidelines.md"
+    "Follow: .contextkit/standards/code-style.md",
+    "Testing: .contextkit/standards/testing.md",
+    "Architecture: .contextkit/standards/architecture.md",
+    "Guidelines: .contextkit/standards/ai-guidelines.md"
   ]
 }

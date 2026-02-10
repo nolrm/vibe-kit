@@ -8,7 +8,7 @@ Prevent AI hallucinations by providing structured development standards and patt
 
 ### 1. Always Check Standards First
 
-- Reference @.vibe-kit/standards/ before implementing
+- Reference @.contextkit/standards/ before implementing
 - Follow established patterns and conventions
 - Use provided templates and examples
 
@@ -38,7 +38,7 @@ Prevent AI hallucinations by providing structured development standards and patt
 
 ### 6. Use Project Glossary
 
-- Reference @.vibe-kit/standards/glossary.md for project-specific shortcuts
+- Reference @.contextkit/standards/glossary.md for project-specific shortcuts
 - Use business term shortcuts for domain concepts
 - Use technical term shortcuts for implementation patterns
 - Understand your monorepo app structure through shortcuts
@@ -49,8 +49,8 @@ Prevent AI hallucinations by providing structured development standards and patt
 
 When creating components:
 
-1. Use @.vibe-kit/templates/component.tsx as base
-2. Follow @.vibe-kit/standards/code-style.md
+1. Use @.contextkit/templates/component.tsx as base
+2. Follow @.contextkit/standards/code-style.md
 3. Include proper TypeScript types
 4. Add accessibility attributes
 5. Create corresponding test file
@@ -59,7 +59,7 @@ When creating components:
 
 When adding tests:
 
-1. Use @.vibe-kit/standards/testing.md patterns
+1. Use @.contextkit/standards/testing.md patterns
 2. Use numbered test cases
 3. Include edge cases
 4. Use proper mocking with vi.fn()
@@ -69,7 +69,7 @@ When adding tests:
 
 When writing code:
 
-1. Follow @.vibe-kit/standards/code-style.md
+1. Follow @.contextkit/standards/code-style.md
 2. Use consistent naming conventions
 3. Include proper TypeScript types
 4. Add meaningful comments
@@ -131,7 +131,7 @@ try {
 
 Before submitting code, ensure:
 
-- [ ] Follows @.vibe-kit/standards/code-style.md
+- [ ] Follows @.contextkit/standards/code-style.md
 - [ ] Includes proper TypeScript types
 - [ ] Has comprehensive tests with numbered cases
 - [ ] Includes error handling

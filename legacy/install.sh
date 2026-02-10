@@ -1,5 +1,5 @@
 #!/bin/bash
-# install.sh - Vibe Kit Installation Script (Enhanced)
+# install.sh - ContextKit Installation Script (Enhanced)
 
 # Colors for output
 RED='\033[0;31m'
@@ -11,9 +11,9 @@ NC='\033[0m' # No Color
 
 # Configuration
 VIBE_KIT_VERSION="1.0.0"
-REPO_URL="https://raw.githubusercontent.com/nolrm/vibe-kit/main"
-BACKUP_DIR=".vibe-kit-backup-$(date +%Y%m%d-%H%M%S)"
-INSTALL_LOG=".vibe-kit-install.log"
+REPO_URL="https://raw.githubusercontent.com/nolrm/contextkit/main"
+BACKUP_DIR=".contextkit-backup-$(date +%Y%m%d-%H%M%S)"
+INSTALL_LOG=".contextkit-install.log"
 
 # Global variables for rollback
 INSTALLED_FILES=()
@@ -84,8 +84,8 @@ rollback_changes() {
 trap error_handler ERR
 
 # Initialize installation log
-echo "Vibe Kit Installation Log - $(date)" > "$INSTALL_LOG"
-log "${PURPLE}🎵 Starting Vibe Kit v${VIBE_KIT_VERSION} installation...${NC}"
+echo "ContextKit Installation Log - $(date)" > "$INSTALL_LOG"
+log "${PURPLE}🎵 Starting ContextKit v${VIBE_KIT_VERSION} installation...${NC}"
 
 # Utility functions
 backup_file() {
@@ -217,14 +217,14 @@ detect_project_type() {
 create_structure() {
     log "${YELLOW}📁 Creating directory structure...${NC}"
     
-    # Create .vibe-kit directories
+    # Create .contextkit directories
     local vibe_dirs=(
-        ".vibe-kit/standards"
-        ".vibe-kit/hooks"
-        ".vibe-kit/types"
-        ".vibe-kit/commands"
-        ".vibe-kit/templates"
-        ".vibe-kit/scripts"
+        ".contextkit/standards"
+        ".contextkit/hooks"
+        ".contextkit/types"
+        ".contextkit/commands"
+        ".contextkit/templates"
+        ".contextkit/scripts"
     )
     
     for dir in "${vibe_dirs[@]}"; do
@@ -256,17 +256,17 @@ install_standards() {
     log "${YELLOW}📚 Installing standards for ${project_type} project...${NC}"
     
     # Download base standards
-    safe_download "${REPO_URL}/standards/README.md" ".vibe-kit/standards/README.md" "Standards README"
-    safe_download "${REPO_URL}/standards/code-style.md" ".vibe-kit/standards/code-style.md" "Code Style Guide"
-    safe_download "${REPO_URL}/standards/testing.md" ".vibe-kit/standards/testing.md" "Testing Standards"
-    safe_download "${REPO_URL}/standards/architecture.md" ".vibe-kit/standards/architecture.md" "Architecture Guide"
-    safe_download "${REPO_URL}/standards/workflows.md" ".vibe-kit/standards/workflows.md" "Workflow Standards"
-    safe_download "${REPO_URL}/standards/ai-guidelines.md" ".vibe-kit/standards/ai-guidelines.md" "AI Guidelines"
+    safe_download "${REPO_URL}/standards/README.md" ".contextkit/standards/README.md" "Standards README"
+    safe_download "${REPO_URL}/standards/code-style.md" ".contextkit/standards/code-style.md" "Code Style Guide"
+    safe_download "${REPO_URL}/standards/testing.md" ".contextkit/standards/testing.md" "Testing Standards"
+    safe_download "${REPO_URL}/standards/architecture.md" ".contextkit/standards/architecture.md" "Architecture Guide"
+    safe_download "${REPO_URL}/standards/workflows.md" ".contextkit/standards/workflows.md" "Workflow Standards"
+    safe_download "${REPO_URL}/standards/ai-guidelines.md" ".contextkit/standards/ai-guidelines.md" "AI Guidelines"
     
     # Download project-specific standards if available
     local project_specific_url="${REPO_URL}/standards/${project_type}-specific.md"
     if curl -s -f "$project_specific_url" > /dev/null 2>&1; then
-        safe_download "$project_specific_url" ".vibe-kit/standards/${project_type}-specific.md" "${project_type} Specific Standards"
+        safe_download "$project_specific_url" ".contextkit/standards/${project_type}-specific.md" "${project_type} Specific Standards"
         log "${GREEN}✅ Installed ${project_type}-specific standards${NC}"
     else
         log "${YELLOW}ℹ️  No ${project_type}-specific standards available${NC}"
@@ -279,11 +279,11 @@ install_standards() {
 install_commands() {
     log "${YELLOW}⚡ Installing AI commands...${NC}"
     
-    safe_download "${REPO_URL}/commands/create-feature.md" ".vibe-kit/commands/create-feature.md" "Create Feature Command"
-    safe_download "${REPO_URL}/commands/create-component.md" ".vibe-kit/commands/create-component.md" "Create Component Command"
-    safe_download "${REPO_URL}/commands/run-tests.md" ".vibe-kit/commands/run-tests.md" "Run Tests Command"
-    safe_download "${REPO_URL}/commands/add-documentation.md" ".vibe-kit/commands/add-documentation.md" "Add Documentation Command"
-    safe_download "${REPO_URL}/commands/quality-check.md" ".vibe-kit/commands/quality-check.md" "Quality Check Command"
+    safe_download "${REPO_URL}/commands/create-feature.md" ".contextkit/commands/create-feature.md" "Create Feature Command"
+    safe_download "${REPO_URL}/commands/create-component.md" ".contextkit/commands/create-component.md" "Create Component Command"
+    safe_download "${REPO_URL}/commands/run-tests.md" ".contextkit/commands/run-tests.md" "Run Tests Command"
+    safe_download "${REPO_URL}/commands/add-documentation.md" ".contextkit/commands/add-documentation.md" "Add Documentation Command"
+    safe_download "${REPO_URL}/commands/quality-check.md" ".contextkit/commands/quality-check.md" "Quality Check Command"
     
     log "${GREEN}✅ Commands installed${NC}"
 }
@@ -292,13 +292,13 @@ install_commands() {
 install_hooks() {
     log "${YELLOW}🪝 Installing Git hooks...${NC}"
     
-    safe_download "${REPO_URL}/hooks/pre-commit.sh" ".vibe-kit/hooks/pre-commit.sh" "Pre-commit Hook"
-    safe_download "${REPO_URL}/hooks/pre-push.sh" ".vibe-kit/hooks/pre-push.sh" "Pre-push Hook"
-    safe_download "${REPO_URL}/hooks/commit-msg.sh" ".vibe-kit/hooks/commit-msg.sh" "Commit Message Hook"
-    safe_download "${REPO_URL}/hooks/setup-hooks.sh" ".vibe-kit/hooks/setup-hooks.sh" "Setup Hooks Script"
+    safe_download "${REPO_URL}/hooks/pre-commit.sh" ".contextkit/hooks/pre-commit.sh" "Pre-commit Hook"
+    safe_download "${REPO_URL}/hooks/pre-push.sh" ".contextkit/hooks/pre-push.sh" "Pre-push Hook"
+    safe_download "${REPO_URL}/hooks/commit-msg.sh" ".contextkit/hooks/commit-msg.sh" "Commit Message Hook"
+    safe_download "${REPO_URL}/hooks/setup-hooks.sh" ".contextkit/hooks/setup-hooks.sh" "Setup Hooks Script"
     
     # Make hooks executable
-    chmod +x .vibe-kit/hooks/*.sh
+    chmod +x .contextkit/hooks/*.sh
     
     log "${GREEN}✅ Hooks installed${NC}"
 }
@@ -309,13 +309,13 @@ install_types() {
     
     log "${YELLOW}🔒 Installing type safety...${NC}"
     
-    safe_download "${REPO_URL}/types/strict.tsconfig.json" ".vibe-kit/types/strict.tsconfig.json" "Strict TypeScript Config"
-    safe_download "${REPO_URL}/types/global.d.ts" ".vibe-kit/types/global.d.ts" "Global Type Definitions"
-    safe_download "${REPO_URL}/types/type-check.sh" ".vibe-kit/types/type-check.sh" "Type Check Script"
-    safe_download "${REPO_URL}/types/typescript-strict.json" ".vibe-kit/types/typescript-strict.json" "TypeScript Strict Config"
+    safe_download "${REPO_URL}/types/strict.tsconfig.json" ".contextkit/types/strict.tsconfig.json" "Strict TypeScript Config"
+    safe_download "${REPO_URL}/types/global.d.ts" ".contextkit/types/global.d.ts" "Global Type Definitions"
+    safe_download "${REPO_URL}/types/type-check.sh" ".contextkit/types/type-check.sh" "Type Check Script"
+    safe_download "${REPO_URL}/types/typescript-strict.json" ".contextkit/types/typescript-strict.json" "TypeScript Strict Config"
     
     # Make type check script executable
-    chmod +x .vibe-kit/types/type-check.sh
+    chmod +x .contextkit/types/type-check.sh
     
     log "${GREEN}✅ Type safety installed${NC}"
 }
@@ -327,20 +327,20 @@ install_templates() {
     log "${YELLOW}📝 Installing code templates...${NC}"
     
     # Download base templates
-    safe_download "${REPO_URL}/templates/component.tsx" ".vibe-kit/templates/component.tsx" "Component Template"
-    safe_download "${REPO_URL}/templates/test.tsx" ".vibe-kit/templates/test.tsx" "Test Template"
-    safe_download "${REPO_URL}/templates/story.tsx" ".vibe-kit/templates/story.tsx" "Storybook Template"
-    safe_download "${REPO_URL}/templates/hook.ts" ".vibe-kit/templates/hook.ts" "Hook Template"
-    safe_download "${REPO_URL}/templates/api.ts" ".vibe-kit/templates/api.ts" "API Template"
+    safe_download "${REPO_URL}/templates/component.tsx" ".contextkit/templates/component.tsx" "Component Template"
+    safe_download "${REPO_URL}/templates/test.tsx" ".contextkit/templates/test.tsx" "Test Template"
+    safe_download "${REPO_URL}/templates/story.tsx" ".contextkit/templates/story.tsx" "Storybook Template"
+    safe_download "${REPO_URL}/templates/hook.ts" ".contextkit/templates/hook.ts" "Hook Template"
+    safe_download "${REPO_URL}/templates/api.ts" ".contextkit/templates/api.ts" "API Template"
     
     # Download project-specific templates if available
     local project_templates_url="${REPO_URL}/templates/${project_type}/"
     if curl -s -f "$project_templates_url" > /dev/null 2>&1; then
-        mkdir -p ".vibe-kit/templates/${project_type}"
-        CREATED_DIRS+=(".vibe-kit/templates/${project_type}")
+        mkdir -p ".contextkit/templates/${project_type}"
+        CREATED_DIRS+=(".contextkit/templates/${project_type}")
         
-        safe_download "${REPO_URL}/templates/${project_type}/component.tsx" ".vibe-kit/templates/${project_type}/component.tsx" "${project_type} Component Template"
-        safe_download "${REPO_URL}/templates/${project_type}/test.tsx" ".vibe-kit/templates/${project_type}/test.tsx" "${project_type} Test Template"
+        safe_download "${REPO_URL}/templates/${project_type}/component.tsx" ".contextkit/templates/${project_type}/component.tsx" "${project_type} Component Template"
+        safe_download "${REPO_URL}/templates/${project_type}/test.tsx" ".contextkit/templates/${project_type}/test.tsx" "${project_type} Test Template"
         
         log "${GREEN}✅ Installed ${project_type}-specific templates${NC}"
     else
@@ -354,7 +354,7 @@ install_templates() {
 install_cursor_integration() {
     log "${YELLOW}🎯 Installing Cursor integration...${NC}"
     
-    safe_download "${REPO_URL}/cursor/vibe-kit.mdc" ".cursor/rules/vibe-kit.mdc" "Cursor Rules"
+    safe_download "${REPO_URL}/cursor/contextkit.mdc" ".cursor/rules/contextkit.mdc" "Cursor Rules"
     
     log "${GREEN}✅ Cursor integration installed${NC}"
 }
@@ -363,13 +363,13 @@ install_cursor_integration() {
 install_scripts() {
     log "${YELLOW}🔧 Installing automation scripts...${NC}"
     
-    safe_download "${REPO_URL}/scripts/setup.sh" ".vibe-kit/scripts/setup.sh" "Setup Script"
-    safe_download "${REPO_URL}/scripts/type-check.sh" ".vibe-kit/scripts/type-check.sh" "Type Check Script"
-    safe_download "${REPO_URL}/scripts/quality-check.sh" ".vibe-kit/scripts/quality-check.sh" "Quality Check Script"
-    safe_download "${REPO_URL}/scripts/update.sh" ".vibe-kit/scripts/update.sh" "Update Script"
+    safe_download "${REPO_URL}/scripts/setup.sh" ".contextkit/scripts/setup.sh" "Setup Script"
+    safe_download "${REPO_URL}/scripts/type-check.sh" ".contextkit/scripts/type-check.sh" "Type Check Script"
+    safe_download "${REPO_URL}/scripts/quality-check.sh" ".contextkit/scripts/quality-check.sh" "Quality Check Script"
+    safe_download "${REPO_URL}/scripts/update.sh" ".contextkit/scripts/update.sh" "Update Script"
     
     # Make scripts executable
-    chmod +x .vibe-kit/scripts/*.sh
+    chmod +x .contextkit/scripts/*.sh
     
     log "${GREEN}✅ Scripts installed${NC}"
 }
@@ -383,10 +383,10 @@ create_config() {
     log "${YELLOW}⚙️  Creating configuration...${NC}"
     
     # Backup existing config if it exists
-    backup_file ".vibe-kit/config.yml"
+    backup_file ".contextkit/config.yml"
     
-    cat > .vibe-kit/config.yml << EOF
-# Vibe Kit Configuration
+    cat > .contextkit/config.yml << EOF
+# ContextKit Configuration
 version: "${VIBE_KIT_VERSION}"
 project_name: "${project_name}"
 project_type: "${project_type}"
@@ -409,14 +409,14 @@ paths:
 
 # Commands
 commands:
-  create_component: "@.vibe-kit/commands/create-component.md"
-  create_feature: "@.vibe-kit/commands/create-feature.md"
-  run_tests: "@.vibe-kit/commands/run-tests.md"
-  add_docs: "@.vibe-kit/commands/add-documentation.md"
-  quality_check: "@.vibe-kit/commands/quality-check.md"
+  create_component: "@.contextkit/commands/create-component.md"
+  create_feature: "@.contextkit/commands/create-feature.md"
+  run_tests: "@.contextkit/commands/run-tests.md"
+  add_docs: "@.contextkit/commands/add-documentation.md"
+  quality_check: "@.contextkit/commands/quality-check.md"
 EOF
 
-    INSTALLED_FILES+=(".vibe-kit/config.yml")
+    INSTALLED_FILES+=(".contextkit/config.yml")
     log "${GREEN}✅ Configuration created${NC}"
 }
 
@@ -431,7 +431,7 @@ prompt_husky_setup() {
         
         echo ""
         log "${BLUE}🪝 Git Hooks Setup${NC}"
-        log "${YELLOW}Vibe Kit can install pre-commit and pre-push hooks to automatically run quality checks.${NC}"
+        log "${YELLOW}ContextKit can install pre-commit and pre-push hooks to automatically run quality checks.${NC}"
         log "${YELLOW}These hooks will run tests, linting, and type checking before commits.${NC}"
         echo ""
         
@@ -445,7 +445,7 @@ prompt_husky_setup() {
                     ;;
                 [Nn]* ) 
                     log "${YELLOW}⏭️  Skipping Git hooks installation${NC}"
-                    log "${BLUE}💡 You can install them later by running: .vibe-kit/hooks/setup-hooks.sh${NC}"
+                    log "${BLUE}💡 You can install them later by running: .contextkit/hooks/setup-hooks.sh${NC}"
                     return 1
                     ;;
                 * ) 
@@ -514,19 +514,19 @@ setup_husky() {
         # Add hooks safely
         case "$package_manager" in
             "yarn")
-                yarn husky add .husky/pre-commit ".vibe-kit/hooks/pre-commit.sh"
-                yarn husky add .husky/pre-push ".vibe-kit/hooks/pre-push.sh"
-                yarn husky add .husky/commit-msg ".vibe-kit/hooks/commit-msg.sh"
+                yarn husky add .husky/pre-commit ".contextkit/hooks/pre-commit.sh"
+                yarn husky add .husky/pre-push ".contextkit/hooks/pre-push.sh"
+                yarn husky add .husky/commit-msg ".contextkit/hooks/commit-msg.sh"
                 ;;
             "pnpm")
-                pnpm exec husky add .husky/pre-commit ".vibe-kit/hooks/pre-commit.sh"
-                pnpm exec husky add .husky/pre-push ".vibe-kit/hooks/pre-push.sh"
-                pnpm exec husky add .husky/commit-msg ".vibe-kit/hooks/commit-msg.sh"
+                pnpm exec husky add .husky/pre-commit ".contextkit/hooks/pre-commit.sh"
+                pnpm exec husky add .husky/pre-push ".contextkit/hooks/pre-push.sh"
+                pnpm exec husky add .husky/commit-msg ".contextkit/hooks/commit-msg.sh"
                 ;;
             "npm"|*)
-                npx husky add .husky/pre-commit ".vibe-kit/hooks/pre-commit.sh"
-                npx husky add .husky/pre-push ".vibe-kit/hooks/pre-push.sh"
-                npx husky add .husky/commit-msg ".vibe-kit/hooks/commit-msg.sh"
+                npx husky add .husky/pre-commit ".contextkit/hooks/pre-commit.sh"
+                npx husky add .husky/pre-push ".contextkit/hooks/pre-push.sh"
+                npx husky add .husky/commit-msg ".contextkit/hooks/commit-msg.sh"
                 ;;
         esac
         
@@ -592,23 +592,23 @@ main() {
     
     # Installation completed successfully
     log ""
-    log "${GREEN}🎉 Vibe Kit v${VIBE_KIT_VERSION} successfully installed!${NC}"
+    log "${GREEN}🎉 ContextKit v${VIBE_KIT_VERSION} successfully installed!${NC}"
     log ""
     log "${BLUE}📖 Next steps:${NC}"
-    log "1. Read .vibe-kit/standards/README.md to understand the standards"
-    log "2. Customize .vibe-kit/config.yml for your project"
-    log "3. Start using AI commands with @.vibe-kit/ references"
+    log "1. Read .contextkit/standards/README.md to understand the standards"
+    log "2. Customize .contextkit/config.yml for your project"
+    log "3. Start using AI commands with @.contextkit/ references"
     
     if [ "$git_hooks_enabled" = "true" ]; then
         log "4. Git hooks are active - quality checks will run automatically"
     else
-        log "4. To install Git hooks later: .vibe-kit/hooks/setup-hooks.sh"
+        log "4. To install Git hooks later: .contextkit/hooks/setup-hooks.sh"
     fi
     
     log ""
-    log "${YELLOW}💡 Try: 'Create a Button component following vibe-kit standards'${NC}"
+    log "${YELLOW}💡 Try: 'Create a Button component following contextkit standards'${NC}"
     log ""
-    log "${BLUE}🔗 Documentation: https://github.com/nolrm/vibe-kit${NC}"
+    log "${BLUE}🔗 Documentation: https://github.com/nolrm/contextkit${NC}"
     log "${PURPLE}🎵 Get the right vibe for your code!${NC}"
     
     # Cleanup

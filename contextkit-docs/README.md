@@ -1,10 +1,10 @@
-# Vibe Kit Documentation Site
+# ContextKit Documentation Site
 
-This is the official documentation website for [Vibe Kit](https://github.com/nolrm/vibe-kit), built with **Next.js 16**, **Tailwind CSS v4**, and **shadcn/ui** components.
+This is the official documentation website for [ContextKit](https://github.com/nolrm/contextkit), built with **Next.js 16**, **Tailwind CSS v4**, and **shadcn/ui** components.
 
 ## What is This?
 
-The `vibe-kit-docs` directory contains the complete source code for the Vibe Kit documentation website. This site provides comprehensive documentation about Vibe Kit, including:
+The `contextkit-docs` directory contains the complete source code for the ContextKit documentation website. This site provides comprehensive documentation about ContextKit, including:
 
 - Quick start guide (installation + setup)
 - Platform-specific examples (Cursor, VS Code, Aider, Claude CLI, Gemini)
@@ -22,7 +22,7 @@ The `vibe-kit-docs` directory contains the complete source code for the Vibe Kit
 ## Directory Structure
 
 ```
-vibe-kit-docs/
+contextkit-docs/
 ├── app/                          # Next.js App Router pages
 │   ├── docs/                     # Documentation pages
 │   │   ├── platform-examples/    # Platform examples (Cursor, VS Code, Aider, etc.)
@@ -122,7 +122,7 @@ pnpm start
 
 ### Documentation Sections
 
-1. **Introduction** (`/docs`) - Overview of Vibe Kit and Context Engineering
+1. **Introduction** (`/docs`) - Overview of ContextKit and Context Engineering
 2. **Quick Start** (`/docs/quick-start`) - Complete installation and setup guide (3 steps)
 3. **Platform Examples** (`/docs/platform-examples`) - How to use with Cursor, VS Code, Aider, Claude CLI, Gemini
 4. **Project Structure** (`/docs/project-structure`) - Directory structure and customization

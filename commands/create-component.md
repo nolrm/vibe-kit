@@ -23,12 +23,12 @@ Create a DataTable component in src/components with columns, data, and onRowClic
 
 ## Standards Applied
 
-- @.vibe-kit/standards/code-style.md - Code style guidelines
-- @.vibe-kit/standards/testing.md - Testing patterns
-- @.vibe-kit/standards/ai-guidelines.md - AI development guidelines
+- @.contextkit/standards/code-style.md - Code style guidelines
+- @.contextkit/standards/testing.md - Testing patterns
+- @.contextkit/standards/ai-guidelines.md - AI development guidelines
 
 ## Template Used
 
-- @.vibe-kit/templates/component.tsx - Component template
-- @.vibe-kit/templates/test.tsx - Test template
-- @.vibe-kit/templates/story.tsx - Storybook template
+- @.contextkit/templates/component.tsx - Component template
+- @.contextkit/templates/test.tsx - Test template
+- @.contextkit/templates/story.tsx - Storybook template

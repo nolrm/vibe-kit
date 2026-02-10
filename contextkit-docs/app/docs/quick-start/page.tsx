@@ -7,7 +7,7 @@ export default function QuickStartPage() {
       <div className="space-y-3">
         <h1 className="scroll-m-20 text-4xl font-bold tracking-tight">Quick Start</h1>
         <p className="text-lg text-muted-foreground leading-relaxed">
-          Get started with Vibe Kit in 3 simple steps. This guide walks you through installation, setup, and your first use.
+          Get started with ContextKit in 3 simple steps. This guide walks you through installation, setup, and your first use.
         </p>
       </div>
 
@@ -26,7 +26,7 @@ export default function QuickStartPage() {
           <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground font-bold">
             1
           </span>
-          Install Vibe Kit
+          Install ContextKit
         </h2>
         
         <div className="space-y-3">
@@ -36,10 +36,10 @@ export default function QuickStartPage() {
               <Terminal className="h-4 w-4" />
               <span className="font-mono">Global install (recommended)</span>
             </div>
-            <code className="block rounded bg-muted px-4 py-2 font-mono text-sm">npm install -g @nolrm/vibe-kit</code>
+            <code className="block rounded bg-muted px-4 py-2 font-mono text-sm">npm install -g @nolrm/contextkit</code>
           </div>
           <p className="text-sm text-muted-foreground">
-            Or use without installing: <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">npx @nolrm/vibe-kit@latest install</code>
+            Or use without installing: <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">npx @nolrm/contextkit@latest install</code>
           </p>
         </div>
       </div>
@@ -61,24 +61,24 @@ export default function QuickStartPage() {
               <span className="font-mono">In your terminal</span>
             </div>
             <code className="block rounded bg-muted px-4 py-2 font-mono text-sm">cd your-project</code>
-            <code className="block rounded bg-muted px-4 py-2 font-mono text-sm mt-2">vibe-kit install</code>
+            <code className="block rounded bg-muted px-4 py-2 font-mono text-sm mt-2">contextkit install</code>
           </div>
           <p className="text-sm text-muted-foreground">
-            This creates the <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">.vibe-kit/</code> directory with skeleton standards files (blank templates). Vibe Kit auto-detects your project type and AI tools. <strong>After install, run <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">vk analyze</code> to generate content for these files.</strong>
+            This creates the <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">.contextkit/</code> directory with skeleton standards files (blank templates). ContextKit auto-detects your project type and AI tools. <strong>After install, run <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">ck analyze</code> to generate content for these files.</strong>
           </p>
           
           <div className="rounded-lg border border-blue-500/20 bg-blue-500/5 p-3">
             <p className="text-sm font-medium mb-2">💡 Multi-Team Workflow</p>
             <p className="text-sm text-muted-foreground mb-2">
-              If <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">.vibe-kit</code> already exists, add your specific AI tool:
+              If <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">.contextkit</code> already exists, add your specific AI tool:
             </p>
             <div className="flex flex-col gap-1 text-sm">
-              <code className="rounded bg-muted px-2 py-1 font-mono text-xs">vibe-kit cursor</code>
-              <code className="rounded bg-muted px-2 py-1 font-mono text-xs">vibe-kit vscode</code>
-              <code className="rounded bg-muted px-2 py-1 font-mono text-xs">vibe-kit claude</code>
-              <code className="rounded bg-muted px-2 py-1 font-mono text-xs">vibe-kit gemini</code>
-              <code className="rounded bg-muted px-2 py-1 font-mono text-xs">vibe-kit aider</code>
-              <code className="rounded bg-muted px-2 py-1 font-mono text-xs">vibe-kit continue</code>
+              <code className="rounded bg-muted px-2 py-1 font-mono text-xs">contextkit cursor</code>
+              <code className="rounded bg-muted px-2 py-1 font-mono text-xs">contextkit vscode</code>
+              <code className="rounded bg-muted px-2 py-1 font-mono text-xs">contextkit claude</code>
+              <code className="rounded bg-muted px-2 py-1 font-mono text-xs">contextkit gemini</code>
+              <code className="rounded bg-muted px-2 py-1 font-mono text-xs">contextkit aider</code>
+              <code className="rounded bg-muted px-2 py-1 font-mono text-xs">contextkit continue</code>
             </div>
           </div>
         </div>
@@ -100,7 +100,7 @@ export default function QuickStartPage() {
               <Terminal className="h-4 w-4" />
               <span className="font-mono">Analyze project</span>
             </div>
-            <code className="block rounded bg-muted px-4 py-2 font-mono text-sm">vibe-kit analyze</code>
+            <code className="block rounded bg-muted px-4 py-2 font-mono text-sm">contextkit analyze</code>
           </div>
           <div className="rounded-lg border border-primary/20 bg-primary/5 p-3">
             <p className="text-sm font-medium mb-2">🎯 What analyze does:</p>
@@ -115,7 +115,7 @@ export default function QuickStartPage() {
           <div className="rounded-lg border border-blue-500/20 bg-blue-500/5 p-3 mt-3">
             <p className="text-sm font-medium mb-2">📦 Monorepo Support</p>
             <p className="text-sm text-muted-foreground mb-2">
-              For monorepos, <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">vk analyze</code> automatically detects frontend/backend packages and prompts you to select which to analyze:
+              For monorepos, <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">ck analyze</code> automatically detects frontend/backend packages and prompts you to select which to analyze:
             </p>
             <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground ml-2">
               <li><strong>Frontend:</strong> Analyzes React/Vue/Angular packages</li>
@@ -137,7 +137,7 @@ export default function QuickStartPage() {
         </h2>
         
         <p className="text-muted-foreground leading-relaxed">
-          Vibe Kit is now configured. Here's what to do next:
+          ContextKit is now configured. Here's what to do next:
         </p>
 
         <div className="grid gap-3 md:grid-cols-2 mt-3">
@@ -157,7 +157,7 @@ export default function QuickStartPage() {
               Use in VS Code
             </h3>
             <p className="text-sm text-muted-foreground">
-              In Copilot Chat: <code className="rounded bg-muted px-1 font-mono text-xs">@.vibe-kit Create checkout flow for customer</code>
+              In Copilot Chat: <code className="rounded bg-muted px-1 font-mono text-xs">@.contextkit Create checkout flow for customer</code>
             </p>
           </div>
 
@@ -167,7 +167,7 @@ export default function QuickStartPage() {
               Customize Standards
             </h3>
             <p className="text-sm text-muted-foreground">
-              Edit files in <code className="rounded bg-muted px-1 font-mono text-xs">.vibe-kit/standards/</code> to match your team's preferences.
+              Edit files in <code className="rounded bg-muted px-1 font-mono text-xs">.contextkit/standards/</code> to match your team's preferences.
             </p>
           </div>
 
@@ -177,7 +177,7 @@ export default function QuickStartPage() {
               Check Status
             </h3>
             <p className="text-sm text-muted-foreground">
-              Run <code className="rounded bg-muted px-1 font-mono text-xs">vibe-kit status</code> to see detected AI tools.
+              Run <code className="rounded bg-muted px-1 font-mono text-xs">contextkit status</code> to see detected AI tools.
             </p>
           </div>
         </div>
@@ -186,7 +186,7 @@ export default function QuickStartPage() {
       <div className="rounded-lg border border-primary/20 bg-primary/5 p-4 mt-6">
         <p className="text-sm font-medium mb-2">What Gets Created?</p>
         <p className="text-sm text-muted-foreground">
-          Vibe Kit creates a <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">.vibe-kit/</code> directory with standards, templates, and commands. Auto-detects your AI tools (Cursor, VS Code, Aider, etc.) and configures integrations automatically.
+          ContextKit creates a <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">.contextkit/</code> directory with standards, templates, and commands. Auto-detects your AI tools (Cursor, VS Code, Aider, etc.) and configures integrations automatically.
         </p>
       </div>
 

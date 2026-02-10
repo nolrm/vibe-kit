@@ -1,4 +1,4 @@
-# Vibe Kit Installation Demo
+# ContextKit Installation Demo
 
 ## Interactive Git Hooks Setup
 
@@ -7,7 +7,7 @@ When you run the installation, you'll now see an interactive prompt for Git hook
 ```bash
 $ ./install.sh
 
-🎵 Starting Vibe Kit v1.0.0 installation...
+🎵 Starting ContextKit v1.0.0 installation...
 🔍 Detected project type: react-vite
 📦 Detected package manager: npm
 📁 Creating directory structure...
@@ -28,7 +28,7 @@ $ ./install.sh
 ✅ Scripts installed
 
 🪝 Git Hooks Setup
-Vibe Kit can install pre-commit and pre-push hooks to automatically run quality checks.
+ContextKit can install pre-commit and pre-push hooks to automatically run quality checks.
 These hooks will run tests, linting, and type checking before commits.
 
 Do you want to install Git hooks? (y/n): y
@@ -38,16 +38,16 @@ Do you want to install Git hooks? (y/n): y
 ⚙️  Creating configuration...
 ✅ Configuration created
 
-🎉 Vibe Kit v1.0.0 successfully installed!
+🎉 ContextKit v1.0.0 successfully installed!
 
 📖 Next steps:
-1. Read .vibe-kit/standards/README.md to understand the standards
-2. Customize .vibe-kit/config.yml for your project
-3. Start using AI commands with @.vibe-kit/ references
+1. Read .contextkit/standards/README.md to understand the standards
+2. Customize .contextkit/config.yml for your project
+3. Start using AI commands with @.contextkit/ references
 4. Git hooks are active - quality checks will run automatically
 
-💡 Try: 'Create a Button component following vibe-kit standards'
-🔗 Documentation: https://github.com/nolrm/vibe-kit
+💡 Try: 'Create a Button component following contextkit standards'
+🔗 Documentation: https://github.com/nolrm/contextkit
 🎵 Get the right vibe for your code!
 ```
 
@@ -58,7 +58,7 @@ For CI/CD environments, use the non-interactive flag:
 ```bash
 $ NON_INTERACTIVE=true ./install.sh
 
-🎵 Starting Vibe Kit v1.0.0 installation...
+🎵 Starting ContextKit v1.0.0 installation...
 🔍 Detected project type: react-vite
 📦 Detected package manager: npm
 📁 Creating directory structure...
@@ -68,13 +68,13 @@ $ NON_INTERACTIVE=true ./install.sh
 ⚙️  Creating configuration...
 ✅ Configuration created
 
-🎉 Vibe Kit v1.0.0 successfully installed!
+🎉 ContextKit v1.0.0 successfully installed!
 
 📖 Next steps:
-1. Read .vibe-kit/standards/README.md to understand the standards
-2. Customize .vibe-kit/config.yml for your project
-3. Start using AI commands with @.vibe-kit/ references
-4. To install Git hooks later: .vibe-kit/hooks/setup-hooks.sh
+1. Read .contextkit/standards/README.md to understand the standards
+2. Customize .contextkit/config.yml for your project
+3. Start using AI commands with @.contextkit/ references
+4. To install Git hooks later: .contextkit/hooks/setup-hooks.sh
 ```
 
 ## Manual Git Hooks Installation
@@ -83,15 +83,15 @@ If you skipped Git hooks during installation, you can install them later:
 
 ```bash
 # Run the setup script
-./vibe-kit/hooks/setup-hooks.sh
+./contextkit/hooks/setup-hooks.sh
 ```
 
 ## Configuration
 
-The installation creates a `.vibe-kit/config.yml` file that tracks whether Git hooks are enabled:
+The installation creates a `.contextkit/config.yml` file that tracks whether Git hooks are enabled:
 
 ```yaml
-# Vibe Kit Configuration
+# ContextKit Configuration
 version: "1.0.0"
 project_name: "my-project"
 project_type: "react-vite"

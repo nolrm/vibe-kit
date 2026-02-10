@@ -7,7 +7,7 @@ export default function EnterpriseFeaturesPage() {
       <div className="space-y-3">
         <h1 className="scroll-m-20 text-4xl font-bold tracking-tight">Enterprise Features</h1>
         <p className="text-lg text-muted-foreground leading-relaxed">
-          Vibe Kit includes enterprise-grade features for policy enforcement, workflow orchestration, registry management, and observability.
+          ContextKit includes enterprise-grade features for policy enforcement, workflow orchestration, registry management, and observability.
         </p>
       </div>
 
@@ -18,9 +18,9 @@ export default function EnterpriseFeaturesPage() {
           <div className="flex items-start gap-3">
             <Shield className="h-5 w-5 text-primary mt-0.5" />
             <div className="flex-1">
-              <h3 className="font-semibold text-lg mb-2">vibe-kit check</h3>
+              <h3 className="font-semibold text-lg mb-2">contextkit check</h3>
               <p className="text-sm text-muted-foreground mb-3">
-                Validate installation and enforce policy compliance based on <code className="rounded bg-muted px-1 font-mono text-xs">.vibe-kit/policies/policy.yml</code>.
+                Validate installation and enforce policy compliance based on <code className="rounded bg-muted px-1 font-mono text-xs">.contextkit/policies/policy.yml</code>.
               </p>
               
               <div className="rounded-lg border border-blue-500/20 bg-blue-500/5 p-3 mb-3">
@@ -35,8 +35,8 @@ export default function EnterpriseFeaturesPage() {
                 </pre>
               </div>
 
-              <code className="block rounded bg-muted px-4 py-2 font-mono text-sm mb-2">vibe-kit check</code>
-              <code className="block rounded bg-muted px-4 py-2 font-mono text-sm">vibe-kit check --strict</code>
+              <code className="block rounded bg-muted px-4 py-2 font-mono text-sm mb-2">contextkit check</code>
+              <code className="block rounded bg-muted px-4 py-2 font-mono text-sm">contextkit check --strict</code>
               
               <p className="text-sm text-muted-foreground mt-3">
                 Enforcement levels: <code className="rounded bg-muted px-1 font-mono text-xs">off</code> (no check), <code className="rounded bg-muted px-1 font-mono text-xs">warn</code> (warning), <code className="rounded bg-muted px-1 font-mono text-xs">block</code> (error).
@@ -53,9 +53,9 @@ export default function EnterpriseFeaturesPage() {
           <div className="flex items-start gap-3">
             <Workflow className="h-5 w-5 text-primary mt-0.5" />
             <div className="flex-1">
-              <h3 className="font-semibold text-lg mb-2">vibe-kit run &lt;workflow&gt;</h3>
+              <h3 className="font-semibold text-lg mb-2">contextkit run &lt;workflow&gt;</h3>
               <p className="text-sm text-muted-foreground mb-3">
-                Execute structured, multi-step workflows defined in <code className="rounded bg-muted px-1 font-mono text-xs">.vibe-kit/instructions/core/</code>.
+                Execute structured, multi-step workflows defined in <code className="rounded bg-muted px-1 font-mono text-xs">.contextkit/instructions/core/</code>.
               </p>
               
               <div className="rounded-lg border border-blue-500/20 bg-blue-500/5 p-3 mb-3">
@@ -73,8 +73,8 @@ export default function EnterpriseFeaturesPage() {
                 </pre>
               </div>
 
-              <code className="block rounded bg-muted px-4 py-2 font-mono text-sm mb-2">vibe-kit run create-component</code>
-              <code className="block rounded bg-muted px-4 py-2 font-mono text-sm">vibe-kit run create-component --interactive</code>
+              <code className="block rounded bg-muted px-4 py-2 font-mono text-sm mb-2">contextkit run create-component</code>
+              <code className="block rounded bg-muted px-4 py-2 font-mono text-sm">contextkit run create-component --interactive</code>
               
               <p className="text-sm text-muted-foreground mt-3">
                 Workflows support pre-flight checks, post-flight verification, and subagent delegation for complex tasks.
@@ -94,15 +94,15 @@ export default function EnterpriseFeaturesPage() {
               <div className="flex-1">
                 <h3 className="font-semibold text-lg mb-2">Publishing Configurations</h3>
                 <p className="text-sm text-muted-foreground mb-3">
-                  Share Vibe Kit configurations across teams with versioned packages.
+                  Share ContextKit configurations across teams with versioned packages.
                 </p>
                 
                 <code className="block rounded bg-muted px-4 py-2 font-mono text-sm mb-3">
-                  vibe-kit publish --name @company/react-standards --version 1.0.0
+                  contextkit publish --name @company/react-standards --version 1.0.0
                 </code>
                 
                 <p className="text-sm text-muted-foreground">
-                  Creates a versioned archive in <code className="rounded bg-muted px-1 font-mono text-xs">~/.vibe-kit-registry</code>.
+                  Creates a versioned archive in <code className="rounded bg-muted px-1 font-mono text-xs">~/.contextkit-registry</code>.
                 </p>
               </div>
             </div>
@@ -118,10 +118,10 @@ export default function EnterpriseFeaturesPage() {
                 </p>
                 
                 <code className="block rounded bg-muted px-4 py-2 font-mono text-sm mb-2">
-                  vibe-kit pull @company/react-standards@1.0.0
+                  contextkit pull @company/react-standards@1.0.0
                 </code>
                 <code className="block rounded bg-muted px-4 py-2 font-mono text-sm mb-3">
-                  vibe-kit pull @company/react-standards@latest --backup
+                  contextkit pull @company/react-standards@latest --backup
                 </code>
                 
                 <p className="text-sm text-muted-foreground">
@@ -140,16 +140,16 @@ export default function EnterpriseFeaturesPage() {
           <div className="flex items-start gap-3">
             <BarChart3 className="h-5 w-5 text-primary mt-0.5" />
             <div className="flex-1">
-              <h3 className="font-semibold text-lg mb-2">vibe-kit dashboard</h3>
+              <h3 className="font-semibold text-lg mb-2">contextkit dashboard</h3>
               <p className="text-sm text-muted-foreground mb-3">
                 Visualize standards freshness, corrections log analytics, and policy compliance.
               </p>
               
               <code className="block rounded bg-muted px-4 py-2 font-mono text-sm mb-2">
-                vibe-kit dashboard
+                contextkit dashboard
               </code>
               <code className="block rounded bg-muted px-4 py-2 font-mono text-sm mb-3">
-                vibe-kit dashboard --no-server  # CLI metrics only
+                contextkit dashboard --no-server  # CLI metrics only
               </code>
               
               <div className="rounded-lg border border-blue-500/20 bg-blue-500/5 p-3">
@@ -173,13 +173,13 @@ export default function EnterpriseFeaturesPage() {
           <div className="flex items-start gap-3">
             <FileText className="h-5 w-5 text-primary mt-0.5" />
             <div className="flex-1">
-              <h3 className="font-semibold text-lg mb-2">vibe-kit note</h3>
+              <h3 className="font-semibold text-lg mb-2">contextkit note</h3>
               <p className="text-sm text-muted-foreground mb-3">
-                Track AI performance issues, preferences, and improvements in <code className="rounded bg-muted px-1 font-mono text-xs">.vibe-kit/corrections.md</code>.
+                Track AI performance issues, preferences, and improvements in <code className="rounded bg-muted px-1 font-mono text-xs">.contextkit/corrections.md</code>.
               </p>
               
               <code className="block rounded bg-muted px-4 py-2 font-mono text-sm mb-3">
-                vibe-kit note "AI didn't follow testing standards" --category "AI Behavior" --priority HIGH
+                contextkit note "AI didn't follow testing standards" --category "AI Behavior" --priority HIGH
               </code>
               
               <p className="text-sm text-muted-foreground">
@@ -199,18 +199,18 @@ export default function EnterpriseFeaturesPage() {
             <div className="flex-1">
               <h3 className="font-semibold text-lg mb-2">Automatic Detection & Scope Selection</h3>
               <p className="text-sm text-muted-foreground mb-3">
-                Vibe Kit automatically detects monorepo structures (Turborepo, Nx, Lerna) and classifies packages as frontend or backend.
+                ContextKit automatically detects monorepo structures (Turborepo, Nx, Lerna) and classifies packages as frontend or backend.
               </p>
               
               <code className="block rounded bg-muted px-4 py-2 font-mono text-sm mb-2">
-                vibe-kit analyze  # Interactive: prompts for scope
+                contextkit analyze  # Interactive: prompts for scope
               </code>
               <code className="block rounded bg-muted px-4 py-2 font-mono text-sm mb-3">
-                vibe-kit analyze --scope both  # Analyze both frontend & backend
+                contextkit analyze --scope both  # Analyze both frontend & backend
               </code>
               
               <p className="text-sm text-muted-foreground">
-                When analyzing both, generates separate standards in <code className="rounded bg-muted px-1 font-mono text-xs">.vibe-kit/standards/frontend/</code> and <code className="rounded bg-muted px-1 font-mono text-xs">.vibe-kit/standards/backend/</code>.
+                When analyzing both, generates separate standards in <code className="rounded bg-muted px-1 font-mono text-xs">.contextkit/standards/frontend/</code> and <code className="rounded bg-muted px-1 font-mono text-xs">.contextkit/standards/backend/</code>.
               </p>
             </div>
           </div>

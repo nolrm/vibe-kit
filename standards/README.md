@@ -1,4 +1,4 @@
-# Vibe Kit Standards
+# ContextKit Standards
 
 > Get the right vibe for your code
 
@@ -6,7 +6,7 @@
 
 **This is not set-and-forget!** 
 
-After running `vibe-kit analyze`, **manually review and edit** these files to match YOUR project:
+After running `contextkit analyze`, **manually review and edit** these files to match YOUR project:
 
 - **Fine-tune** the AI-generated content to your actual needs
 - **Remove** what doesn't apply to your project  
@@ -47,28 +47,28 @@ Treat these files as **living documentation** that grows with your project.
 
 ## Standards
 
-- `@.vibe-kit/standards/code-style.md` - Code style guide
-- `@.vibe-kit/standards/testing.md` - Testing patterns
-- `@.vibe-kit/standards/architecture.md` - Architecture patterns
-- `@.vibe-kit/standards/ai-guidelines.md` - AI development guidelines
-- `@.vibe-kit/standards/glossary.md` - **Business and technical glossary**
+- `@.contextkit/standards/code-style.md` - Code style guide
+- `@.contextkit/standards/testing.md` - Testing patterns
+- `@.contextkit/standards/architecture.md` - Architecture patterns
+- `@.contextkit/standards/ai-guidelines.md` - AI development guidelines
+- `@.contextkit/standards/glossary.md` - **Business and technical glossary**
 
 ## Commands
 
-- `@.vibe-kit/commands/analyze.md` - **Analyze and customize standards for your project**
-- `@.vibe-kit/commands/create-component.md` - Create new component
-- `@.vibe-kit/commands/create-feature.md` - Create new feature
-- `@.vibe-kit/commands/run-tests.md` - Run test suite
-- `@.vibe-kit/commands/quality-check.md` - Quality check
-- `@.vibe-kit/commands/add-documentation.md` - Add documentation
+- `@.contextkit/commands/analyze.md` - **Analyze and customize standards for your project**
+- `@.contextkit/commands/create-component.md` - Create new component
+- `@.contextkit/commands/create-feature.md` - Create new feature
+- `@.contextkit/commands/run-tests.md` - Run test suite
+- `@.contextkit/commands/quality-check.md` - Quality check
+- `@.contextkit/commands/add-documentation.md` - Add documentation
 
 ## Templates
 
-- `.vibe-kit/templates/component.tsx` - Component template
-- `.vibe-kit/templates/test.tsx` - Test template
-- `.vibe-kit/templates/story.tsx` - Storybook template
-- `.vibe-kit/templates/hook.ts` - Custom hook template
-- `.vibe-kit/templates/api.ts` - API service template
+- `.contextkit/templates/component.tsx` - Component template
+- `.contextkit/templates/test.tsx` - Test template
+- `.contextkit/templates/story.tsx` - Storybook template
+- `.contextkit/templates/hook.ts` - Custom hook template
+- `.contextkit/templates/api.ts` - API service template
 
 ## AI Guidelines
 

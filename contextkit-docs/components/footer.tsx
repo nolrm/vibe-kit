@@ -14,7 +14,7 @@ export function Footer() {
         </div>
         <div className="flex items-center gap-4">
           <Link
-            href="https://github.com/nolrm/vibe-kit"
+            href="https://github.com/nolrm/contextkit"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm text-muted-foreground hover:text-foreground transition-colors"
@@ -22,7 +22,7 @@ export function Footer() {
             GitHub
           </Link>
           <Link
-            href="https://www.npmjs.com/package/@nolrm/vibe-kit"
+            href="https://www.npmjs.com/package/@nolrm/contextkit"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm text-muted-foreground hover:text-foreground transition-colors"

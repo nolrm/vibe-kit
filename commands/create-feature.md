@@ -23,9 +23,9 @@ Create a user authentication feature with login, logout, and session management
 
 ## Standards Applied
 
-- @.vibe-kit/standards/architecture.md - Architecture patterns
-- @.vibe-kit/standards/testing.md - Testing patterns
-- @.vibe-kit/standards/ai-guidelines.md - AI development guidelines
+- @.contextkit/standards/architecture.md - Architecture patterns
+- @.contextkit/standards/testing.md - Testing patterns
+- @.contextkit/standards/ai-guidelines.md - AI development guidelines
 
 ## Process
 

@@ -1,6 +1,6 @@
 # GitHub Actions Workflows
 
-This directory contains automated workflows for publishing Vibe Kit to npm.
+This directory contains automated workflows for publishing ContextKit to npm.
 
 ## 🚀 Publishing Workflow
 
@@ -62,7 +62,7 @@ git push origin main
 Your `package.json` should have:
 ```json
 {
-  "name": "@nolrm/vibe-kit",
+  "name": "@nolrm/contextkit",
   "version": "0.1.1",
   "publishConfig": {
     "access": "public"
@@ -101,4 +101,4 @@ npm version major  # 0.1.1 → 1.0.0
 
 ---
 
-**🎵 Happy publishing with Vibe Kit!**
+**🎵 Happy publishing with ContextKit!**

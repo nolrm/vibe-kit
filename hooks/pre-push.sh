@@ -1,9 +1,9 @@
 #!/bin/bash
-# pre-push.sh - Pre-push hook for Vibe Kit
+# pre-push.sh - Pre-push hook for ContextKit
 
 set -e
 
-echo "🎵 Running Vibe Kit pre-push checks..."
+echo "🎵 Running ContextKit pre-push checks..."
 
 # Run build
 if [ -f "package.json" ] && grep -q "build" package.json; then

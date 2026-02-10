@@ -1,18 +1,18 @@
-# Vibe Kit
+# ContextKit
 
 > Context Engineering for AI Development
 
-Give your AI assistants (Cursor, Claude, Copilot, Codex, Gemini, Aider, Continue, Windsurf) structured context through markdown files. Vibe Kit creates a knowledge base that ensures AI generates code matching your exact patterns, style, and architecture—no more hallucinated code or mismatched conventions.
+Give your AI assistants (Cursor, Claude, Copilot, Codex, Gemini, Aider, Continue, Windsurf) structured context through markdown files. ContextKit creates a knowledge base that ensures AI generates code matching your exact patterns, style, and architecture—no more hallucinated code or mismatched conventions.
 
-Vibe Kit is a CLI tool that provides **context-engineering** capabilities by creating `.vibe-kit/` directories with project standards, guidelines, and patterns that AI assistants read automatically.
+ContextKit is a CLI tool that provides **context-engineering** capabilities by creating `.contextkit/` directories with project standards, guidelines, and patterns that AI assistants read automatically.
 
-**[Read the full documentation](https://vibe-kit-docs.vercel.app/)**
+**[Read the full documentation](https://contextkit-docs.vercel.app/)**
 
-## Why Vibe Kit?
+## Why ContextKit?
 
 **The problem:** LLMs are great at syntax, not at *your* conventions. Generic AI output requires manual fixes for style, structure, and architecture.
 
-**The solution:** Vibe Kit provides your AI with:
+**The solution:** ContextKit provides your AI with:
 - **Glossary** of project terminology and business terms (e.g., `checkout`, `customer`, `order`)
 - **Standards** for code style, testing patterns, and architecture
 - **Templates** with canonical component shapes
@@ -33,17 +33,17 @@ Each platform gets auto-loaded bridge files (`CLAUDE.md`, `AGENTS.md`, `GEMINI.m
 
 ```bash
 # Step 1: Install globally (recommended)
-npm i -g @nolrm/vibe-kit
+npm i -g @nolrm/contextkit
 
 # Step 2: Navigate to your project and install
 cd your-project
-vibe-kit install
+contextkit install
 ```
 
-This creates `.vibe-kit/` with skeleton context files (blank templates to be filled by AI):
+This creates `.contextkit/` with skeleton context files (blank templates to be filled by AI):
 
 ```
-.vibe-kit/
+.contextkit/
   standards/       # Skeleton files: code-style.md, testing.md, architecture.md, ai-guidelines.md, workflows.md
                   # Real files: glossary.md (universal), README.md (overview)
   commands/        # analyze.md (project analysis & customization)
@@ -53,12 +53,12 @@ This creates `.vibe-kit/` with skeleton context files (blank templates to be fil
 **Generate content with AI** (recommended):
 
 ```bash
-vk analyze
+ck analyze
 # AI scans your codebase and generates content for the skeleton files
-# or in Cursor chat:  @.vibe-kit/commands/analyze.md
+# or in Cursor chat:  @.contextkit/commands/analyze.md
 ```
 
-⚠️ **Important:** After running `vk analyze`, manually review and edit the generated content to match your exact needs. The AI provides a starting point, but you must customize it.
+⚠️ **Important:** After running `ck analyze`, manually review and edit the generated content to match your exact needs. The AI provides a starting point, but you must customize it.
 
 ---
 
@@ -68,21 +68,21 @@ Perfect for teams where members use different AI tools:
 
 ```bash
 # First team member (any tool) - sets up the project
-vibe-kit install
+contextkit install
 
 # Each team member adds their platform
-vk claude      # creates CLAUDE.md + .claude/rules/
-vk cursor      # creates .cursor/rules/ (scoped .mdc files)
-vk copilot     # creates .github/copilot-instructions.md
-vk codex       # creates AGENTS.md
-vk gemini      # creates GEMINI.md + .gemini/settings.json
-vk aider       # creates CONVENTIONS.md + .aider/rules.md
-vk continue    # creates .continue/rules/ + config.yaml
-vk windsurf    # creates .windsurfrules + .windsurf/rules/
-vk vscode      # alias for copilot
+ck claude      # creates CLAUDE.md + .claude/rules/
+ck cursor      # creates .cursor/rules/ (scoped .mdc files)
+ck copilot     # creates .github/copilot-instructions.md
+ck codex       # creates AGENTS.md
+ck gemini      # creates GEMINI.md + .gemini/settings.json
+ck aider       # creates CONVENTIONS.md + .aider/rules.md
+ck continue    # creates .continue/rules/ + config.yaml
+ck windsurf    # creates .windsurfrules + .windsurf/rules/
+ck vscode      # alias for copilot
 ```
 
-Each platform generates bridge files that the AI tool auto-reads. If a bridge file already exists (e.g., you have a custom `CLAUDE.md`), Vibe Kit appends its section below your content instead of overwriting. Share your `.vibe-kit/standards/*.md` files with the team and everyone gets the same context.
+Each platform generates bridge files that the AI tool auto-reads. If a bridge file already exists (e.g., you have a custom `CLAUDE.md`), ContextKit appends its section below your content instead of overwriting. Share your `.contextkit/standards/*.md` files with the team and everyone gets the same context.
 
 ---
 
@@ -93,7 +93,7 @@ Each platform generates bridge files that the AI tool auto-reads. If a bridge fi
 "Add checkout flow for customer"
 ```
 
-**What the AI does with Vibe Kit**
+**What the AI does with ContextKit**
 - Reads `glossary.md` → `checkout` = checkout process; `customer` = customer account
 - Applies `code-style.md` → strict TS, functional components
 - Follows `testing.md` → numbered test cases
@@ -113,7 +113,7 @@ Each platform generates bridge files that the AI tool auto-reads. If a bridge fi
 
 **Cursor** — rules auto-load from `.cursor/rules/`
 ```
-@.vibe-kit/commands/analyze.md
+@.contextkit/commands/analyze.md
 ```
 
 **Claude Code** — reads `CLAUDE.md` + `.claude/rules/` automatically
@@ -123,7 +123,7 @@ claude "create checkout flow for customer"
 
 **GitHub Copilot** — reads `.github/copilot-instructions.md` automatically
 ```
-@.vibe-kit Create checkout flow for customer
+@.contextkit Create checkout flow for customer
 ```
 
 **Codex CLI** — reads `AGENTS.md` automatically
@@ -133,7 +133,7 @@ codex "create checkout flow for customer"
 
 **CLI** (Chat with AI)
 ```bash
-vk ai "create checkout flow for customer"
+ck ai "create checkout flow for customer"
 ```
 
 ---
@@ -146,63 +146,63 @@ vk ai "create checkout flow for customer"
 - 🤖 **Multi-Platform** - Works with Cursor, Claude Code, Copilot, Codex, Gemini, Aider, Continue, Windsurf
 - 🛡️ **Safe Install** - Backs up existing files with rollback support
 - ⚡ **Zero Config** - Auto-detects package managers and AI tools
-- ✅ **Policy Enforcement** - Configurable validation with `vk check`
+- ✅ **Policy Enforcement** - Configurable validation with `ck check`
 - 📝 **Corrections Tracking** - Track AI performance issues with corrections log
-- 🔄 **Workflow Orchestration** - Structured workflows with `vk run`
-- 📦 **Registry System** - Share standards across teams with `vk publish/pull`
+- 🔄 **Workflow Orchestration** - Structured workflows with `ck run`
+- 📦 **Registry System** - Share standards across teams with `ck publish/pull`
 - 📊 **Observability Dashboard** - Visual metrics and compliance tracking
 
 ## Commands
 
 ```bash
 # Installation & Setup
-vk install     # set up .vibe-kit in this repo
-vk claude      # add Claude Code integration (CLAUDE.md + rules)
-vk cursor      # add Cursor integration (scoped .mdc rules)
-vk copilot     # add GitHub Copilot integration
-vk codex       # add Codex CLI integration (AGENTS.md)
-vk gemini      # add Gemini CLI integration (GEMINI.md)
-vk aider       # add Aider integration (CONVENTIONS.md)
-vk continue    # add Continue integration
-vk windsurf    # add Windsurf integration (.windsurfrules)
-vk vscode      # alias for copilot
+ck install     # set up .contextkit in this repo
+ck claude      # add Claude Code integration (CLAUDE.md + rules)
+ck cursor      # add Cursor integration (scoped .mdc rules)
+ck copilot     # add GitHub Copilot integration
+ck codex       # add Codex CLI integration (AGENTS.md)
+ck gemini      # add Gemini CLI integration (GEMINI.md)
+ck aider       # add Aider integration (CONVENTIONS.md)
+ck continue    # add Continue integration
+ck windsurf    # add Windsurf integration (.windsurfrules)
+ck vscode      # alias for copilot
 
 # Analysis & Updates
-vk analyze     # customize standards to your project  
-vk update      # pull latest updates
-vk status      # check install & integrations
+ck analyze     # customize standards to your project
+ck update      # pull latest updates
+ck status      # check install & integrations
 
 # Validation & Compliance
-vk check       # validate installation & policy compliance
-vk check --strict  # treat warnings as errors
+ck check       # validate installation & policy compliance
+ck check --strict  # treat warnings as errors
 
 # Corrections Logging
-vk note "message"  # add note to corrections log
-vk note "AI issue" --category "AI Behavior" --priority HIGH
+ck note "message"  # add note to corrections log
+ck note "AI issue" --category "AI Behavior" --priority HIGH
 
 # Workflow Orchestration
-vk run <workflow>  # run structured workflow
-vk run create-component  # example workflow
-vk run create-component --interactive  # interactive mode
+ck run <workflow>  # run structured workflow
+ck run create-component  # example workflow
+ck run create-component --interactive  # interactive mode
 
 # Registry & Versioning
-vk publish --name @company/react-standards --version 1.0.0
-vk pull @company/react-standards@1.0.0
-vk pull @company/react-standards@latest --backup
+ck publish --name @company/react-standards --version 1.0.0
+ck pull @company/react-standards@1.0.0
+ck pull @company/react-standards@latest --backup
 
 # Observability
-vk dashboard   # start web dashboard
-vk dashboard --no-server  # CLI metrics only
+ck dashboard   # start web dashboard
+ck dashboard --no-server  # CLI metrics only
 
-# AI Usage (loads .vibe-kit context automatically)
-vk "create a button"  # quick AI chat with context
-vk ai "create a button"  # explicit AI command
+# AI Usage (loads .contextkit context automatically)
+ck "create a button"  # quick AI chat with context
+ck ai "create a button"  # explicit AI command
 ```
 
 ## Links
 
-• 🐛 [Issues](https://github.com/nolrm/vibe-kit/issues)
-• 💬 [Discussions](https://github.com/nolrm/vibe-kit/discussions)
+• 🐛 [Issues](https://github.com/nolrm/contextkit/issues)
+• 💬 [Discussions](https://github.com/nolrm/contextkit/discussions)
 
 ---
 

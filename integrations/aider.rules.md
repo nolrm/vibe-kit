@@ -1,18 +1,18 @@
-# Vibe Kit Rules for Aider
+# ContextKit Rules for Aider
 
 ## Project Standards
-- Follow: @.vibe-kit/standards/code-style.md
-- Testing: @.vibe-kit/standards/testing.md
-- Guidelines: @.vibe-kit/standards/ai-guidelines.md
-- Architecture: @.vibe-kit/standards/architecture.md
+- Follow: @.contextkit/standards/code-style.md
+- Testing: @.contextkit/standards/testing.md
+- Guidelines: @.contextkit/standards/ai-guidelines.md
+- Architecture: @.contextkit/standards/architecture.md
 
 ## Component Patterns
-- Use: @.vibe-kit/templates/component.tsx
-- Tests: @.vibe-kit/templates/test.tsx
+- Use: @.contextkit/templates/component.tsx
+- Tests: @.contextkit/templates/test.tsx
 
 ## Type Safety
-- Use: @.vibe-kit/types/strict.tsconfig.json
-- Global types: @.vibe-kit/types/global.d.ts
+- Use: @.contextkit/types/strict.tsconfig.json
+- Global types: @.contextkit/types/global.d.ts
 
 ## Always Include
 When creating new code, always:
@@ -26,7 +26,7 @@ When creating new code, always:
 
 ## Quality Checklist
 Before submitting code, ensure:
-- [ ] Follows @.vibe-kit/standards/code-style.md
+- [ ] Follows @.contextkit/standards/code-style.md
 - [ ] Includes proper TypeScript types
 - [ ] Has comprehensive tests with numbered cases
 - [ ] Includes error handling

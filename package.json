@@ -1,9 +1,11 @@
 {
-  "name": "@nolrm/vibe-kit",
+  "name": "@nolrm/contextkit",
   "version": "0.7.3",
-  "description": "Context Engineering for AI Development - Provide rich context to AI through structured MD files with standards, code guides, and documentation. Works with Cursor, Claude, Aider, VS Code Copilot, and more.",
+  "description": "ContextKit - Context Engineering for AI Development. Provide rich context to AI through structured MD files with standards, code guides, and documentation. Works with Cursor, Claude, Aider, VS Code Copilot, and more.",
   "main": "lib/index.js",
   "bin": {
+    "contextkit": "bin/contextkit.js",
+    "ck": "bin/contextkit.js",
     "vibe-kit": "bin/vibe-kit.js",
     "vk": "bin/vibe-kit.js"
   },
@@ -13,6 +15,7 @@
     "test:coverage": "jest --coverage"
   },
   "keywords": [
+    "contextkit",
     "vibe-kit",
     "context-engineering",
     "ai-context",
@@ -49,11 +52,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nolrm/vibe-kit.git"
+    "url": "git+https://github.com/nolrm/contextkit.git"
   },
-  "homepage": "https://github.com/nolrm/vibe-kit#readme",
+  "homepage": "https://github.com/nolrm/contextkit#readme",
   "bugs": {
-    "url": "https://github.com/nolrm/vibe-kit/issues"
+    "url": "https://github.com/nolrm/contextkit/issues"
   },
   "engines": {
     "node": ">=14.0.0"

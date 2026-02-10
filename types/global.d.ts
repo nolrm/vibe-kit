@@ -1,4 +1,4 @@
-// Global type definitions for Vibe Kit
+// Global type definitions for ContextKit
 
 declare global {
   // Add global types here

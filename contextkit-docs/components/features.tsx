@@ -24,7 +24,7 @@ const features = [
     icon: Zap,
     title: "Easy Setup",
     description:
-      "Install in minutes with npm install -g @nolrm/vibe-kit. Auto-detects your AI tools and configures integrations.",
+      "Install in minutes with npm install -g @nolrm/contextkit. Auto-detects your AI tools and configures integrations.",
   },
 ]
 

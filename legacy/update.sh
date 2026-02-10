@@ -1,16 +1,16 @@
 #!/bin/bash
-# update.sh - Update Vibe Kit
+# update.sh - Update ContextKit
 
 set -e
 
-echo "🎵 Updating Vibe Kit..."
+echo "🎵 Updating ContextKit..."
 
 # Get latest version
-LATEST_VERSION=$(curl -s https://api.github.com/repos/nolrm/vibe-kit/releases/latest | grep '"tag_name"' | cut -d'"' -f4)
+LATEST_VERSION=$(curl -s https://api.github.com/repos/nolrm/contextkit/releases/latest | grep '"tag_name"' | cut -d'"' -f4)
 
 echo "📦 Latest version: $LATEST_VERSION"
 
 # Download and run installation script
-curl -sSL https://raw.githubusercontent.com/nolrm/vibe-kit/main/legacy/install.sh | bash
+curl -sSL https://raw.githubusercontent.com/nolrm/contextkit/main/legacy/install.sh | bash
 
-echo "✅ Vibe Kit updated to $LATEST_VERSION!"
+echo "✅ ContextKit updated to $LATEST_VERSION!"

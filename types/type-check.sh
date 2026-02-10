@@ -1,9 +1,9 @@
 #!/bin/bash
-# type-check.sh - Type checking script for Vibe Kit
+# type-check.sh - Type checking script for ContextKit
 
 set -e
 
-echo "🔒 Running Vibe Kit type check..."
+echo "🔒 Running ContextKit type check..."
 
 # Check if TypeScript is available
 if ! command -v tsc &> /dev/null; then
@@ -13,6 +13,6 @@ fi
 
 # Run type check
 echo "📝 Checking TypeScript types..."
-tsc --noEmit --project .vibe-kit/types/strict.tsconfig.json
+tsc --noEmit --project .contextkit/types/strict.tsconfig.json
 
 echo "✅ Type check passed!"

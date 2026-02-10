@@ -10,7 +10,7 @@ export function Header() {
         <div className="mr-4 flex">
           <Link href="/" className="mr-6 flex items-center space-x-2">
             <Logo />
-            <span className="hidden font-bold sm:inline-block">Vibe Kit</span>
+            <span className="hidden font-bold sm:inline-block">ContextKit</span>
           </Link>
           <nav className="flex items-center gap-6 text-sm">
             <Link href="/docs" className="transition-colors hover:text-foreground/80 text-foreground/60">
@@ -26,7 +26,7 @@ export function Header() {
         </div>
         <div className="flex flex-1 items-center justify-end gap-2">
           <Button variant="ghost" size="icon" asChild>
-            <Link href="https://github.com/nolrm/vibe-kit" target="_blank" rel="noopener noreferrer">
+            <Link href="https://github.com/nolrm/contextkit" target="_blank" rel="noopener noreferrer">
               <Github className="h-5 w-5" />
               <span className="sr-only">GitHub</span>
             </Link>
