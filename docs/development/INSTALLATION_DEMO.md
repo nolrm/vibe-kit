@@ -28,8 +28,8 @@ $ ./install.sh
 ✅ Scripts installed
 
 🪝 Git Hooks Setup
-ContextKit can install pre-commit and pre-push hooks to automatically run quality checks.
-These hooks will run tests, linting, and type checking before commits.
+ContextKit can install pre-push hooks to automatically run quality checks.
+These hooks will run tests, linting, and type checking before pushing.
 
 Do you want to install Git hooks? (y/n): y
 ✅ Git hooks will be installed

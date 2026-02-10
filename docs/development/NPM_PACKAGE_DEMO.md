@@ -22,8 +22,8 @@ contextkit install
 
 # Interactive prompt appears:
 # 🪝 Git Hooks Setup
-# ContextKit can install pre-commit and pre-push hooks to automatically run quality checks.
-# These hooks will run tests, linting, and type checking before commits.
+# ContextKit can install pre-push hooks to automatically run quality checks.
+# These hooks will run tests, linting, and type checking before pushing.
 # 
 # Do you want to install Git hooks? (y/n): y
 ```
@@ -111,7 +111,6 @@ my-project/
 │   │   ├── add-documentation.md
 │   │   └── quality-check.md
 │   ├── hooks/              # Git hooks
-│   │   ├── pre-commit.sh
 │   │   ├── pre-push.sh
 │   │   ├── commit-msg.sh
 │   │   └── setup-hooks.sh
@@ -132,7 +131,6 @@ my-project/
 │   └── rules/
 │       └── contextkit.mdc    # Cursor integration
 └── .husky/                 # Git hooks (if enabled)
-    ├── pre-commit
     ├── pre-push
     └── commit-msg
 ```

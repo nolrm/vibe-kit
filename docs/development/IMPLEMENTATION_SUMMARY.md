@@ -19,7 +19,7 @@ contextkit --help     # Show help
 ### **✅ Smart Features**
 - **🎯 Project Detection** - Auto-detects React, Vue, Angular, Next.js, etc.
 - **📦 Package Manager Support** - Works with npm, yarn, pnpm
-- **🪝 Interactive Git Hooks** - Optional pre-commit/pre-push hooks
+- **🪝 Interactive Git Hooks** - Optional pre-push hooks for quality checks
 - **🛡️ Safe Installation** - Backs up existing files
 - **🔄 Easy Updates** - Simple update process
 - **📊 Status Checking** - See what's installed and configured

@@ -164,6 +164,7 @@ build/
 
 .cursor/
 .vibe-kit/
+.claude/
 
 # Docs build artifacts
 vibe-kit-docs/.next/

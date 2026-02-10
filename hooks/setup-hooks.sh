@@ -21,7 +21,6 @@ if [ -f "package.json" ]; then
     npx husky install
     
     # Add hooks
-    npx husky add .husky/pre-commit ".contextkit/hooks/pre-commit.sh"
     npx husky add .husky/pre-push ".contextkit/hooks/pre-push.sh"
     npx husky add .husky/commit-msg ".contextkit/hooks/commit-msg.sh"
     
