@@ -47,7 +47,7 @@ This creates `.contextkit/` with skeleton context files (blank templates to be f
   standards/       # Skeleton files: code-style.md, testing.md, architecture.md, ai-guidelines.md, workflows.md
                   # Real files: glossary.md (universal), README.md (overview)
   commands/        # analyze.md (project analysis & customization)
-  templates/       # example component template
+  templates/       # skeleton template files (component, test, story, hook, api)
 ```
 
 **Generate content with AI** (recommended):

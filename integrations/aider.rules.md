@@ -7,8 +7,8 @@
 - Architecture: @.contextkit/standards/architecture.md
 
 ## Component Patterns
-- Use: @.contextkit/templates/component.tsx
-- Tests: @.contextkit/templates/test.tsx
+- Use: @.contextkit/templates/component.md
+- Tests: @.contextkit/templates/test.md
 
 ## Type Safety
 - Use: @.contextkit/types/strict.tsconfig.json

@@ -49,7 +49,7 @@ Prevent AI hallucinations by providing structured development standards and patt
 
 When creating components:
 
-1. Use @.contextkit/templates/component.tsx as base
+1. Use @.contextkit/templates/component.md as base
 2. Follow @.contextkit/standards/code-style.md
 3. Include proper TypeScript types
 4. Add accessibility attributes

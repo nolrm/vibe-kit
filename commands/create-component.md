@@ -29,6 +29,6 @@ Create a DataTable component in src/components with columns, data, and onRowClic
 
 ## Template Used
 
-- @.contextkit/templates/component.tsx - Component template
-- @.contextkit/templates/test.tsx - Test template
-- @.contextkit/templates/story.tsx - Storybook template
+- @.contextkit/templates/component.md - Component template
+- @.contextkit/templates/test.md - Test template
+- @.contextkit/templates/story.md - Story/demo template

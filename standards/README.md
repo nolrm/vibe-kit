@@ -64,11 +64,11 @@ Treat these files as **living documentation** that grows with your project.
 
 ## Templates
 
-- `.contextkit/templates/component.tsx` - Component template
-- `.contextkit/templates/test.tsx` - Test template
-- `.contextkit/templates/story.tsx` - Storybook template
-- `.contextkit/templates/hook.ts` - Custom hook template
-- `.contextkit/templates/api.ts` - API service template
+- `.contextkit/templates/component.md` - Component/module template
+- `.contextkit/templates/test.md` - Test file template
+- `.contextkit/templates/story.md` - Story/demo template
+- `.contextkit/templates/hook.md` - Hook/composable/helper template
+- `.contextkit/templates/api.md` - API service/client template
 
 ## AI Guidelines
 

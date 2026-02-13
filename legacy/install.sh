@@ -327,11 +327,11 @@ install_templates() {
     log "${YELLOW}📝 Installing code templates...${NC}"
     
     # Download base templates
-    safe_download "${REPO_URL}/templates/component.tsx" ".contextkit/templates/component.tsx" "Component Template"
-    safe_download "${REPO_URL}/templates/test.tsx" ".contextkit/templates/test.tsx" "Test Template"
-    safe_download "${REPO_URL}/templates/story.tsx" ".contextkit/templates/story.tsx" "Storybook Template"
-    safe_download "${REPO_URL}/templates/hook.ts" ".contextkit/templates/hook.ts" "Hook Template"
-    safe_download "${REPO_URL}/templates/api.ts" ".contextkit/templates/api.ts" "API Template"
+    safe_download "${REPO_URL}/templates/component.md" ".contextkit/templates/component.md" "Component Template"
+    safe_download "${REPO_URL}/templates/test.md" ".contextkit/templates/test.md" "Test Template"
+    safe_download "${REPO_URL}/templates/story.md" ".contextkit/templates/story.md" "Story Template"
+    safe_download "${REPO_URL}/templates/hook.md" ".contextkit/templates/hook.md" "Hook Template"
+    safe_download "${REPO_URL}/templates/api.md" ".contextkit/templates/api.md" "API Template"
     
     # Download project-specific templates if available
     local project_templates_url="${REPO_URL}/templates/${project_type}/"
