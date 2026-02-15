@@ -138,6 +138,37 @@ ck ai "create checkout flow for customer"
 
 ---
 
+## Git Hooks
+
+ContextKit can optionally install Git hooks during `ck install`:
+
+| Hook | What it does |
+|------|-------------|
+| **pre-push** | Runs tests, linting, and type checks before pushing |
+| **commit-msg** | Enforces [Conventional Commits](https://www.conventionalcommits.org/) format |
+
+### Commit Message Format
+
+When the `commit-msg` hook is enabled, all commits must follow this format:
+
+```
+<type>(<scope>): <description>
+```
+
+**Types:** `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
+
+**Examples:**
+```bash
+git commit -m "feat(auth): add login page"
+git commit -m "fix: resolve null pointer in checkout"
+git commit -m "docs: update API reference"
+git commit -m "test(cart): add edge case coverage"
+```
+
+Hooks are optional and can be skipped with `ck install --no-hooks`.
+
+---
+
 ## Key Features
 
 - 🧠 **Context Engineering** - Structured MD files your AI reads automatically

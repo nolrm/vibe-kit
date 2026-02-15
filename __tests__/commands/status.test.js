@@ -116,7 +116,8 @@ git_hooks: true`;
       await status();
       
       expect(consoleSpy).toHaveBeenCalledWith('✅ Features:');
-      expect(consoleSpy).toHaveBeenCalledWith('   Git Hooks: ❌');
+      expect(consoleSpy).toHaveBeenCalledWith('   Pre-push hook: ❌');
+      expect(consoleSpy).toHaveBeenCalledWith('   Commit-msg hook: ❌');
       expect(consoleSpy).toHaveBeenCalledWith('   Standards: ✅');
       expect(consoleSpy).toHaveBeenCalledWith('   Templates: ✅');
       
