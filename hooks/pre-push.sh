@@ -222,12 +222,21 @@ run_java_gates() {
       skip_gate "Maven verify" "mvn not found"
     fi
   elif [ -f "build.gradle" ] || [ -f "build.gradle.kts" ]; then
-    if has_cmd gradle; then
-      run_gate "Gradle check" gradle check
-    elif [ -f "gradlew" ]; then
-      run_gate "Gradle check" ./gradlew check
+    local gradle_cmd=""
+    if [ -f "gradlew" ]; then
+      gradle_cmd="./gradlew"
+    elif has_cmd gradle; then
+      gradle_cmd="gradle"
     else
-      skip_gate "Gradle check" "gradle not found"
+      skip_gate "Gradle check" "gradle/gradlew not found"
+      return
+    fi
+
+    # Verify 'check' task exists (requires java/application plugin)
+    if $gradle_cmd tasks --quiet 2>/dev/null | grep -q "^check"; then
+      run_gate "Gradle check" $gradle_cmd check
+    else
+      skip_gate "Gradle check" "check task not available"
     fi
   fi
 }

@@ -138,14 +138,28 @@ ck ai "create checkout flow for customer"
 
 ---
 
-## Git Hooks
+## Git Hooks & Quality Gates
 
-ContextKit can optionally install Git hooks during `ck install`:
+ContextKit can optionally install native Git hooks (`.git/hooks/`) during `ck install`. No external dependencies like Husky required — works in any git repo, not just Node.js projects.
 
 | Hook | What it does |
 |------|-------------|
-| **pre-push** | Runs tests, linting, and type checks before pushing |
+| **pre-push** | **Quality Gates** — auto-detects your project framework and runs the appropriate checks |
 | **commit-msg** | Enforces [Conventional Commits](https://www.conventionalcommits.org/) format |
+
+### Framework-Aware Quality Gates
+
+The pre-push hook detects your project type and runs the right quality checks automatically. All gates skip gracefully when tools aren't installed.
+
+| Framework | Checks |
+|-----------|--------|
+| **Node.js** | TypeScript, ESLint, Prettier, build, test (auto-detects npm/yarn/pnpm/bun) |
+| **Python** | ruff/flake8, mypy, black/ruff format, pytest |
+| **Rust** | cargo check, clippy, cargo test |
+| **Go** | go vet, golangci-lint, go test |
+| **PHP** | PHPStan, PHPUnit |
+| **Ruby** | RuboCop, RSpec/rake test |
+| **Java** | Maven verify / Gradle check |
 
 ### Commit Message Format
 
