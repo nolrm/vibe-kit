@@ -1,34 +1,32 @@
 # Add Documentation
 
-## Quick Command
-
-```
-Add documentation for [COMPONENT/FEATURE] including [SPECIFIC_SECTIONS]
-```
+Generate clear documentation for the specified code.
 
 ## What I'll Do
 
-1. Add JSDoc comments to functions
-2. Create README documentation
-3. Add usage examples
-4. Document API interfaces
-5. Update project documentation
+1. Read the target code and understand its purpose
+2. Add inline documentation (doc comments, type annotations)
+3. Create or update README sections as needed
+4. Write usage examples
+5. Document public API and configuration options
 
-## Example
+## How to Use
 
 ```
-Add documentation for UserService including API methods and error handling
+Document the auth module
+Add docs for the API endpoints in routes/
+Write usage examples for the config parser
 ```
-
-## Standards Applied
-
-- @.contextkit/standards/code-style.md - Code style guidelines
-- @.contextkit/standards/ai-guidelines.md - AI development guidelines
 
 ## Documentation Types
 
-- JSDoc comments
-- README files
-- API documentation
-- Usage examples
-- Architecture decisions
+- **Inline comments** — Doc comments on public functions and classes
+- **README** — Module-level overview and usage
+- **API docs** — Endpoint descriptions, parameters, responses
+- **Examples** — Runnable code snippets showing common usage
+- **Architecture** — High-level design notes for complex modules
+
+## Standards Applied
+
+- `.contextkit/standards/code-style.md` — Coding conventions
+- `.contextkit/standards/architecture.md` — Architecture patterns

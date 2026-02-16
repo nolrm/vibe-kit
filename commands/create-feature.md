@@ -1,37 +1,35 @@
 # Create Feature
 
-## Quick Command
-
-```
-Create a [FEATURE_NAME] feature with [REQUIREMENTS]
-```
+Scaffold a new feature with full structure.
 
 ## What I'll Do
 
-1. Create feature directory structure
-2. Implement core functionality
-3. Add comprehensive tests
-4. Create documentation
-5. Add integration points
-6. Update project exports
+1. Detect the project's architecture and conventions
+2. Plan the feature's file structure
+3. Implement core functionality
+4. Add comprehensive tests
+5. Create documentation
+6. Wire up integration points (routes, exports, config)
 
-## Example
+## How to Use
 
 ```
-Create a user authentication feature with login, logout, and session management
+Create a user authentication feature with login and logout
+Create a notification system with email and in-app channels
+Create a file upload feature with progress tracking
 ```
-
-## Standards Applied
-
-- @.contextkit/standards/architecture.md - Architecture patterns
-- @.contextkit/standards/testing.md - Testing patterns
-- @.contextkit/standards/ai-guidelines.md - AI development guidelines
 
 ## Process
 
-1. Plan feature architecture
-2. Create component structure
-3. Implement business logic
-4. Add comprehensive tests
-5. Create documentation
-6. Add integration tests
+1. **Plan** — Define scope, identify affected modules
+2. **Structure** — Create files following project architecture
+3. **Implement** — Build core logic with proper error handling
+4. **Test** — Add unit and integration tests
+5. **Document** — Add inline docs and usage examples
+6. **Integrate** — Connect to existing code (routes, exports, config)
+
+## Standards Applied
+
+- `.contextkit/standards/architecture.md` — Architecture patterns
+- `.contextkit/standards/code-style.md` — Coding conventions
+- `.contextkit/standards/testing.md` — Testing patterns

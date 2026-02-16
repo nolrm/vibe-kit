@@ -1,5 +1,5 @@
 #!/bin/bash
-# setup-hooks.sh - Setup native Git hooks for ContextKit
+# setup-hooks.sh - Setup Git hooks for ContextKit via core.hooksPath
 
 set -e
 
@@ -12,25 +12,17 @@ if [ ! -d ".git" ]; then
 fi
 
 # Make hook scripts executable
-chmod +x .contextkit/hooks/*.sh
+chmod +x .contextkit/hooks/pre-push .contextkit/hooks/commit-msg 2>/dev/null || true
 
-# Ensure .git/hooks exists
-mkdir -p .git/hooks
+# Point git to .contextkit/hooks/ for all hooks
+git config core.hooksPath .contextkit/hooks
 
-# Install pre-push hook
-cat > .git/hooks/pre-push << 'HOOK'
-#!/usr/bin/env sh
-# ContextKit managed hook — do not edit
-.contextkit/hooks/pre-push.sh "$@"
-HOOK
-chmod +x .git/hooks/pre-push
+echo "✅ Git hooks path set to .contextkit/hooks/"
 
-# Install commit-msg hook
-cat > .git/hooks/commit-msg << 'HOOK'
-#!/usr/bin/env sh
-# ContextKit managed hook — do not edit
-.contextkit/hooks/commit-msg.sh "$@"
-HOOK
-chmod +x .git/hooks/commit-msg
-
-echo "✅ Git hooks installed to .git/hooks/"
+# Add prepare script to package.json if it exists
+if [ -f "package.json" ]; then
+    if ! grep -q "core.hooksPath" package.json 2>/dev/null; then
+        echo "💡 Add this to your package.json scripts for automatic setup:"
+        echo '   "prepare": "git config core.hooksPath .contextkit/hooks"'
+    fi
+fi

@@ -111,13 +111,17 @@ Each platform generates bridge files that the AI tool auto-reads. If a bridge fi
 
 ## Use it in your tool
 
-**Cursor** — rules auto-load from `.cursor/rules/`
+**Cursor** — rules auto-load from `.cursor/rules/`, slash commands in `.cursor/prompts/`
 ```
-@.contextkit/commands/analyze.md
+/analyze    # scan codebase and generate standards
+/review     # code review with checklist
+/fix        # diagnose and fix bugs
 ```
 
-**Claude Code** — reads `CLAUDE.md` + `.claude/rules/` automatically
+**Claude Code** — reads `CLAUDE.md` + `.claude/rules/`, slash commands in `.claude/commands/`
 ```bash
+/analyze    # scan codebase and generate standards
+/review     # code review with checklist
 claude "create checkout flow for customer"
 ```
 
@@ -133,14 +137,36 @@ codex "create checkout flow for customer"
 
 **CLI** (Chat with AI)
 ```bash
-ck ai "create checkout flow for customer"
+ck ai "create a button"
 ```
+
+---
+
+## Slash Commands
+
+ContextKit installs reusable slash commands for supported platforms:
+
+| Command | What it does |
+|---------|-------------|
+| `/analyze` | Scan codebase and generate standards content |
+| `/review` | Code review with checklist |
+| `/fix` | Diagnose and fix bugs |
+| `/refactor` | Refactor code with safety checks |
+| `/test` | Generate comprehensive tests |
+| `/doc` | Add documentation |
+
+**Claude Code** — available as `/analyze`, `/review`, etc. in `.claude/commands/`
+**Cursor** — available as slash commands in Chat via `.cursor/prompts/`
+
+Both platforms delegate to the universal command files in `.contextkit/commands/`, so you maintain one set of workflows.
 
 ---
 
 ## Git Hooks & Quality Gates
 
-ContextKit can optionally install native Git hooks (`.git/hooks/`) during `ck install`. No external dependencies like Husky required — works in any git repo, not just Node.js projects.
+ContextKit can optionally install Git hooks during `ck install`. Uses `git config core.hooksPath` to point Git at `.contextkit/hooks/` — no external dependencies like Husky required. Works in any git repo, not just Node.js projects.
+
+For **Node.js projects**, a `prepare` script is automatically added to `package.json` so hooks activate for all developers after `npm install` — no need for everyone to run `ck install`.
 
 | Hook | What it does |
 |------|-------------|

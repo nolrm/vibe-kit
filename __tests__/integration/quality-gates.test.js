@@ -3,7 +3,7 @@ const path = require('path');
 const os = require('os');
 const { execSync } = require('child_process');
 
-const prePushScript = path.join(__dirname, '../../hooks/pre-push.sh');
+const prePushScript = path.join(__dirname, '../../hooks/pre-push');
 const setupScript = path.join(__dirname, '../../hooks/setup-hooks.sh');
 
 let tmpDir;
@@ -28,7 +28,6 @@ function runPrePush() {
 }
 
 // Run with minimal PATH so framework tools (cargo, go, mvn, etc.) are not found.
-// This prevents failures from CI-installed tools running against minimal project files.
 function runPrePushMinimalPath() {
   return execSync(`bash "${prePushScript}"`, {
     encoding: 'utf8',
@@ -36,9 +35,8 @@ function runPrePushMinimalPath() {
   });
 }
 
-describe('Quality Gates — pre-push.sh framework detection', () => {
+describe('Quality Gates — pre-push framework detection', () => {
   it('1. detects Node.js project (package.json)', async () => {
-    // Use a name that won't trigger gate grep patterns (no "test", "build", etc.)
     await fs.writeJson('package.json', { name: 'my-app', version: '1.0.0' });
     const output = runPrePush();
     expect(output).toContain('Quality Gates');
@@ -100,41 +98,31 @@ describe('Quality Gates — pre-push.sh framework detection', () => {
   });
 
   it('11. Node.js gates skip gracefully when tools are not in package.json', async () => {
-    // Minimal package.json with no tools or scripts referenced
     await fs.writeJson('package.json', { name: 'bare-project', version: '1.0.0' });
     const output = runPrePush();
     expect(output).toContain('Project: node');
     expect(output).toContain('passed');
-    // Should not fail — no gates triggered
   });
 
   it('12. Python gates skip gracefully when tools are not installed', async () => {
     await fs.writeFile('requirements.txt', 'flask\n');
-    // Create a restricted PATH so tools aren't found
-    const output = execSync(`bash "${prePushScript}"`, {
-      encoding: 'utf8',
-      env: { ...process.env, PATH: '/usr/bin:/bin' }
-    });
+    const output = runPrePushMinimalPath();
     expect(output).toContain('Project: python');
     expect(output).toContain('skipped');
   });
 });
 
 describe('Quality Gates — setup-hooks.sh', () => {
-  it('13. installs hooks to .git/hooks/ in a git repo', async () => {
+  it('13. sets core.hooksPath via setup script', async () => {
     execSync('git init', { stdio: 'pipe' });
     await fs.ensureDir('.contextkit/hooks');
-    await fs.writeFile('.contextkit/hooks/pre-push.sh', '#!/bin/sh\nexit 0');
-    await fs.writeFile('.contextkit/hooks/commit-msg.sh', '#!/bin/sh\nexit 0');
+    await fs.writeFile('.contextkit/hooks/pre-push', '#!/bin/sh\nexit 0');
+    await fs.writeFile('.contextkit/hooks/commit-msg', '#!/bin/sh\nexit 0');
 
     execSync(`bash "${setupScript}"`, { encoding: 'utf8' });
 
-    expect(fs.existsSync('.git/hooks/pre-push')).toBe(true);
-    expect(fs.existsSync('.git/hooks/commit-msg')).toBe(true);
-
-    const prePush = await fs.readFile('.git/hooks/pre-push', 'utf8');
-    expect(prePush).toContain('ContextKit managed hook');
-    expect(prePush).toContain('.contextkit/hooks/pre-push.sh "$@"');
+    const hooksPath = execSync('git config core.hooksPath', { encoding: 'utf8' }).trim();
+    expect(hooksPath).toBe('.contextkit/hooks');
   });
 
   it('14. fails if not a git repo', () => {
@@ -145,24 +133,23 @@ describe('Quality Gates — setup-hooks.sh', () => {
 });
 
 describe('Quality Gates — GitHooksManager end-to-end', () => {
-  it('15. full install flow: hooks land in .git/hooks/ and delegate correctly', async () => {
+  it('15. full flow: core.hooksPath set, hook executes correctly', async () => {
     const GitHooksManager = require('../../lib/utils/git-hooks');
 
     execSync('git init', { stdio: 'pipe' });
     await fs.ensureDir('.contextkit/hooks');
-    await fs.writeFile('.contextkit/hooks/pre-push.sh', '#!/bin/sh\nexit 0');
-    await fs.chmod('.contextkit/hooks/pre-push.sh', '755');
+    await fs.writeFile('.contextkit/hooks/pre-push', '#!/bin/sh\necho "hook ran"\nexit 0');
+    await fs.chmod('.contextkit/hooks/pre-push', '755');
 
     const manager = new GitHooksManager();
     await manager.installHooks('npm', { prePush: true, commitMsg: false });
 
-    // Verify the hook exists and is executable
-    const hookPath = '.git/hooks/pre-push';
-    expect(fs.existsSync(hookPath)).toBe(true);
-    const stat = await fs.stat(hookPath);
-    expect(stat.mode & 0o111).toBeTruthy();
+    // Verify core.hooksPath is set
+    const hooksPath = execSync('git config core.hooksPath', { encoding: 'utf8' }).trim();
+    expect(hooksPath).toBe('.contextkit/hooks');
 
-    // Actually run the hook — it should delegate to our dummy script and exit 0
-    execSync(`./${hookPath}`, { encoding: 'utf8' });
+    // Actually run the hook directly
+    const output = execSync('.contextkit/hooks/pre-push', { encoding: 'utf8' });
+    expect(output).toContain('hook ran');
   });
 });

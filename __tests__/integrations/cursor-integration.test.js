@@ -68,7 +68,20 @@ describe('CursorIntegration', () => {
     expect(await fs.pathExists('.cursor/rules/contextkit-standards.mdc')).toBe(true);
   });
 
-  test('6. validate returns valid after install', async () => {
+  test('6. creates all prompt files for slash commands', async () => {
+    const integration = new CursorIntegration();
+    await integration.install();
+
+    const prompts = ['analyze', 'review', 'fix', 'refactor', 'test', 'doc'];
+    for (const prompt of prompts) {
+      const filePath = `.cursor/prompts/${prompt}.md`;
+      expect(await fs.pathExists(filePath)).toBe(true);
+      const content = await fs.readFile(filePath, 'utf-8');
+      expect(content).toContain('.contextkit/commands/');
+    }
+  });
+
+  test('7. validate returns valid after install', async () => {
     const integration = new CursorIntegration();
     await integration.install();
 

@@ -64,14 +64,17 @@ describe('ClaudeIntegration', () => {
     expect(content).toContain('lib/**');
   });
 
-  test('5. creates .claude/commands/analyze.md', async () => {
+  test('5. creates all slash command files', async () => {
     const integration = new ClaudeIntegration();
     await integration.install();
 
-    const filePath = '.claude/commands/analyze.md';
-    expect(await fs.pathExists(filePath)).toBe(true);
-    const content = await fs.readFile(filePath, 'utf-8');
-    expect(content).toContain('analyze');
+    const commands = ['analyze', 'review', 'fix', 'refactor', 'test', 'doc'];
+    for (const cmd of commands) {
+      const filePath = `.claude/commands/${cmd}.md`;
+      expect(await fs.pathExists(filePath)).toBe(true);
+      const content = await fs.readFile(filePath, 'utf-8');
+      expect(content).toContain('.contextkit/commands/');
+    }
   });
 
   test('6. appends to existing CLAUDE.md without overwriting', async () => {

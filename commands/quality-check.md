@@ -1,35 +1,35 @@
 # Quality Check
 
-## Quick Command
-
-```
-Run quality check on [SCOPE] with [SPECIFIC_CHECKS]
-```
+Run a comprehensive quality review on the specified code.
 
 ## What I'll Do
 
-1. Run TypeScript type checking
-2. Run ESLint for code quality
-3. Run Prettier for formatting
-4. Run test suite
-5. Generate quality report
+1. Check code against project standards
+2. Identify type errors, lint issues, and formatting problems
+3. Review test coverage for gaps
+4. Flag security concerns and performance issues
+5. Generate a summary report with actionable items
 
-## Example
+## How to Use
 
 ```
-Run quality check on UserCard component with type safety and accessibility
+Quality check the auth module
+Run quality check on the entire src/ directory
+Check quality of the new API endpoints
 ```
+
+## Checks Performed
+
+- **Standards compliance** — Does it follow `.contextkit/standards/code-style.md`?
+- **Type safety** — Any type errors or unsafe casts?
+- **Test coverage** — Are new code paths tested?
+- **Error handling** — Are failures handled gracefully?
+- **Security** — Any injection, auth, or data exposure risks?
+- **Performance** — Any obvious bottlenecks or wasteful patterns?
+- **Accessibility** — UI components meet accessibility standards?
 
 ## Standards Applied
 
-- @.contextkit/standards/code-style.md - Code style guidelines
-- @.contextkit/standards/testing.md - Testing patterns
-- @.contextkit/standards/ai-guidelines.md - AI development guidelines
-
-## Quality Checks
-
-- TypeScript strict mode
-- ESLint rules
-- Prettier formatting
-- Test coverage
-- Accessibility compliance
+- `.contextkit/standards/code-style.md` — Coding conventions
+- `.contextkit/standards/testing.md` — Testing requirements
+- `.contextkit/standards/architecture.md` — Architecture patterns
