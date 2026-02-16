@@ -1,73 +1,33 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+## [0.9.0] - 2026-02-16
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
-
-## [0.8.0] - 2026-02-14
+### Added
+- **Quality Gates**: Pre-push hooks now auto-detect your project framework and run the right checks automatically
+  - Node.js: TypeScript, ESLint, Prettier, build, test (auto-detects npm/yarn/pnpm/bun)
+  - Python: ruff/flake8, mypy, black/ruff format, pytest
+  - Rust: cargo check, clippy, cargo test
+  - Go: go vet, golangci-lint, go test
+  - PHP: PHPStan, PHPUnit
+  - Ruby: RuboCop, RSpec/rake test
+  - Java: Maven verify / Gradle check
+  - Generic: informational message for unrecognized projects
+- All gates skip gracefully when tools aren't installed
+- Integration test suite for framework detection and hook installation
 
 ### Changed
-
-- Templates are now framework-agnostic skeleton `.md` files instead of React/TypeScript-specific `.tsx`/`.ts` files
-  - `templates/component.md` (was `component.tsx`)
-  - `templates/test.md` (was `test.tsx`)
-  - `templates/story.md` (was `story.tsx`)
-  - `templates/hook.md` (was `hook.ts`)
-  - `templates/api.md` (was `api.ts`)
-- Templates are now created locally as skeleton files during `ck install` (no longer downloaded from remote)
-- `ck update` no longer overwrites template files (they are user-owned content)
-- Updated all integration bridge files to reference `.md` templates
+- Git hooks now install to `.git/hooks/` (native) instead of `.husky/`
+- Hooks work in any git repo — no longer requires package.json or Node.js
+- `ck install` hooks prompt now checks for `.git/` instead of `package.json`
+- Install prompt updated with "Quality Gates" branding
 
 ### Removed
+- Husky dependency — no longer installed or required
+- `installHusky()`, `checkHuskyInstalled()`, `initializeHusky()`, `checkCommandExists()` methods from GitHooksManager
 
-- React/TypeScript-specific template files (`component.tsx`, `test.tsx`, `story.tsx`, `hook.ts`, `api.ts`)
+### Fixed
+- Pre-push script grep patterns now match script keys (`"test":`) instead of any occurrence of the word in package.json
 
-## [0.7.4] - 2025-06-15
-
-### Changed
-
-- Renamed project from Vibe Kit to ContextKit
-- CLI aliases: `contextkit`, `ck` (new); `vibe-kit`, `vk` (deprecated with warning)
-- Project directory: `.contextkit/` (was `.vibe-kit/`)
-- Auto-migration from `.vibe-kit/` to `.contextkit/` on install
-- Simplified git hooks to pre-push only
-
-## [0.7.0] - 2025-06-01
-
-### Added
-
-- Modular platform integration system with `BaseIntegration` class
-- Bridge files with smart marker-based conflict handling
-- Platform-specific rule files for Claude, Cursor, Copilot, Windsurf, Aider, Codex, Gemini, Continue
-- Auto-detection of AI tools during install
-
-### Changed
-
-- Migrated from monolithic integration files to per-platform modules
-
-## [0.6.0] - 2025-05-15
-
-### Added
-
-- Enterprise features and monorepo support
-- Codex CLI integration
-- Skeleton-based standards generation for universal project support
-- Platform-specific installs (`ck <platform>`)
-- AI shortcut command (`ck ai`)
-
-## [0.5.0] - 2025-05-01
-
-### Added
-
-- Initial public release as Vibe Kit
-- CLI tool with install, update, status, check, analyze commands
-- Standards, templates, commands, and hooks system
-- Cursor, Claude, Aider, and Copilot integrations
-- Project type detection (React, Vue, Next.js, Angular, Node.js, Python, Rust)
-
-[0.8.0]: https://github.com/nolrm/contextkit/compare/v0.7.4...v0.8.0
-[0.7.4]: https://github.com/nolrm/contextkit/compare/v0.7.0...v0.7.4
-[0.7.0]: https://github.com/nolrm/contextkit/compare/v0.6.0...v0.7.0
-[0.6.0]: https://github.com/nolrm/contextkit/compare/v0.5.0...v0.6.0
-[0.5.0]: https://github.com/nolrm/contextkit/releases/tag/v0.5.0
+### Migration
+- Existing `.husky/` directories with ContextKit markers are automatically cleaned up on next `ck install`
+- Users can manually run `npm uninstall husky` to remove the dependency

@@ -1,33 +1,36 @@
 #!/bin/bash
-# setup-hooks.sh - Setup Git hooks for ContextKit
+# setup-hooks.sh - Setup native Git hooks for ContextKit
 
 set -e
 
-echo "🎵 Setting up ContextKit Git hooks..."
+echo "🪝 Setting up ContextKit Git hooks..."
 
-# Make hooks executable
-chmod +x .contextkit/hooks/*.sh
-
-# Setup Husky if package.json exists
-if [ -f "package.json" ]; then
-    echo "🪝 Setting up Husky..."
-    
-    # Install Husky if not already installed
-    if ! npm list husky > /dev/null 2>&1; then
-        npm install --save-dev husky
-    fi
-    
-    # Initialize Husky
-    npx husky install
-    
-    # Add hooks
-    npx husky add .husky/pre-push ".contextkit/hooks/pre-push.sh"
-    npx husky add .husky/commit-msg ".contextkit/hooks/commit-msg.sh"
-    
-    echo "✅ Husky hooks setup complete"
-else
-    echo "⚠️  No package.json found, skipping Husky setup"
-    echo "   You can manually setup Git hooks by copying .contextkit/hooks/*.sh to .git/hooks/"
+# Check for .git directory
+if [ ! -d ".git" ]; then
+    echo "❌ Not a git repository. Run 'git init' first."
+    exit 1
 fi
 
-echo "✅ Git hooks setup complete!"
+# Make hook scripts executable
+chmod +x .contextkit/hooks/*.sh
+
+# Ensure .git/hooks exists
+mkdir -p .git/hooks
+
+# Install pre-push hook
+cat > .git/hooks/pre-push << 'HOOK'
+#!/usr/bin/env sh
+# ContextKit managed hook — do not edit
+.contextkit/hooks/pre-push.sh "$@"
+HOOK
+chmod +x .git/hooks/pre-push
+
+# Install commit-msg hook
+cat > .git/hooks/commit-msg << 'HOOK'
+#!/usr/bin/env sh
+# ContextKit managed hook — do not edit
+.contextkit/hooks/commit-msg.sh "$@"
+HOOK
+chmod +x .git/hooks/commit-msg
+
+echo "✅ Git hooks installed to .git/hooks/"
