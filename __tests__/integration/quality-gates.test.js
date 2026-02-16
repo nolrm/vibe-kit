@@ -27,6 +27,15 @@ function runPrePush() {
   });
 }
 
+// Run with minimal PATH so framework tools (cargo, go, mvn, etc.) are not found.
+// This prevents failures from CI-installed tools running against minimal project files.
+function runPrePushMinimalPath() {
+  return execSync(`bash "${prePushScript}"`, {
+    encoding: 'utf8',
+    env: { ...process.env, PATH: '/usr/bin:/bin' }
+  });
+}
+
 describe('Quality Gates — pre-push.sh framework detection', () => {
   it('1. detects Node.js project (package.json)', async () => {
     // Use a name that won't trigger gate grep patterns (no "test", "build", etc.)
@@ -50,37 +59,37 @@ describe('Quality Gates — pre-push.sh framework detection', () => {
 
   it('4. detects Rust project (Cargo.toml)', async () => {
     await fs.writeFile('Cargo.toml', '[package]\nname = "test"\n');
-    const output = runPrePush();
+    const output = runPrePushMinimalPath();
     expect(output).toContain('Project: rust');
   });
 
   it('5. detects Go project (go.mod)', async () => {
     await fs.writeFile('go.mod', 'module example.com/test\n');
-    const output = runPrePush();
+    const output = runPrePushMinimalPath();
     expect(output).toContain('Project: go');
   });
 
   it('6. detects PHP project (composer.json)', async () => {
     await fs.writeJson('composer.json', { name: 'test/test' });
-    const output = runPrePush();
+    const output = runPrePushMinimalPath();
     expect(output).toContain('Project: php');
   });
 
   it('7. detects Ruby project (Gemfile)', async () => {
     await fs.writeFile('Gemfile', 'source "https://rubygems.org"\n');
-    const output = runPrePush();
+    const output = runPrePushMinimalPath();
     expect(output).toContain('Project: ruby');
   });
 
   it('8. detects Java/Maven project (pom.xml)', async () => {
     await fs.writeFile('pom.xml', '<project></project>\n');
-    const output = runPrePush();
+    const output = runPrePushMinimalPath();
     expect(output).toContain('Project: java');
   });
 
   it('9. detects Java/Gradle project (build.gradle)', async () => {
     await fs.writeFile('build.gradle', 'plugins {}\n');
-    const output = runPrePush();
+    const output = runPrePushMinimalPath();
     expect(output).toContain('Project: java');
   });
 
