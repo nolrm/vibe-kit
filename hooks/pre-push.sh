@@ -167,6 +167,13 @@ run_go_gates() {
     return
   fi
 
+  # Check if there are any Go source files to analyze
+  if ! find . -name '*.go' -not -path './vendor/*' 2>/dev/null | grep -q .; then
+    skip_gate "Go vet" "no .go source files found"
+    skip_gate "Go test" "no .go source files found"
+    return
+  fi
+
   run_gate "Go vet" go vet ./...
   if has_cmd golangci-lint; then
     run_gate "golangci-lint" golangci-lint run
@@ -215,11 +222,19 @@ run_ruby_gates() {
 }
 
 run_java_gates() {
+  # Check if there are any Java/Kotlin source files to analyze
+  local has_sources=false
+  if find . -name '*.java' -o -name '*.kt' 2>/dev/null | grep -q .; then
+    has_sources=true
+  fi
+
   if [ -f "pom.xml" ]; then
-    if has_cmd mvn; then
-      run_gate "Maven verify" mvn verify
-    else
+    if ! has_cmd mvn; then
       skip_gate "Maven verify" "mvn not found"
+    elif [ "$has_sources" = false ]; then
+      skip_gate "Maven verify" "no source files found"
+    else
+      run_gate "Maven verify" mvn verify
     fi
   elif [ -f "build.gradle" ] || [ -f "build.gradle.kts" ]; then
     local gradle_cmd=""
