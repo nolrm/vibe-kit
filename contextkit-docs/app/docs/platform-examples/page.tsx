@@ -12,6 +12,7 @@ export default function PlatformExamplesPage() {
     { id: 'continue', text: 'Continue.dev' },
     { id: 'aider', text: 'Aider' },
     { id: 'gemini', text: 'Gemini CLI' },
+    { id: 'windsurf', text: 'Windsurf' },
   ];
 
   useEffect(() => {
@@ -41,7 +42,7 @@ export default function PlatformExamplesPage() {
         <div className="space-y-3">
           <h1 className="scroll-m-20 text-4xl font-bold tracking-tight">Platform Examples</h1>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Step-by-step examples for using ContextKit with Cursor, VS Code, Claude CLI, Gemini CLI, Codex CLI, and other AI tools.
+            Step-by-step examples for using ContextKit with Cursor, VS Code, Claude CLI, Gemini CLI, Codex CLI, Windsurf, and other AI tools.
           </p>
         </div>
 
@@ -400,6 +401,44 @@ export default function PlatformExamplesPage() {
             </div>
           </div>
         </div>
+
+        {/* Windsurf */}
+        <div id="windsurf" className="rounded-lg border bg-card p-6 scroll-mt-20 mb-8">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
+              <Zap className="h-5 w-5 text-primary" />
+            </div>
+            <div>
+              <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight">Windsurf</h2>
+              <p className="text-sm text-muted-foreground">Automatic context loading</p>
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            <div>
+              <h3 className="text-sm font-semibold mb-2">Setup</h3>
+              <p className="text-sm text-muted-foreground">
+                If <code className="rounded bg-muted px-1 font-mono text-xs">.contextkit</code> exists, run <code className="rounded bg-muted px-1 font-mono text-xs">contextkit windsurf</code> to add Windsurf integration. Windsurf automatically reads <code className="rounded bg-muted px-1 font-mono text-xs">.windsurfrules</code> and <code className="rounded bg-muted px-1 font-mono text-xs">.windsurf/rules/</code>.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-sm font-semibold mb-2">Usage</h3>
+              <div className="rounded-lg border border-border bg-muted/50 p-4">
+                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+                  <Terminal className="h-4 w-4" />
+                  <span className="font-mono">In Windsurf AI chat</span>
+                </div>
+                <code className="block rounded bg-muted px-4 py-2 font-mono text-sm">
+                  Create a login button using project standards
+                </code>
+              </div>
+              <p className="text-sm text-muted-foreground mt-2">
+                Windsurf automatically loads all ContextKit rules from <code className="rounded bg-muted px-1 font-mono text-xs">.windsurfrules</code> and <code className="rounded bg-muted px-1 font-mono text-xs">.windsurf/rules/contextkit-standards.md</code>.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div className="rounded-lg border border-blue-500/20 bg-blue-500/5 p-4">
@@ -417,6 +456,7 @@ export default function PlatformExamplesPage() {
               <div>Person 4 (Claude): <code className="rounded bg-muted px-1">contextkit claude</code></div>
               <div>Person 5 (Gemini): <code className="rounded bg-muted px-1">contextkit gemini</code></div>
               <div>Person 6 (Codex): <code className="rounded bg-muted px-1">contextkit codex</code></div>
+              <div>Person 7 (Windsurf): <code className="rounded bg-muted px-1">contextkit windsurf</code></div>
             </div>
           </div>
         </div>

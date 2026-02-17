@@ -16,10 +16,18 @@ const docsNav = [
     ],
   },
   {
+    title: "Features",
+    items: [
+      { title: "Slash Commands", href: "/docs/slash-commands" },
+      { title: "Quality Gates", href: "/docs/quality-gates" },
+    ],
+  },
+  {
     title: "Advanced",
     items: [
       { title: "Monorepo Support", href: "/docs/monorepo" },
       { title: "Enterprise Features", href: "/docs/enterprise-features" },
+      { title: "Troubleshooting", href: "/docs/troubleshooting" },
     ],
   },
 ]

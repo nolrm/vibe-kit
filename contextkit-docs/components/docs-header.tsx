@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Github } from "lucide-react"
+import { Github, Package } from "lucide-react"
 
 export function DocsHeader() {
   return (
@@ -15,6 +15,12 @@ export function DocsHeader() {
           </Link>
         </div>
         <div className="flex flex-1 items-center justify-end gap-2">
+          <Button variant="ghost" size="icon" asChild>
+            <Link href="https://www.npmjs.com/package/@nolrm/contextkit" target="_blank" rel="noopener noreferrer">
+              <Package className="h-5 w-5" />
+              <span className="sr-only">npm</span>
+            </Link>
+          </Button>
           <Button variant="ghost" size="icon" asChild>
             <Link href="https://github.com/nolrm/contextkit" target="_blank" rel="noopener noreferrer">
               <Github className="h-5 w-5" />

@@ -9,7 +9,7 @@
     "price": "0",
     "priceCurrency": "USD"
   },
-  "softwareVersion": "0.4.1",
+  "softwareVersion": "0.9.4",
   "description": "Context Engineering for AI Development - Give your AI assistants structured context through markdown files. Works with Cursor, Claude, VS Code Copilot, Aider, Continue.dev, and more.",
   "author": {
     "@type": "Person",
