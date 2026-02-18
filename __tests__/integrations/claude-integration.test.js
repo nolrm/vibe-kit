@@ -38,7 +38,8 @@ describe('ClaudeIntegration', () => {
     expect(await fs.pathExists(filePath)).toBe(true);
     const content = await fs.readFile(filePath, 'utf-8');
     expect(content).toContain('alwaysApply: true');
-    expect(content).toContain('.contextkit/standards/code-style.md');
+    expect(content).toContain('auto-loaded via CLAUDE.md imports');
+    expect(content).toContain('Code style conventions (from code-style.md)');
   });
 
   test('3. creates .claude/rules/contextkit-testing.md with test file globs', async () => {
@@ -68,7 +69,11 @@ describe('ClaudeIntegration', () => {
     const integration = new ClaudeIntegration();
     await integration.install();
 
-    const commands = ['analyze', 'review', 'fix', 'refactor', 'test', 'doc'];
+    const commands = [
+      'analyze', 'review', 'fix', 'refactor', 'test', 'doc',
+      'squad', 'squad-architect', 'squad-dev', 'squad-test', 'squad-review',
+      'squad-batch', 'squad-run',
+    ];
     for (const cmd of commands) {
       const filePath = `.claude/commands/${cmd}.md`;
       expect(await fs.pathExists(filePath)).toBe(true);

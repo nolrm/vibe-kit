@@ -1,5 +1,38 @@
 # Changelog
 
+## [0.9.6] - 2026-02-18
+
+### Changed
+- **Claude @imports** — CLAUDE.md now uses `@path` syntax to auto-load standards into context
+  - Standards, product files, and corrections.md are imported automatically every session
+  - Eliminates manual `Read` tool calls — saves tokens per session by avoiding repeated file reads
+  - First-time use triggers a one-time approval dialog in Claude Code
+  - `.claude/rules/` files simplified to reference auto-loaded standards instead of duplicating paths
+  - Base integration (`getStandardsBlock()`) unchanged — `@` imports are Claude-specific
+
+### Token Impact
+- **Upfront**: slightly higher base context (standards content loaded immediately)
+- **Per-session**: lower total usage — no Read tool calls needed for standards files
+- **Net effect**: fewer tokens overall for typical sessions, plus guaranteed consistency
+
+## [0.9.5] - 2026-02-18
+
+### Added
+- **Squad Workflow** — multi-agent pipeline with 7 slash commands
+  - `/squad` — kick off a task as Product Owner (writes PO spec)
+  - `/squad-architect` — design the technical plan from the PO spec
+  - `/squad-dev` — implement code following the architect plan
+  - `/squad-test` — write and run tests against acceptance criteria
+  - `/squad-review` — review the full pipeline and give a PASS/NEEDS-WORK verdict
+  - `/squad-batch` — kick off multiple tasks at once (batch PO specs)
+  - `/squad-run` — auto-run the remaining pipeline for batch tasks
+- Role-to-role feedback loop: downstream roles can raise questions for upstream roles via `*-clarify` statuses
+- Shared handoff file (`.contextkit/squad/handoff.md`) tracks specs, plans, implementation, tests, and review
+
+### Docs
+- Added squad commands to README slash commands table and new Squad Workflow section
+- Added squad commands and Squad Workflow section to docs site slash commands page
+
 ## [0.9.4] - 2026-02-16
 
 ### Added
