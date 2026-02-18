@@ -68,7 +68,10 @@ describe('ClaudeIntegration', () => {
     const integration = new ClaudeIntegration();
     await integration.install();
 
-    const commands = ['analyze', 'review', 'fix', 'refactor', 'test', 'doc'];
+    const commands = [
+      'analyze', 'review', 'fix', 'refactor', 'test', 'doc',
+      'squad', 'squad-architect', 'squad-dev', 'squad-test', 'squad-review',
+    ];
     for (const cmd of commands) {
       const filePath = `.claude/commands/${cmd}.md`;
       expect(await fs.pathExists(filePath)).toBe(true);
