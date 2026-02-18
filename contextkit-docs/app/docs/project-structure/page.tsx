@@ -192,6 +192,13 @@ export default function ProjectStructurePage() {
 
         <div className="space-y-4 mt-4">
           <div className="rounded-lg border bg-card p-4">
+            <h3 className="font-semibold text-lg mb-2">Claude Code - CLAUDE.md + .claude/rules/ + .claude/commands/</h3>
+            <p className="text-sm text-muted-foreground">
+              <strong>Auto-loaded via @imports:</strong> CLAUDE.md uses <code className="rounded bg-muted px-1 font-mono text-xs">@path</code> syntax to import standards and product files directly into context. No manual file reads needed — saves tokens and ensures standards are always available. Run <code className="rounded bg-muted px-1 font-mono text-xs">/context</code> in Claude Code to verify.
+            </p>
+          </div>
+
+          <div className="rounded-lg border bg-card p-4">
             <h3 className="font-semibold text-lg mb-2">Cursor - .cursor/rules/contextkit.mdc</h3>
             <p className="text-sm text-muted-foreground">
               <strong>Automatic:</strong> Cursor reads all context files for every AI prompt via <code className="rounded bg-muted px-1 font-mono text-xs">alwaysApply: true</code>. No manual references needed!

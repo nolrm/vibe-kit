@@ -170,17 +170,67 @@ export default function PlatformExamplesPage() {
               <Bot className="h-5 w-5 text-primary" />
             </div>
             <div>
-              <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight">Claude CLI</h2>
-              <p className="text-sm text-muted-foreground">Direct file references</p>
+              <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight">Claude Code</h2>
+              <p className="text-sm text-muted-foreground">Auto-loaded standards via @imports</p>
             </div>
+          </div>
+
+          <div className="rounded-lg border border-green-500/20 bg-green-500/5 p-3 mb-4">
+            <p className="text-sm font-medium text-green-700 dark:text-green-400 mb-1">Auto-Loaded Context</p>
+            <p className="text-sm text-muted-foreground">
+              CLAUDE.md uses <code className="rounded bg-muted px-1 font-mono text-xs">@path</code> imports to auto-load all standards and product files into context every session. No manual file reads needed — saves tokens and ensures consistency.
+            </p>
           </div>
 
           <div className="space-y-4">
             <div>
               <h3 className="text-sm font-semibold mb-2">Setup</h3>
               <p className="text-sm text-muted-foreground">
-                Run <code className="rounded bg-muted px-1 font-mono text-xs">contextkit claude</code> to set up Claude integration. Claude CLI works by referencing <code className="rounded bg-muted px-1 font-mono text-xs">.contextkit</code> files in your prompts.
+                Run <code className="rounded bg-muted px-1 font-mono text-xs">contextkit claude</code> to set up Claude integration. This generates a <code className="rounded bg-muted px-1 font-mono text-xs">CLAUDE.md</code> with <code className="rounded bg-muted px-1 font-mono text-xs">@</code> imports that auto-load your standards, plus <code className="rounded bg-muted px-1 font-mono text-xs">.claude/rules/</code> and <code className="rounded bg-muted px-1 font-mono text-xs">.claude/commands/</code>.
               </p>
+            </div>
+
+            <div>
+              <h3 className="text-sm font-semibold mb-2">How @imports work</h3>
+              <div className="rounded-lg border border-border bg-muted/50 p-4">
+                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+                  <Terminal className="h-4 w-4" />
+                  <span className="font-mono">In CLAUDE.md</span>
+                </div>
+                <pre className="rounded bg-muted px-4 py-2 font-mono text-sm whitespace-pre-wrap">{`- @.contextkit/standards/code-style.md
+- @.contextkit/standards/testing.md
+- @.contextkit/product/mission-lite.md`}</pre>
+                <p className="text-xs text-muted-foreground mt-2 italic">
+                  Claude Code resolves these on startup and loads the file contents into context automatically.
+                </p>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-sm font-semibold mb-2">Token impact</h3>
+              <div className="rounded-lg border border-blue-500/20 bg-blue-500/5 p-3">
+                <ul className="space-y-1 text-sm text-muted-foreground">
+                  <li><strong>Upfront:</strong> Standards content is loaded into base context (slightly larger initial prompt)</li>
+                  <li><strong>Per-session:</strong> No Read tool calls needed — saves tokens from avoided round-trips</li>
+                  <li><strong>Net effect:</strong> Fewer total tokens for typical sessions, plus guaranteed consistency</li>
+                </ul>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-sm font-semibold mb-2">Verify it works</h3>
+              <div className="rounded-lg border border-border bg-muted/50 p-4">
+                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+                  <Terminal className="h-4 w-4" />
+                  <span className="font-mono">In Claude Code</span>
+                </div>
+                <code className="block rounded bg-muted px-4 py-2 font-mono text-sm">
+                  /context
+                </code>
+                <p className="text-xs text-muted-foreground mt-2 italic">
+                  Check that your standards files appear in the loaded context list. First time triggers an approval dialog for @imports.
+                </p>
+              </div>
             </div>
 
             <div>
@@ -191,24 +241,11 @@ export default function PlatformExamplesPage() {
                   <span className="font-mono">Terminal</span>
                 </div>
                 <code className="block rounded bg-muted px-4 py-2 font-mono text-sm">
-                  claude "read .contextkit/context.md and create a button"
+                  claude "create checkout flow for customer"
                 </code>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-sm font-semibold mb-2">Using ContextKit Wrapper</h3>
-              <div className="rounded-lg border border-border bg-muted/50 p-4">
-                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
-                  <Terminal className="h-4 w-4" />
-                  <span className="font-mono">Terminal</span>
-                </div>
-                <code className="block rounded bg-muted px-4 py-2 font-mono text-sm">
-                  export AI_TOOL=claude_cli
-                </code>
-                <code className="block rounded bg-muted px-4 py-2 font-mono text-sm mt-2">
-                  contextkit ai "create a button component"
-                </code>
+                <p className="text-xs text-muted-foreground mt-2 italic">
+                  Standards are already loaded — no need to tell Claude to read them.
+                </p>
               </div>
             </div>
           </div>

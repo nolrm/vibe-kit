@@ -23,7 +23,7 @@ Update `.md` files as your project evolves; the AI follows.
 
 Works with: **Cursor** • **Claude Code** • **GitHub Copilot** • **Codex CLI** • **Gemini CLI** • **Aider** • **Continue** • **Windsurf**
 
-Each platform gets auto-loaded bridge files (`CLAUDE.md`, `AGENTS.md`, `GEMINI.md`, `.windsurfrules`, etc.) so your AI tools read project standards automatically.
+Each platform gets auto-loaded bridge files (`CLAUDE.md`, `AGENTS.md`, `GEMINI.md`, `.windsurfrules`, etc.) so your AI tools read project standards automatically. Claude Code uses `@` imports in CLAUDE.md to load standards content directly into context — no extra token cost from manual file reads.
 
 ---
 
@@ -118,7 +118,7 @@ Each platform generates bridge files that the AI tool auto-reads. If a bridge fi
 /fix        # diagnose and fix bugs
 ```
 
-**Claude Code** — reads `CLAUDE.md` + `.claude/rules/`, slash commands in `.claude/commands/`
+**Claude Code** — `CLAUDE.md` uses `@` imports to auto-load all standards into context every session (no manual reads needed, saves tokens). Slash commands in `.claude/commands/`.
 ```bash
 /analyze    # scan codebase and generate standards
 /review     # code review with checklist
