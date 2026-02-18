@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.9.5] - 2026-02-18
+
+### Added
+- **Squad Workflow** — multi-agent pipeline with 7 slash commands
+  - `/squad` — kick off a task as Product Owner (writes PO spec)
+  - `/squad-architect` — design the technical plan from the PO spec
+  - `/squad-dev` — implement code following the architect plan
+  - `/squad-test` — write and run tests against acceptance criteria
+  - `/squad-review` — review the full pipeline and give a PASS/NEEDS-WORK verdict
+  - `/squad-batch` — kick off multiple tasks at once (batch PO specs)
+  - `/squad-run` — auto-run the remaining pipeline for batch tasks
+- Role-to-role feedback loop: downstream roles can raise questions for upstream roles via `*-clarify` statuses
+- Shared handoff file (`.contextkit/squad/handoff.md`) tracks specs, plans, implementation, tests, and review
+
+### Docs
+- Added squad commands to README slash commands table and new Squad Workflow section
+- Added squad commands and Squad Workflow section to docs site slash commands page
+
 ## [0.9.4] - 2026-02-16
 
 ### Added

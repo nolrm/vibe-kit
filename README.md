@@ -154,11 +154,68 @@ ContextKit installs reusable slash commands for supported platforms:
 | `/refactor` | Refactor code with safety checks |
 | `/test` | Generate comprehensive tests |
 | `/doc` | Add documentation |
+| `/squad` | Kick off a squad task — write the PO spec |
+| `/squad-architect` | Design the technical plan from the PO spec |
+| `/squad-dev` | Implement code following the architect plan |
+| `/squad-test` | Write and run tests against acceptance criteria |
+| `/squad-review` | Review the full pipeline and give a verdict |
+| `/squad-batch` | Kick off multiple tasks at once (batch PO specs) |
+| `/squad-run` | Auto-run the remaining pipeline for batch tasks |
 
 **Claude Code** — available as `/analyze`, `/review`, etc. in `.claude/commands/`
 **Cursor** — available as slash commands in Chat via `.cursor/prompts/`
 
 Both platforms delegate to the universal command files in `.contextkit/commands/`, so you maintain one set of workflows.
+
+---
+
+## Squad Workflow
+
+The squad workflow turns a single AI session into a structured multi-role pipeline. Each role has its own slash command that reads and writes to a shared handoff file (`.contextkit/squad/handoff.md`), simulating a team of specialists.
+
+### Pipeline Roles
+
+| Step | Role | Command | What it does |
+|------|------|---------|-------------|
+| 1 | Product Owner | `/squad` | Writes a user story, acceptance criteria, edge cases, and scope |
+| 2 | Architect | `/squad-architect` | Designs the technical approach, files to change, and implementation steps |
+| 3 | Developer | `/squad-dev` | Implements the code following the architect's plan |
+| 4 | Tester | `/squad-test` | Writes and runs tests against the PO's acceptance criteria |
+| 5 | Reviewer | `/squad-review` | Reviews everything and gives a PASS or NEEDS-WORK verdict |
+
+### Single-Task Flow
+
+```bash
+/squad "add dark mode support"        # PO writes the spec
+/squad-architect                       # Architect designs the plan
+/squad-dev                             # Dev implements the code
+/squad-test                            # Tester writes and runs tests
+/squad-review                          # Reviewer gives the verdict
+```
+
+### Batch Flow
+
+For multiple tasks, use batch mode to spec them all up front, then run the full pipeline automatically:
+
+```bash
+/squad-batch "add dark mode" "fix login bug" "refactor checkout"
+# PO writes specs for all three tasks
+
+/squad-run
+# Runs Architect → Dev → Test → Review for each task sequentially
+```
+
+### Feedback Loop
+
+Any downstream role can raise questions for an upstream role. When this happens, the pipeline pauses and directs you to the right command:
+
+```
+Reviewer has questions for Dev → run /squad-dev to clarify
+Tester has questions for Architect → run /squad-architect to clarify
+Architect has questions for PO → run /squad to clarify
+```
+
+After clarifications are added, re-run the asking role's command to continue. This prevents misunderstandings from compounding through the pipeline.
 
 ---
 
