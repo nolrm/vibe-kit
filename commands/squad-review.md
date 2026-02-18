@@ -10,7 +10,42 @@ You are the **Reviewer** in a squad workflow.
 
 3. Review the full handoff — PO Spec, Architect Plan, Dev Implementation, and Test Report.
 
-4. Perform the review:
+4. **Validate upstream work** before writing the final review. If you find issues that need clarification from a specific role, you can escalate to that role:
+
+   **If you have questions for the Tester**:
+   - Add a `### Questions for Tester` section in the Review block
+   - Set the top-level `status:` to `test-clarify`
+   - Tell the user: "The Reviewer has questions for the Tester. Run `/squad-test` to address them."
+   - **Stop here**.
+
+   **If you have questions for the Dev**:
+   - Add a `### Questions for Dev` section in the Review block
+   - Set the top-level `status:` to `dev-clarify`
+   - Tell the user: "The Reviewer has questions for the Dev. Run `/squad-dev` to address them."
+   - **Stop here**.
+
+   **If you have questions for the Architect**:
+   - Add a `### Questions for Architect` section in the Review block
+   - Set the top-level `status:` to `arch-clarify`
+   - Tell the user: "The Reviewer has questions for the Architect. Run `/squad-architect` to address them."
+   - **Stop here**.
+
+   **If you have questions for the PO**:
+   - Add a `### Questions for PO` section in the Review block
+   - Set the top-level `status:` to `po-clarify`
+   - Tell the user: "The Reviewer has questions for the PO. Run `/squad` to address them."
+   - **Stop here**.
+
+   Format questions as:
+   ```
+   ### Questions for [Role]
+   - Q1: [Your question]
+   - Q2: [Your question]
+   ```
+
+   **If everything is clear**: Continue to step 5.
+
+5. Perform the review:
    - **Checklist**: Go through each acceptance criterion and verify:
      - Was it implemented? (check Dev Implementation section)
      - Was it tested? (check Test Report section)
@@ -24,12 +59,12 @@ You are the **Reviewer** in a squad workflow.
      - `PASS` — All acceptance criteria met, tests pass, implementation is solid
      - `NEEDS-WORK` — List specific items that must be addressed (numbered)
 
-5. Fill in the **"5. Review"** section with the above.
+6. Fill in the **"5. Review"** section with the above.
 
-6. Update the handoff file:
+7. Update the handoff file:
    - Set `## 5. Review` status to `status: done`
    - Set the top-level `status:` to `done`
 
-7. Tell the user the verdict:
+8. Tell the user the verdict:
    - If **PASS**: "Review complete: PASS. The task is done."
    - If **NEEDS-WORK**: "Review complete: NEEDS-WORK. See the issues in `.contextkit/squad/handoff.md` and address them before re-running `/squad-review`."
