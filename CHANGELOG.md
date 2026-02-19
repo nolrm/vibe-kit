@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.9.7] - 2026-02-19
+
+### Added
+- **`/ck` Health Check** — slash command to check project health from inside any AI tool
+  - Detects whether ContextKit is installed
+  - Checks if standards files are still skeletons (wasting context tokens)
+  - Checks if product files still have placeholder content
+  - Lists active platform integrations
+  - Reports a status table with recommended next steps
+- Universal command file `.contextkit/commands/health-check.md` created during install
+- Platform wrappers: `.claude/commands/ck.md` and `.cursor/prompts/ck.md`
+
 ## [0.9.6] - 2026-02-18
 
 ### Changed

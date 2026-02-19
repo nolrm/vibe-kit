@@ -161,6 +161,7 @@ ContextKit installs reusable slash commands for supported platforms:
 | `/squad-review` | Review the full pipeline and give a verdict |
 | `/squad-batch` | Kick off multiple tasks at once (batch PO specs) |
 | `/squad-run` | Auto-run the remaining pipeline for batch tasks |
+| `/ck` | Health check — verify setup, standards, and integrations |
 
 **Claude Code** — available as `/analyze`, `/review`, etc. in `.claude/commands/`
 **Cursor** — available as slash commands in Chat via `.cursor/prompts/`
