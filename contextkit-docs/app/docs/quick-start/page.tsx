@@ -16,7 +16,7 @@ export default function QuickStartPage() {
         <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground ml-2">
           <li><strong>Required:</strong> Node.js 14.x or higher (16.x+ recommended), npm or yarn</li>
           <li><strong>Optional:</strong> Git (needed for Git hooks feature)</li>
-          <li><strong>Optional:</strong> AI tools (Cursor, VS Code, Aider, etc.) - auto-detected during install</li>
+          <li><strong>Optional:</strong> AI tools (Cursor, VS Code, Aider, etc.) - selected during install</li>
         </ul>
       </div>
 
@@ -62,9 +62,10 @@ export default function QuickStartPage() {
             </div>
             <code className="block rounded bg-muted px-4 py-2 font-mono text-sm">cd your-project</code>
             <code className="block rounded bg-muted px-4 py-2 font-mono text-sm mt-2">contextkit install</code>
+            <p className="text-xs text-muted-foreground mt-2 italic">Or specify your AI tool directly: <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">contextkit install claude</code></p>
           </div>
           <p className="text-sm text-muted-foreground">
-            This creates the <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">.contextkit/</code> directory with skeleton standards files (blank templates). ContextKit auto-detects your project type and AI tools. <strong>After install, run <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">ck analyze</code> to generate content for these files.</strong>
+            This creates the <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">.contextkit/</code> directory with skeleton standards files (blank templates). ContextKit auto-detects your project type and prompts you to choose your AI tool. <strong>After install, run <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">ck analyze</code> to generate content for these files.</strong>
           </p>
           
           <div className="rounded-lg border border-blue-500/20 bg-blue-500/5 p-3">
@@ -177,7 +178,7 @@ export default function QuickStartPage() {
               Check Status
             </h3>
             <p className="text-sm text-muted-foreground">
-              Run <code className="rounded bg-muted px-1 font-mono text-xs">contextkit status</code> to see detected AI tools.
+              Run <code className="rounded bg-muted px-1 font-mono text-xs">contextkit status</code> to see installed integrations.
             </p>
           </div>
         </div>
@@ -186,7 +187,7 @@ export default function QuickStartPage() {
       <div className="rounded-lg border border-primary/20 bg-primary/5 p-4 mt-6">
         <p className="text-sm font-medium mb-2">What Gets Created?</p>
         <p className="text-sm text-muted-foreground">
-          ContextKit creates a <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">.contextkit/</code> directory with standards, templates, and commands. Auto-detects your AI tools (Cursor, VS Code, Aider, etc.) and configures integrations automatically.
+          ContextKit creates a <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">.contextkit/</code> directory with standards, templates, and commands. Choose your AI tool during install or specify it directly with <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">ck install claude</code>.
         </p>
       </div>
 

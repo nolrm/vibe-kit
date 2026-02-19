@@ -487,7 +487,7 @@ export default function PlatformExamplesPage() {
               Perfect for teams where members use different AI tools. Share the <code className="rounded bg-muted px-1 font-mono text-xs">.contextkit/</code> directory, and each team member adds their specific integration:
             </p>
             <div className="space-y-1 text-xs text-muted-foreground font-mono">
-              <div>Person 1: <code className="rounded bg-muted px-1">contextkit install</code></div>
+              <div>Person 1: <code className="rounded bg-muted px-1">contextkit install cursor</code></div>
               <div>Person 2 (Cursor): <code className="rounded bg-muted px-1">contextkit cursor</code></div>
               <div>Person 3 (VS Code): <code className="rounded bg-muted px-1">contextkit vscode</code></div>
               <div>Person 4 (Claude): <code className="rounded bg-muted px-1">contextkit claude</code></div>
@@ -503,9 +503,9 @@ export default function PlatformExamplesPage() {
         <div className="flex items-start gap-3">
           <Zap className="h-5 w-5 text-primary mt-0.5 shrink-0" />
           <div>
-            <p className="text-sm font-medium mb-1">✨ Auto-Detection</p>
+            <p className="text-sm font-medium mb-1">✨ Choose Your Tool</p>
             <p className="text-sm text-muted-foreground">
-              ContextKit automatically detects which AI tools you have installed and configures integrations accordingly. Run <code className="rounded bg-muted px-1 font-mono text-xs">contextkit status</code> to see what's detected.
+              During <code className="rounded bg-muted px-1 font-mono text-xs">ck install</code>, you choose which AI tool to configure — or specify it directly: <code className="rounded bg-muted px-1 font-mono text-xs">ck install claude</code>. Run <code className="rounded bg-muted px-1 font-mono text-xs">contextkit status</code> to see installed integrations.
             </p>
           </div>
         </div>

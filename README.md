@@ -37,7 +37,8 @@ npm i -g @nolrm/contextkit
 
 # Step 2: Navigate to your project and install
 cd your-project
-contextkit install
+contextkit install          # interactive — prompts "Which AI tool?"
+contextkit install claude   # or specify your platform directly
 ```
 
 This creates `.contextkit/` with skeleton context files (blank templates to be filled by AI):
@@ -67,10 +68,10 @@ ck analyze
 Perfect for teams where members use different AI tools:
 
 ```bash
-# First team member (any tool) - sets up the project
-contextkit install
+# First team member - sets up the project with their tool
+contextkit install claude   # or: contextkit install (interactive picker)
 
-# Each team member adds their platform
+# Each additional team member adds their platform
 ck claude      # creates CLAUDE.md + .claude/rules/
 ck cursor      # creates .cursor/rules/ (scoped .mdc files)
 ck copilot     # creates .github/copilot-instructions.md
@@ -274,7 +275,7 @@ Hooks are optional and can be skipped with `ck install --no-hooks`.
 - 🌍 **Project Agnostic** - Works with React, Vue, Node.js, PHP, Python, Rust, monorepos—any project type
 - 🤖 **Multi-Platform** - Works with Cursor, Claude Code, Copilot, Codex, Gemini, Aider, Continue, Windsurf
 - 🛡️ **Safe Install** - Backs up existing files with rollback support
-- ⚡ **Zero Config** - Auto-detects package managers and AI tools
+- ⚡ **Zero Config** - Auto-detects project type and package manager
 - ✅ **Policy Enforcement** - Configurable validation with `ck check`
 - 📝 **Corrections Tracking** - Track AI performance issues with corrections log
 - 🔄 **Workflow Orchestration** - Structured workflows with `ck run`
@@ -285,7 +286,8 @@ Hooks are optional and can be skipped with `ck install --no-hooks`.
 
 ```bash
 # Installation & Setup
-ck install     # set up .contextkit in this repo
+ck install            # set up .contextkit + pick AI tool interactively
+ck install claude     # set up .contextkit + Claude (no prompt)
 ck claude      # add Claude Code integration (CLAUDE.md + rules)
 ck cursor      # add Cursor integration (scoped .mdc rules)
 ck copilot     # add GitHub Copilot integration

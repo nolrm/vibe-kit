@@ -18,11 +18,13 @@ export default function CommandsPage() {
             <div className="flex items-start gap-3">
               <Terminal className="h-5 w-5 text-primary mt-0.5" />
               <div className="flex-1">
-                <h3 className="font-semibold text-lg mb-1">contextkit install</h3>
+                <h3 className="font-semibold text-lg mb-1">contextkit install [platform]</h3>
                 <p className="text-sm text-muted-foreground mb-2">
-                  Install ContextKit in your current project. Creates <code className="rounded bg-muted px-1 font-mono text-xs">.contextkit/</code> directory and configures integrations.
+                  Install ContextKit in your current project. Creates <code className="rounded bg-muted px-1 font-mono text-xs">.contextkit/</code> directory and configures your chosen AI tool integration.
                 </p>
                 <code className="block rounded bg-muted px-4 py-2 font-mono text-sm">contextkit install</code>
+                <code className="block rounded bg-muted px-4 py-2 font-mono text-sm mt-1">contextkit install claude</code>
+                <p className="text-xs text-muted-foreground mt-2 italic">Without a platform argument, prompts interactively. With <code className="rounded bg-muted px-0.5 font-mono text-xs">--non-interactive</code>, installs base only (no platform).</p>
               </div>
             </div>
           </div>

@@ -90,20 +90,24 @@ export default function DocsPage() {
       </div>
 
       <div className="space-y-4 pt-4">
-        <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight">Auto-Detection & Integration</h2>
+        <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight">Install & Choose Your Tool</h2>
         <p className="text-muted-foreground leading-relaxed">
-          ContextKit automatically detects which AI tools you have installed and configures integrations accordingly:
+          ContextKit sets up your project context and lets you choose which AI tool to configure:
         </p>
         <div className="rounded-lg border bg-muted/50 p-4 mt-3">
           <code className="block text-sm font-mono mb-2">$ contextkit install</code>
           <div className="space-y-1 text-sm text-muted-foreground">
             <p>🎵 Installing ContextKit...</p>
-            <p>✅ AI Tools detected: cursor, aider, claude_cli</p>
-            <p>✅ Cursor integration installed</p>
-            <p>✅ Aider integration installed</p>
-            <p>✅ CLI helpers installed</p>
+            <p>? Which AI tool are you using?</p>
+            <p className="ml-4">❯ Claude Code</p>
+            <p className="ml-4 opacity-60">  Cursor</p>
+            <p className="ml-4 opacity-60">  Copilot (GitHub)</p>
+            <p className="ml-4 opacity-60">  ...</p>
           </div>
         </div>
+        <p className="text-sm text-muted-foreground mt-2">
+          Or skip the prompt: <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">contextkit install claude</code>
+        </p>
       </div>
 
       <div className="space-y-4 pt-4">

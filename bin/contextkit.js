@@ -21,13 +21,13 @@ program
 
 // Install command
 program
-  .command('install')
+  .command('install [platform]')
   .description('Install ContextKit in current project')
   .option('--no-hooks', 'Skip Git hooks installation')
   .option('--non-interactive', 'Skip interactive prompts')
-  .action(async (options) => {
+  .action(async (platform, options) => {
     try {
-      await install(options);
+      await install({ ...options, ...(platform ? { platform, fullInstall: true } : { fullInstall: true }) });
     } catch (error) {
       console.error(chalk.red('Installation failed:'), error.message);
       process.exit(1);

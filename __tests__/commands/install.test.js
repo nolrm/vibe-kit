@@ -39,14 +39,6 @@ jest.mock('../../lib/utils/download', () => {
   }));
 });
 
-// Mock tool detector
-jest.mock('../../lib/utils/tool-detector', () => {
-  return jest.fn().mockImplementation(() => ({
-    detectAll: jest.fn().mockResolvedValue({}),
-    getSummary: jest.fn().mockReturnValue({ count: 0, editors: [], cli: [] })
-  }));
-});
-
 // Mock integrations registry
 jest.mock('../../lib/integrations', () => ({
   getIntegration: jest.fn().mockReturnValue(null),
@@ -247,5 +239,68 @@ describe('InstallCommand', () => {
     expect(await fs.pathExists('.contextkit/standards/code-style/typescript-style.md')).toBe(true);
     expect(await fs.pathExists('.contextkit/standards/code-style/javascript-style.md')).toBe(true);
     expect(await fs.pathExists('.contextkit/standards/code-style/html-style.md')).toBe(true);
+  });
+
+  it('16. full install with platform argument installs that platform', async () => {
+    const { getIntegration } = require('../../lib/integrations');
+    const mockIntegration = {
+      install: jest.fn(),
+      displayName: 'Claude',
+      showUsage: jest.fn(),
+      bridgeFiles: ['CLAUDE.md'],
+      generatedFiles: []
+    };
+    getIntegration.mockReturnValue(mockIntegration);
+
+    const install = getInstallModule();
+    await install({ platform: 'claude', fullInstall: true, noHooks: true });
+
+    expect(await fs.pathExists('.contextkit/config.yml')).toBe(true);
+    expect(mockIntegration.install).toHaveBeenCalled();
+  });
+
+  it('17. interactive mode prompts for platform choice', async () => {
+    const { getIntegration } = require('../../lib/integrations');
+    const mockIntegration = {
+      install: jest.fn(),
+      displayName: 'Cursor',
+      showUsage: jest.fn(),
+      bridgeFiles: ['.cursor/rules/contextkit-standards.md'],
+      generatedFiles: []
+    };
+    getIntegration.mockReturnValue(mockIntegration);
+
+    // First prompt: platform choice, second: git hooks (prePush), third: git hooks (commitMsg)
+    inquirer.prompt
+      .mockResolvedValueOnce({ platform: 'cursor' })
+      .mockResolvedValueOnce({ prePush: false })
+      .mockResolvedValueOnce({ commitMsg: false });
+
+    const install = getInstallModule();
+    await install({ fullInstall: true });
+
+    // Should have prompted for platform
+    expect(inquirer.prompt).toHaveBeenCalledWith(
+      expect.arrayContaining([
+        expect.objectContaining({ name: 'platform', type: 'list' })
+      ])
+    );
+    expect(mockIntegration.install).toHaveBeenCalled();
+  });
+
+  it('18. nonInteractive full install skips platform prompt', async () => {
+    const { getIntegration } = require('../../lib/integrations');
+    getIntegration.mockReturnValue(null);
+    inquirer.prompt.mockClear();
+
+    const install = getInstallModule();
+    await install({ nonInteractive: true, noHooks: true, fullInstall: true });
+
+    expect(await fs.pathExists('.contextkit/config.yml')).toBe(true);
+    // Should not have prompted for platform choice
+    const platformPromptCalls = inquirer.prompt.mock.calls.filter(
+      ([args]) => Array.isArray(args) ? args.some(a => a.name === 'platform') : args.name === 'platform'
+    );
+    expect(platformPromptCalls).toHaveLength(0);
   });
 });
